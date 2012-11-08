@@ -1,0 +1,15 @@
+The Basics
+
+Include the makeidx package with a \usepackage command.
+Put a \makeindex command in the document preamble.
+Put a \printindex command where the index it to appear---usually at the end, before the \end{document} command.
+Run LaTeX on your .tex file to generate a .idx file.
+Run makeindex on main.idx.
+Rerun LaTeX on your .tex file to create a document with an index.
+Do It Yourself
+
+The easiest way to run through the process is to download this file, main.tex and run the following commands:
+latex main.tex
+makeindex main.idx
+latex main.tex
+

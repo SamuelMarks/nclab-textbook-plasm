@@ -1278,17 +1278,25 @@ DOWN(c, s) = ALIGN(c, s, [2, MIN, MAX], [3, MIN, MIN])
 
 \subsection{Rotations}
 
+There are two ways to rotate objects in PLaSM -- using angles in 
+{\em radians} and using angles in {\em degrees}. Let us begin with the former.
 Objects can be rotated using the command {\tt ROTATE(obj, axis, angle)} 
-that can be abbreviated as {\tt R(obj, axis, angle)}. Here {\tt obj} is
-the geometrical object to be rotated, {\tt axis} is a number between 
-1 and 3 that means the axis of rotation, and {\tt angle} is the angle of 
-rotation. For 2D objects in the $xy$-plane, use {\tt axis = 3}. The axis of rotation 
+that can be abbreviated as {\tt RRAD(obj, axis, angle)} or {\tt R(obj, axis, angle)}. 
+Here {\tt obj} is the geometrical object to be rotated, {\tt axis} is a number between 
+1 and 3 that means the axis of rotation ($x$, $y$ or $z$), and {\tt angle} is the 
+angle of rotation in radians. 
+
+The command {\tt RDEG(obj, axis, angle)} will accept 
+angles in degrees.
+
+For 2D objects in the $xy$-plane, use {\tt axis = 3}. The axis of rotation 
 always passes through the origin (0, 0, 0), so it is important 
 to know exactly where your object is located. 
 
 For example, when a CUBE is created, its center does not lie
 at the origin of the coordinate system (0, 0, 0) -- the cube will 
-rotate about one of its edges. Look at the following script 
+rotate about one of its edges. The following script will rotate 
+a cube {\tt c} by angle $\pi$ radians about the $z$-axis: 
 
 \begin{bluecode}
 c = CUBE(1.0)
@@ -1297,9 +1305,13 @@ out = STRUCT(c, c2)
 \end{bluecode}
 \index{CUBE}
 \index{ROTATE}
+\index{RRAD}
+\index{RDEG}
+\index{R}
 \index{STRUCT}
-whose output is shown in Fig. \ref{fig:rot-1}. Clearly the axis of 
+The output is shown in Fig. \ref{fig:rot-1}. Clearly the axis of 
 rotation is where the two cubes meet.
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1308,9 +1320,8 @@ rotation is where the two cubes meet.
 \vspace{-4mm}
 \caption{Unit cube rotated by $\pi$ (180 degrees) shown together with the original cube.}
 \label{fig:rot-1}
-\vspace{-1cm}
+%\vspace{-1cm}
 \end{figure}
-\newpage
 \noindent
 If we wanted to 
 rotate the cube "in place", so that its center would not be moved,
@@ -1332,7 +1343,7 @@ out = STRUCT(c, c2)
 \index{TRANSLATE}
 \index{STRUCT}
 The output is shown in Fig. \ref{fig:rot-2}.
-%\newpage
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1587,6 +1598,7 @@ out = STRUCT(c, s)
 \index{CYLINDER}
 \index{STRUCT}
 is shown in Fig. \ref{fig:diff-0}.
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1637,6 +1649,7 @@ The output is shown in Fig. \ref{fig:diff-2}.
 \label{fig:diff-2}
 %\vspace{-1cm}
 \end{figure}
+\newpage
 \noindent
 PLaSM makes it possible to subtract multiple objects from an 
 object, by using  the {\tt DIFF} command with more then two arguments.
@@ -1656,7 +1669,6 @@ out = STRUCT(c, s, s2, s3)
 \index{ROTATE}
 \index{STRUCT}
 The output is shown in Fig. \ref{fig:diff-3}.
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1665,8 +1677,10 @@ The output is shown in Fig. \ref{fig:diff-3}.
 \vspace{-4mm}
 \caption{Displaying the four objects.}
 \label{fig:diff-3}
-%\vspace{-1cm}
+\vspace{-1cm}
 \end{figure}
+\noindent
+\newpage
 \noindent
 Changing {\tt STRUCT} to {\tt DIFF} in the above script
 
@@ -1743,7 +1757,6 @@ out = I(c, s, s2, s3)
 \index{CYLINDER}
 \index{ROTATE}
 \index{INTERSECTION}
-\newpage
 \noindent
 The output is shown in Fig. \ref{fig:int-2}.
 
@@ -1811,7 +1824,7 @@ out = XOR(c, c2)
 \index{ROTATE}
 \index{XOR}
 The output is shown in Fig. \ref{fig:xor-1}.
-%\newpage
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1944,7 +1957,6 @@ lab.view(vault)
 \index{STRUCT}
 \noindent
 The output is shown in Fig.\ref{fig:vault}.
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1990,7 +2002,7 @@ lab.view(STRUCT(drilled_body, rest))
 \index{STRUCT}
 Now the computation takes just a few milliseconds!
 The output is shown in Fig.\ref{fig:vault2}.
-\newpage
+%\newpage
 
 \begin{figure}[!ht]
 \begin{center}
