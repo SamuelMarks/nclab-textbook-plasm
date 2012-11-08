@@ -30,25 +30,25 @@ c = CUBE(1)
 \end{bluecode}
 \index{CUBE}
 \noindent
-defines a unit cube, 
+defines a unit cube {\tt c}, 
 
 \begin{bluecode}
 d = CUBE(2)
 \end{bluecode}
 \noindent
-defines a cube of size 2,
+defines a cube {\tt d} of size 2,
 
 \begin{bluecode}
 e = DIFF(d, c)
 \end{bluecode}
 \index{DIFF}
-calculates their Boolean difference, and
+calculates their difference {\tt e}, and
 
 \begin{bluecode}
 lab.view(e)
 \end{bluecode}
 \index{lab.view}
-displays it using WebGL as shown in Fig. \ref{fig:diffcube}.
+displays the object {\tt e} using a default grey color,as shown in Fig. \ref{fig:diffcube}.
 
 \begin{figure}[!ht]
 \begin{center}
@@ -60,76 +60,74 @@ displays it using WebGL as shown in Fig. \ref{fig:diffcube}.
 \label{fig:diffcube}
 \end{figure}
 
-\subsection{Working with an interactive GUI vs. scripting}\label{subsec:scripting}
+\subsection{Scripting Approach to Solid Modeling}\label{subsec:scripting}
 
-Virtually all production-level CAD systems such as SolidWorks, AutoCAD and 
-others, come with a graphical user interface (GUI). There, the user 
-can select objects from menus using the mouse, drag them on the computer 
-screen, click into other menus to select their transformations, etc. 
-These systems often automate some design tasks in order to make 
-the professional designer as comfortable and as efficient as possible.
-Each CAD system has some computational geometry engine, and the GUI can be 
-viewed as a "remote control" to it. 
+%Virtually all production-level CAD systems such as SolidWorks, AutoCAD and 
+%others, come with a graphical user interface (GUI). There, the user 
+%can select objects from menus using the mouse, drag them on the computer 
+%screen, click into other menus to select their transformations, etc. 
+%These systems often automate some design tasks in order to make 
+%the professional designer as comfortable and as efficient as possible.
+%Each CAD system has some computational geometry engine, and the GUI can be 
+%viewed as a "remote control" to it. 
 
-Another way to communicate with the computational geometry engine is via 
-writing instructions in the form of short programs. These instructions 
-do similar things that can be done via clicking in menus of a GUI. 
+The PLaSM Worksheet in NCLab communicates with the computational geometry engine 
+on the server via 
+written instructions in the form of short programs. These instructions 
+do similar things that can be done via clicking in menus of a graphical user interface (GUI). 
 Such short programs are called {\em scripts}
 and hence this technique is called {\em scripting}.
 
-The philosophy of scripting is different from working with an interactive GUI. 
-Let's assume for the moment that the user knows the Linux and Windows operating 
-systems: Scripting is more like using Linux while working with an interactive 
-GUI is more like using Windows. Linux users like to understand how things really work,
-be in control, be able to change everything and anything if they want to. 
-Of course this means less comfort and sometimes one has to deal with dirty details. 
-People who like to just use things as they are, without knowing all the details, 
-are better off with Windows. 
+%The philosophy of scripting is different from working with an interactive GUI. 
+%Let's assume for the moment that the user knows the Linux and Windows operating 
+%systems: Scripting is more like using Linux while working with an interactive 
+%GUI is more like using Windows. Linux users like to understand how things really work,
+%be in control, be able to change everything and anything if they want to. 
+%Of course this means less comfort and sometimes one has to deal with dirty details. 
+%People who like to just use things as they are, without knowing all the details, 
+%are better off with Windows. 
 
-Another such analogy is between \LaTeX -- the most popular typesetting system for engineering 
-and scientific literature -- and Microsoft Word. \LaTeX \,uses a scripting approach, Word is more
-about clicking into menus. While both systems can be used to produce high quality documents, 
-and many people love Word, many other people would say that they would never write a book in it. 
+%Another such analogy is between \LaTeX -- the most popular typesetting system for engineering 
+%and scientific literature -- and Microsoft Word. \LaTeX \,uses a scripting approach, Word is more
+%about clicking into menus. While both systems can be used to produce high quality documents, 
+%and many people love Word, many other people would say that they would never write a book in it. 
 
-In the end the choice is up to the user. It is not our objective to advocate any
-of these two approaches here. The fact that NCLab uses PLaSM has its roots in
-the fact that it was created by people who love Linux and \LaTeX. Of course it would be possible 
-to create an interactive GUI for PLaSM in NCLab as well, but this will be only done if there 
-is enough demand.\\
+%In the end the choice is up to the user. It is not our objective to advocate any
+%of these two approaches here. The fact that NCLab uses PLaSM has its roots in
+%the fact that it was created by people who love Linux and \LaTeX. Of course it would be possible 
+%to create an interactive GUI for PLaSM in NCLab as well, but this will be only done if there 
+%is enough demand.\\
 
-\noindent
-But back to scripting -- scripting puts more emphasis on the entire {\em design procedure}
-than on the final design. In other words, the main difference between 
-scripting and working with a GUI is not in the range of final designs that one can create 
--- it is in {\em how one creates them}. A script contains 
+%\noindent
+In contrast to working with a GUI, the scripting approach
+allows the user to view at any time the entire design workflow, from the beginning 
+to the end. The script contains 
 a complete sequence of steps, the history of the design process. It reveals clearly each 
 operation as well as the order of operations. At any time, any step 
 of the design process can be checked and adjusted. Scripts can be run and 
-re-run as many times as needed, until the design (process) is perfect. 
+re-run as many times as needed, until the design is perfect. 
 Working with a scripting language such as PLaSM allows us to improve the entire  
-{\em design workflow} and learn good habits, which might be desirable for
-educational applications.
+design workflow and learn good habits, which is very desirable for
+educational purposes. 
 
-Clearly, the scripting approach is not as widely used (yet) as working with 
-interactive graphical applications. Let us therefore mention a few 
-additional aspects and benefits of scripting that may not be obvious 
-to educators who use traditional CAD systems:
-
+The main aspects of the scripting approach are summarized
+below:
 
 \begin{itemize}
 
-\item Scripting is a more "bare" approach. It makes sure that students understand
+\item The scripting approach makes sure that students understand
       all geometrical operations, their parameters, and dependencies.
 \item Parts of an existing design can be reused for other designs by copying the 
       corresponding lines of the script. 
 \item Script can automate tedius tasks as well as allow parameters (variables)
       in the design. 
 \end{itemize}
-But let's stop talking and get to work! PLaSM makes it possible to define a wide range of 3D 
+PLaSM makes it possible to define a wide range of 3D 
 objects, transform them, subtract them from each other, create their intersections
 and unions, define many different types of curved surfaces, solidify them, and 
-much more. In no time, you will be able to create advanced 3D geometries such 
-as the one shown in Fig. \ref{fig:vault0}.
+much more. After reading this textbook and solving the exercises, you will possess
+advanced geometrical skills that will allow you to easily create advanced 3D geometries 
+such as the one shown in Fig. \ref{fig:vault0}.
 \newpage
 
 \begin{figure}[!ht]
@@ -138,19 +136,14 @@ as the one shown in Fig. \ref{fig:vault0}.
 \end{center}
 \vspace{-4mm}
 \caption{Vault model created with PLaSM.}
-\vspace{-1cm}
+%\vspace{-1cm}
 \label{fig:vault0}
 \end{figure}
 
 
 \subsection{Launching new PLaSM project}
 
-The underlying cloud computing platform for this course is NCLab 
-(http://nclab.com).
-PLaSM scripts are sent to a remote server, evaluated there, 
-and the results are sent back to your web browser. Your device uses
-its graphics card for real-time rendering of 3D objects. For this 
-reason, {\bf your web browser has to support WebGL}. 
+
 New PLaSM project can be launched via the CAD icon on Desktop, as shown 
 in Fig. \ref{fig:python}.
 
@@ -159,12 +152,15 @@ in Fig. \ref{fig:python}.
 \includegraphics[width=0.5\textwidth]{img/python.png}
 \end{center}
 \vspace{-2mm}
-\caption{Launching a new PLaSM project.}
-\vspace{-1cm}
+\caption{Launching new PLaSM project.}
+%\vspace{-1cm}
 \label{fig:python}
 \end{figure}
-\newpage
+%\newpage
 \noindent
+When working in NCLab, your device uses
+its graphics card for real-time rendering of 3D objects. For this 
+reason, {\bf your web browser has to support WebGL}. 
 The WebGL technology is still experimental, so it may be disabled 
 in your web browser by default. Even after you enable it, it may not work 
 right out of the box. For this reason we provide a document called 
