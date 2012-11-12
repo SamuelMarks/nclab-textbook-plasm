@@ -7,60 +7,82 @@
 \subsection{Objectives}
 \begin{itemize}
 \item Learn basic facts about Solid Modeling and PLaSM.
-\item Understand the difference of scripting vs. working with an interactive GUI.
-\item Learn to rotate, move and zoom objects displayed via WebGL.
-\item Understand RGB colors.
+\item Understand the difference between scripting and working with an interactive GUI.
+\item Learn to rotate, move and zoom 3D objects with the mouse.
+\item Understand the RGB color scheme.
 \end{itemize}
 
 \subsection{Solid Modeling and PLaSM}
 
-Solid Modeling is a consistent set of principles for mathematical and computer 
+Solid Modeling is a collection of rules and techniques for mathematical and computer 
 modeling of three-dimensional solids. Solid Modeling is distinguished from related 
-areas such as geometric modeling or computer graphics by its emphasis on {\em physical fidelity}.
+areas including geometric modeling and computer graphics by its emphasis on {\em physical fidelity}.
 Solid Modeling is the basis of computer-aided design (CAD), engineering simulations, and other disciplines.
 
 Solid Modeling in NCLab is based on PLaSM (Programming Language 
-of Solid Modeling) which is an elegant scripting language based on 
-Python, backed up by a powerful computational geometry 
-engine. The language is very intuitive, one does not have to know 
-anything about computer programming to use it. For illustration:
+of Solid Modeling), an elegant scripting language with Python-like 
+syntax that is backed up by a powerful computational geometry 
+engine running on a remote server. The language is very intuitive, 
+one does not have to know anything about computer programming 
+to use it. For illustration:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 c = CUBE(1)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBE}
-\noindent
-defines a unit cube {\tt c}, 
+\vspace{6mm}
 
-\begin{bluecode}
-d = CUBE(2)
-\end{bluecode}
 \noindent
-defines a cube {\tt d} of size 2,
+defines a unit cube {\tt c},\\
 
-\begin{bluecode}
-e = DIFF(d, c)
-\end{bluecode}
+\begin{bbox}
+\begin{verbatim}
+s = SPHERE(1)
+\end{verbatim}
+\end{bbox}
+\vspace{6mm}
+
+\noindent
+\noindent
+defines a unit sphere {\tt s},\\
+
+\begin{bbox}
+\begin{verbatim}
+out = DIFF(c, s)
+\end{verbatim}
+\end{bbox}
 \index{DIFF}
-calculates their difference {\tt e}, and
+\vspace{6mm}
 
-\begin{bluecode}
-lab.view(e)
-\end{bluecode}
+\noindent
+calculates their difference {\tt out}, and\\
+
+\begin{bbox}
+\begin{verbatim}
+lab.view(out)
+\end{verbatim}
+\end{bbox}
 \index{lab.view}
-displays the object {\tt e} using a default grey color,as shown in Fig. \ref{fig:diffcube}.
+\vspace{6mm}
+
+\noindent
+displays the output {\tt out} using a default grey color,
+as shown in Fig. \ref{fig:diffcube}.
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=5cm]{img/diffcube.png}
+\includegraphics[width=6cm]{img/sph-cube-111.png}
 \end{center}
 \vspace{-6mm}
-\caption{Boolean difference of two cubes.}
+\caption{Sphere {\tt s} was subtracted from the cube {\tt c}.}
 %\vspace{-1cm}
 \label{fig:diffcube}
 \end{figure}
 
-\subsection{Scripting Approach to Solid Modeling}\label{subsec:scripting}
+\subsection{Scripting approach to solid modeling}\label{subsec:scripting}
 
 %Virtually all production-level CAD systems such as SolidWorks, AutoCAD and 
 %others, come with a graphical user interface (GUI). There, the user 
@@ -71,12 +93,9 @@ displays the object {\tt e} using a default grey color,as shown in Fig. \ref{fig
 %Each CAD system has some computational geometry engine, and the GUI can be 
 %viewed as a "remote control" to it. 
 
-The PLaSM Worksheet in NCLab communicates with the computational geometry engine 
-on the server via 
-written instructions in the form of short programs. These instructions 
-do similar things that can be done via clicking in menus of a graphical user interface (GUI). 
-Such short programs are called {\em scripts}
-and hence this technique is called {\em scripting}.
+In NCLab, users communicate with PLaSM's server-side computational geometry engine 
+via short programs. These programs are often called 
+{\em scripts} and hence this technique is called {\em scripting}.
 
 %The philosophy of scripting is different from working with an interactive GUI. 
 %Let's assume for the moment that the user knows the Linux and Windows operating 
@@ -99,19 +118,18 @@ and hence this technique is called {\em scripting}.
 %is enough demand.\\
 
 %\noindent
-In contrast to working with a GUI, the scripting approach
-allows the user to view at any time the entire design workflow, from the beginning 
-to the end. The script contains 
-a complete sequence of steps, the history of the design process. It reveals clearly each 
+In contrast to working with an interactive GUI, the scripting approach
+allows the user to view at any time the {\em entire design workflow}, from 
+the beginning to the end. The script contains 
+the complete history of the design process. It reveals clearly each 
 operation as well as the order of operations. At any time, any step 
-of the design process can be checked and adjusted. Scripts can be run and 
-re-run as many times as needed, until the design is perfect. 
-Working with a scripting language such as PLaSM allows us to improve the entire  
-design workflow and learn good habits, which is very desirable for
-educational purposes. 
+of the design process can be checked and adjusted, no matter if at the 
+beginning or at the end. This is not the case when working with an interactive GUI.
+Scripts can be run and re-run as many times as needed, until the design is perfect. 
+Scripting is used is other areas as well -- one such example is \LaTeX \ (read like "Latec"), 
+a widely used scientific document preparation system that is also available in NCLab.
 
-The main aspects of the scripting approach are summarized
-below:
+The main aspects of the scripting approach to Solid Modeling can be summarized as follows:
 
 \begin{itemize}
 
@@ -128,11 +146,10 @@ and unions, define many different types of curved surfaces, solidify them, and
 much more. After reading this textbook and solving the exercises, you will possess
 advanced geometrical skills that will allow you to easily create advanced 3D geometries 
 such as the one shown in Fig. \ref{fig:vault0}.
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.4\textwidth]{img/vault.png}
+\includegraphics[width=0.45\textwidth]{img/vault.png}
 \end{center}
 \vspace{-4mm}
 \caption{Vault model created with PLaSM.}
@@ -141,15 +158,35 @@ such as the one shown in Fig. \ref{fig:vault0}.
 \end{figure}
 
 
-\subsection{Launching new PLaSM project}
+\subsection{Launching a new PLaSM project}
 
 
-New PLaSM project can be launched via the CAD icon on Desktop, as shown 
-in Fig. \ref{fig:python}.
+PLaSM projects can be launched via the CAD icon on Desktop shown in
+Fig. \ref{fig:cadicon}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{img/python.png}
+\includegraphics[width=0.1\textwidth]{img/cadicon.png}
+\end{center}
+\vspace{-2mm}
+\caption{NCLab's CAD icon.}
+\vspace{-1cm}
+\label{fig:cadicon}
+\end{figure}
+\newpage
+\noindent
+Initially, the worksheet will contain a demo script
+as shown in Fig. \ref{fig:python}. This script is easy to run 
+(just click on the green arrow button) and its purpose is to 
+give a quick idea about PLaSM to newcomers. The script 
+demonstrates the capabilities of PLaSM by combining
+functionality from Sections 2, 3, and 4. It is not meant to 
+replace the material from these three Sections.
+
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{img/python.png}
 \end{center}
 \vspace{-2mm}
 \caption{Launching new PLaSM project.}
@@ -158,74 +195,122 @@ in Fig. \ref{fig:python}.
 \end{figure}
 %\newpage
 \noindent
-When working in NCLab, your device uses
-its graphics card for real-time rendering of 3D objects. For this 
-reason, {\bf your web browser has to support WebGL}. 
-The WebGL technology is still experimental, so it may be disabled 
-in your web browser by default. Even after you enable it, it may not work 
-right out of the box. For this reason we provide a document called 
-"WebGL and Its Problems" in the Help section.
-
-\subsection{Hello, World!}
-
-In the input cell, enter the code:
-\begin{bluecode}
-c = CUBE(1)
-lab.view(c)
-\end{bluecode}
-\index{CUBE}
-\index{lab.view}
-\noindent
-Here, {\tt CUBE} is a command that creates a cube of a given size and {\tt c} is the 
-name of the newly created object. The name can be arbitrary as long as it does not conflict with 
-any PLaSM command. To minimize name clashes, all PLaSM commands are CAPITALIZED.
-
-After you are done typing the script, click on the green arrow button in the menu
-or under the input cell. The former option will run all cells 
-in the project, the latter only the particular cell. Pressing the green arrow sends 
-the script to the server. If your Internet connection works, the answer  comes back 
-instantly and a new WebGL widget displaying a unit cube in grey color will appear, as 
-shown in Fig. \ref{fig:cube}. 
-
+After you send the script to the server, allow few seconds 
+for processing and data transfer. Then you should see the geometry 
+shown in Fig. \ref{fig:demo-111}.
+\newpage
+ 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{img/cube.png}
+\includegraphics[width=0.5\textwidth]{img/demo-111.png}
 \end{center}
 \vspace{-2mm}
-\caption{WebGL widget showing a unit cube that we created.}
-\vspace{2mm}
-\label{fig:cube}
+\caption{Output of the demo script.}
+%\vspace{-1cm}
+\label{fig:demo-111}
 \end{figure}
+%\newpage
 \noindent
-Congratulations, you just created your first Solid Model!
+If you see no image or even an error message, do not panic. The WebGL 
+technology is still experimental and it may be disabled in your web 
+browser by default. All modern web browsers with the exception of
+Internet Explorer (if it can be called a modern web browser) support 
+WebGL. To check whether WebGL works in your web browser, NCLab provides 
+a Test WebGL button on the front page. \\
+
+\begin{gbox}
+\begin{center}
+Detailed WebGL troubleshooting 
+instructions are provided in a document "WebGL and Its Problems" 
+that is available in the Help section of the PLaSM worksheet.
+\end{center}
+\end{gbox}
+\vspace{6mm}
+
+\noindent
+When you do not need to see the demo anymore, just turn it off in Settings -- it 
+will not be displayed the next time you launch PLaSM.
 
 \subsection{Mouse controls}
 
-Now click into the window and move the mouse while holding the left
-button down. The cube will rotate freely. Holding the middle
-button (or the mouse wheel) pressed and moving the mouse will move the 
-object in any direction. Zooming in and out is done via the mouse wheel 
-or by holding the right-hand mouse button down and moving the mouse.
-The latter option allows for finer zooming.
+We can use the mouse to rotate the object, move it on the screen, 
+make it bigger or smaller, and tilt it. This allows us to view 
+it from all possible angles and see even the smallest details. If you like to see the object 
+better, click on the "Detach" button in the top part of the WebGL widget.
+This will display the object in a separate window that can be further enlarged. \\
+
+\noindent
+{\em Rotating}\\
+
+\noindent
+Move your mouse pointer over the 3D object and press the left button. 
+While holding it down, move the mouse to the left and to the right. 
+The object on the screen will rotate about the vertical axis. Moving the 
+mouse in other directions while holding down the left button will result 
+in various other rotations.\\
+
+\noindent
+{\em Moving}\\
+
+\noindent
+Holding down the middle button (or the mouse wheel) instead of the 
+left one, and moving the mouse as before, will move the object 
+in various directions on the screen.\\
+
+\noindent
+{\em Zooming}\\
+
+\noindent
+Zooming is done via the mouse wheel or by holding down the right
+mouse button and moving the mouse. The latter option allows for 
+finer zooming.
+
+\noindent
+{\em Panning}\\
+
+\noindent
+Last, move the mouse pointer over the object and press the left 
+button again. While holding it down, move the mouse on a small circle 
+in the counter clockwise direction. The object on the screen will 
+start tilting to the right. Similarly, circular motions 
+in the clockwise direction will tilt the object to the left. \\
+
+\begin{gbox}
+\begin{center}
+Note: The mouse controls only adjust the view of the object, they do not 
+make any changes in its position in the 3D coordinate system of the model.
+\end{center}
+\end{gbox}
+
 
 \subsection{RGB colors}
 
-Before we move on to other 3D objects, adjust the code in the input cell to 
-\begin{bluecode}
+Before we move on to other 3D objects, adjust the code in the input cell to \\
+
+\begin{bbox}
+\begin{verbatim}
 c = CUBE(1)
 lab.view(c, [102, 230, 153])
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBE}
 \index{lab.view}
+\vspace{6mm}
+
 \noindent
 The same could be done by creating a separate variable (called, say, {\tt col})
-for the color and passing it into the {\tt lab.view()} function:
+for the color and passing it into the {\tt lab.view()} function:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 c = CUBE(1)
 col = [102, 230, 153]
 lab.view(c, col)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
+\vspace{6mm}
+
+\noindent
 Run the script again.
 This will render the cube {\tt c} in a greenish color, as shown in 
 Fig. \ref{fig:cube2}.
@@ -282,15 +367,18 @@ one scene can be displayed using different colors.
 \subsection{Cube}
 
 We already know that the command {\tt CUBE(a)} renders a 3D cube of
-dimensions $a \times a \times a$. Let us review this command briefly again:
+dimensions $a \times a \times a$. Let us review this command briefly again:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 c = CUBE(1)
 col = [102, 230, 153]
 lab.view(c, col)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBE}
-\newpage
+\vspace{6mm}
+
 \noindent
 The object is displayed in Fig. \ref{fig:cube-111}. Make sure to 
 notice that the cube is located in the first quadrant, with its 
@@ -319,14 +407,19 @@ PLaSM makes it possible to work in a two-dimensional setting of the
 axes $x$ and $y$ as well. Here, the $z$ axis is not present. The first 
 2D command that we will explore is {\tt SQUARE(a)} which renders 
 a square of edge length $a$. Its usage is illustrated by the 
-following script:
+following script:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 s = SQUARE(3)
 col = [102, 230, 153]
 lab.view(s, col)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{SQUARE}
+\vspace{6mm}
+
+\noindent
 The square is shown in Fig. \ref{fig:square-111}. Again notice that 
 it is located in the first quadrant, with one vertex lying at 
 the origin $(0, 0, 0)$ and its edges aligned with the axes $x$ and $y$.
@@ -350,14 +443,19 @@ sections. For this purpose, PLaSM has a command {\tt SQUARE3D(a)} that
 creates a square of edge length $a$ in the 3D space. Otherwise the 
 square is located in the same way as the one created via the 
 {\tt SQUARE(a)} command. Sample script creating a square in the 3D space 
-is 
+is \\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 s = SQUARE3D(3)
 col = [102, 230, 153]
 lab.view(s, col)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{SQUARE3D}
+\vspace{6mm}
+
+\noindent
 In reality, this object is a 3D cube whose third dimension was reduced
 to $0.001$. Later we will learn how to rotate, move, and scale such a square, and how to 
 intersect it with an arbitrary 3D object. The output of the above acript 
@@ -377,14 +475,19 @@ is shown in Fig. \ref{fig:square-112}.
 
 The command {\tt BRICK(a, b, c)} \index{BRICK}
 renders a 3D brick of dimensions {\tt a}, {\tt b} and {\tt c}. 
-Let us change the code in the input cell to  
+Let us change the code in the input cell to  \\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 b = BRICK(3.0, 2.0, 1.0)
 col = [102, 230, 153]
 lab.view(b, col)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{BRICK}
+\vspace{6mm}
+
+\noindent
 and press the green arrow button.The result is displayed in Fig. \ref{fig:cuboid-1}.
 
 \begin{figure}[!ht]
@@ -403,14 +506,18 @@ and press the green arrow button.The result is displayed in Fig. \ref{fig:cuboid
 
 \noindent
 Planar rectangle of dimensions $a$ and $b$ can be rendered using the 
-command {\tt RECTANGLE(a, b)}. For illustration, the output of a sample script
+command {\tt RECTANGLE(a, b)}. For illustration, the output of a sample script\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 r = RECTANGLE(2.0, 1.0)
 col = [102, 230, 153]
 lab.view(r, col)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{RECTANGLE}
+\vspace{6mm}
+
 \noindent
 is shown in Fig. \ref{fig:cuboid-2}.
 
@@ -432,14 +539,18 @@ origin (0, 0).
 
 To operate with rectangles in the 3D space, we have the command {\tt RECTANGLE3D(a, b)}
 which works analogously to the command {\tt SQUARE3D(a)} for squares. Its usage
-can be illustrated using the script 
+can be illustrated using the script \\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 r = RECTANGLE3D(2.0, 1.0)
 col = [102, 230, 153]
 lab.view(r, col)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{RECTANGLE3D}
+\vspace{6mm}
+
 \noindent
 that creates the same rectangle as above but renders it in 3D space.
 The rectangle is again located in the first quadrant, with one vertex 
@@ -462,17 +573,22 @@ reduced to $0.001$. The output is shown in Fig. \ref{fig:rect-111}.
 
 \subsection{Tetrahedron}
 
-Tetrahedron in PLaSM is defined using four points that do not lie in the same 
-plane. 
+Tetrahedron in PLaSM is defined using four 3D points that do not lie in the same 
+plane. A point is a 
 
 The command {\tt TETRAHEDRON([a1, a2, a3], [b1, b2, b3], [c1, c2, c3], [d1, d2, d3])} renders 
 a tetrahedron with the vertices {\tt [a1, a2, a3]}, {\tt [b1, b2, b3]}, {\tt [c1, c2, c3]}
-and {\tt [d1, d2, d3]}. The output of the sample code
+and {\tt [d1, d2, d3]}. The output of the sample code\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 out = TETRAHEDRON([-2, 0, 0], [1, 0, 0], [0, 4, 1], [0, 1, 2])
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{TETRAHEDRON}
+\vspace{6mm}
+
+\noindent
 is shown in Fig. \ref{fig:chull}.
 
 \begin{figure}[!ht]
@@ -498,15 +614,20 @@ a triangle with the vertices {\tt [a1, a2]}, {\tt [b1, b2]} and {\tt [c1, c2]}.
 
 Given a triangle {\tt B} and a positive number {\tt H}, the command 
 {\tt PRISM(B, H)} renders a prism with the base {\tt B} and height {\tt H}. 
-The output of the sample code
+The output of the sample code\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 B = TRIANGLE([-1, 0], [1, 0], [0, -2])
 H = 2.0
 out = PRISM(B, H)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{TRIANGLE}
 \index{PRISM}
+\vspace{6mm}
+
+\noindent
 is shown in Fig. \ref{fig:prism}. The base {\tt B} can be any 2D polygon,
 as we will see in Subsection \ref{subsec:extrusion}.\\
 
@@ -521,15 +642,20 @@ as we will see in Subsection \ref{subsec:extrusion}.\\
 \end{figure}
 
 
-\subsection{Spheres and circles}
+\subsection{Sphere}
 
 Sphere of radius $R$ and center at (0, 0, 0) can be rendered using the command 
-{\tt SPHERE(R)}. The output of the sample code
+{\tt SPHERE(R)}. The output of the sample code\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 out = SPHERE(3.0)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{SPHERE}
+\vspace{6mm}
+
+\noindent
 is shown in Fig. \ref{fig:sphere-1}.
 
 \begin{figure}[!ht]
@@ -541,16 +667,26 @@ is shown in Fig. \ref{fig:sphere-1}.
 \label{fig:sphere-1}
 \vspace{-1cm}
 \end{figure}
-\newpage
-\noindent
-Circle with radius $R$ and center at (0, 0), lying in the $xy$-plane 
-can be defined using the command {\tt CIRCLE(R)}:
 
-\begin{bluecode}
+\subsection{Planar circle}
+
+
+Circle with radius $R$ and center at (0, 0), lying in the $xy$-plane 
+can be defined using the command {\tt CIRCLE(R)}:\\
+
+\begin{bbox}
+\begin{verbatim}
 R = 5.0
 out = CIRCLE(R)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CIRCLE}
+\vspace{6mm}
+
+\noindent
+
+\subsection{Circle in 3D space}
+
 
 \subsection{Approximation of curved surfaces} 
 
@@ -560,26 +696,41 @@ with a default division that the user can adjust if needed. For the
 {\tt SPHERE} command, the default divisions are 32 in the angular direction 
 and 32 in the $z$-direction. The division can be used as an optional argument.
 If there are two divisions, they are always enclosed in square brackets. Hence, 
-the command
+the command\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 s = SPHERE(3.0)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{SPHERE}
-is equivalent to 
+\vspace{6mm}
 
-\begin{bluecode}
+\noindent
+is equivalent to \\
+
+\begin{bbox}
+\begin{verbatim}
 s = SPHERE(3.0, [32, 32])
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{SPHERE}
+\vspace{6mm}
+
+\noindent
 The default sphere is approximated using $32^2 = 1024$ linear
 segments. If you decide to make it look better by using 
-twice finer division in both directions,
+twice finer division in both directions,\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 s = SPHERE(3.0, [64, 64])
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{SPHERE}
+\vspace{6mm}
+
+\noindent
 then the number of linear segments jumps to $64^2 = 4096$. Making 
 both divisions twice finer once more would yield $128^2 = 16384$ linear
 segments. 
@@ -598,26 +749,36 @@ computing times.
 
 What we said above applies to circles as well. By default, every circle 
 is approximated using an equilateral polygon 
-with 64 edges. To change the number of edges for example to 32, type
+with 64 edges. To change the number of edges for example to 32, type\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 c = CIRCLE(R, 32)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CIRCLE}
+\vspace{6mm}
 
-\subsection{Cylinders}
+\noindent
+
+\subsection{Cylinder}
 
 A cylinder of radius $R$ and height $H$ can be defined using 
 the command {\tt CYLINDER(R, H)}. The cylinder's axis is in 
 the $z$-direction, and the midpoint of its base circle is the 
-origin (0, 0, 0). The output of the sample code
+origin (0, 0, 0). The output of the sample code\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 R = 0.25
 H = 1.0
 out = CYLINDER(R, H)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CYLINDER}
+\vspace{6mm}
+
+\noindent
 is shown in Fig. \ref{fig:cyl-1}.
 
 \begin{figure}[!ht]
@@ -631,29 +792,39 @@ is shown in Fig. \ref{fig:cyl-1}.
 \end{figure}
 \noindent
 By default, the curved surface is split into 64 vertical linear segments. To 
-change the division to another number {\tt M}, use
+change the division to another number {\tt M}, use\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 c = CYLINDER(R, H, M)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CYLINDER}
+\vspace{6mm}
 
-\subsection{Tubes}
+\noindent
+
+\subsection{Tube}
 
 Tube of inner radius $r$, outer radius $R$ and height
 $H$ is rendered using the command {\tt TUBE(r, R, H)}. 
 The tube is positioned in the global coordinate system 
 as the cylinder -- its axis coincides with the $z$-axis and 
 the center of its base is at (0, 0, 0). 
-The output of the sample code
+The output of the sample code\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 r = 0.9
 R = 1.0
 H = 3.0
 out = TUBE(r, R, H)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{TUBE}
+\vspace{6mm}
+
+\noindent
 is shown in Fig. \ref{fig:tube-1}.
 
 \begin{figure}[!ht]
@@ -667,26 +838,35 @@ is shown in Fig. \ref{fig:tube-1}.
 \end{figure}
 \noindent
 By default, the inner and outer curved surfaces are split each into 64 vertical 
-linear segments. To change the division to another number {\tt M}, use
+linear segments. To change the division to another number {\tt M}, use\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 t = TUBE(r, R, H, M)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{TUBE}
+\vspace{6mm}
 
-\subsection{Cones}\label{par:coco}
+\noindent
+
+\subsection{Cone}\label{par:coco}
 
 Cone of radius $R$ and height $H$ is defined using the command 
 {\tt CONE(R, H)}. The cone's axis coincides with the $z$-axis and 
 the center of the base circle lies at the origin (0, 0, 0).
-The output of the sample code
+The output of the sample code\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 R = 5
 H = 10
 out = CONE(R, H)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CONE}
+\vspace{6mm}
+
 \noindent
 is shown in Fig. \ref{fig:convexhull-2a}.
 \newpage
@@ -702,19 +882,29 @@ is shown in Fig. \ref{fig:convexhull-2a}.
 \end{figure}
 \noindent
 By default, the curved surface is split into 64 triangular linear segments. To 
-change the division to another number {\tt M}, use
+change the division to another number {\tt M}, use\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 c = CONE(R, H, M)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CONE}
-By the way, the linear surface representation can be used 
-to render various other objects. For example, the code 
+\vspace{6mm}
 
-\begin{bluecode}
+\noindent
+The linear surface representation can be used 
+to render various other objects. For example, the code \\
+
+\begin{bbox}
+\begin{verbatim}
 out = CONE(R, H, 4)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CONE}
+\vspace{6mm}
+
+\noindent
 will render a pyramid shown in Fig. \ref{fig:cone-4}.
 
 \begin{figure}[!ht]
@@ -731,18 +921,23 @@ will render a pyramid shown in Fig. \ref{fig:cone-4}.
 The same trick, of course, can be used with SPHERE, CYLINDER, TUBE and any 
 other object that has curved boundary.
 
-\subsection{Truncated cones}
+\subsection{Truncated cone}
 
 Truncated cone of base radius $R_1$, top radius $R_2$ and height $H$
-can be constructed as follows:
+can be constructed as follows:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 R1 = 5.0
 R2 = 2.5
 H = 5.0
 out = TRUNCONE(R1, R2, H)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{TRUNCONE}
+\vspace{6mm}
+
+\noindent
 Screenshot of the result is shown in Fig. \ref{fig:tcone}.
 
 \begin{figure}[!ht]
@@ -756,18 +951,28 @@ Screenshot of the result is shown in Fig. \ref{fig:tcone}.
 \end{figure}
 \noindent
 By default, the curved surface is split into 64 trapezoidal linear segments. 
-To change the division to another number {\tt M}, use
+To change the division to another number {\tt M}, use\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 c = TRUNCONE(R1, R2, H, M)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{TRUNCONE}
-As a simple trick, we can construct a truncated pyramid:
+\vspace{6mm}
 
-\begin{bluecode}
+\noindent
+As a simple trick, we can construct a truncated pyramid:\\
+
+\begin{bbox}
+\begin{verbatim}
 out = TRUNCONE(R1, R2, H, 4)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{TRUNCONE}
+\vspace{6mm}
+
+\noindent
 The output is shown in Fig. \ref{fig:tcone-9}.
 
 \begin{figure}[!ht]
@@ -782,16 +987,22 @@ The output is shown in Fig. \ref{fig:tcone-9}.
 %\newpage
 
 
-\subsection{Toruses}
+\subsection{Torus}
 
 Command {\tt TORUS(r, R)} renders a torus with inner radius $r$ and outer 
-radius $R$. It is used as follows:
-\begin{bluecode}
+radius $R$. It is used as follows:\\
+
+\begin{bbox}
+\begin{verbatim}
 r = 3.0
 R = 5.0
 out = TORUS(r, R)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{TORUS}
+\vspace{6mm}
+
+\noindent
 The center of the torus is at the origin (0, 0, 0) and its axis
 is the $z$-axis. This is illustrated in Fig. \ref{fig:torus-1}.
 
@@ -809,12 +1020,17 @@ is the $z$-axis. This is illustrated in Fig. \ref{fig:torus-1}.
 By default, the major (large) circle is split into 64 linear segments and
 the minor (small) one into 32. Thus the default command {\tt TORUS(r, R)} is
 equivalent to {\tt TORUS(r, R, [64, 32])}. To change the divisions to other 
-numbers {\tt [M, N]}, use
+numbers {\tt [M, N]}, use\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 c = TORUS(R, H, [M, N])
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{TORUS}
+\vspace{6mm}
+
+\noindent
 Also here, the piecewise-linear surface representation can be used to
 create objects that would be much more difficult to construct by other means.  
 Fig. \ref{fig:torus-4} shows the output of the command {TORUS(3, 5, [64, 4])}.
@@ -881,20 +1097,30 @@ is used in PLaSM. \\
 
 \noindent
 The {\tt CONVEXHULL} command (that can be abbreviated as {\tt CHULL} or {\tt CH})
-takes a set of points and creates their convex hull:
+takes a set of points and creates their convex hull:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 out = CONVEXHULL([-1, 0], [1, 0], [0.5, 1], [-0.5, 1])
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CONVEXHULL}
-This code renders a 2D trapezoid spanning the points (-1, 0), (1, 0), (0.5, 1) and 
-(-0.5, 1). The code
+\vspace{6mm}
 
-\begin{bluecode}
+\noindent
+This code renders a 2D trapezoid spanning the points (-1, 0), (1, 0), (0.5, 1) and 
+(-0.5, 1). The code\\
+
+\begin{bbox}
+\begin{verbatim}
 out = CONVEXHULL([-1, -1, 0], [1, -1, 0], [1, 1, 0], [-1, 1, 0], 
 [0, 0, 1])
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CONVEXHULL}
+\vspace{6mm}
+
+\noindent
 creates a 3D pyramid with base square (-1, 1)$\times$(-1, 1) and height 1,
 as shown in Fig. \ref{fig:pyra}. 
 
@@ -909,28 +1135,43 @@ as shown in Fig. \ref{fig:pyra}.
 \end{figure}
 %\newpage
 \noindent
-If the user already has a list of points, defined for example as
+If the user already has a list of points, defined for example as\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 L = [[-1, -1, 0], [1, -1, 0], [1, 1, 0], [-1, 1, 0], [0, 0, 1]]
-\end{bluecode}
-then the way to use the {\tt CONVEXHULL} command is by inserting 
-an asterisk '*' in front of the name of the list: 
+\end{verbatim}
+\end{bbox}
+\vspace{6mm}
 
-\begin{bluecode}
+\noindent
+then the way to use the {\tt CONVEXHULL} command is by inserting 
+an asterisk '*' in front of the name of the list: \\
+
+\begin{bbox}
+\begin{verbatim}
 out = CONVEXHULL(*L)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CONVEXHULL}
+\vspace{6mm}
+
+\noindent
 
 
 \subsection{Dodecahedron}
 
-A unit dodecahedron is created as follows:
+A unit dodecahedron is created as follows:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 out = DODECAHEDRON
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{DODECAHEDRON}
+\vspace{6mm}
+
+\noindent
 The output is shown in Fig. \ref{fig:dodeca}.
 \newpage
 
@@ -946,12 +1187,17 @@ The output is shown in Fig. \ref{fig:dodeca}.
 
 \subsection{Icosahedron}
 
-A unit icosahedron created via
+A unit icosahedron created via\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 out = ICOSAHEDRON
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{ICOSAHEDRON}
+\vspace{6mm}
+
+\noindent
 is shown in Fig. \ref{fig:icosa}.
 
 %\newpage
@@ -969,15 +1215,20 @@ is shown in Fig. \ref{fig:icosa}.
 
 2D objects that lie in the $xy$-plane can be extruded to 3D
 using the {\tt PRISM} command that we know from Subsection \ref{subsec:prism}. 
-As an example, let us extrude a 2D polygon obtained as a convex hull.
+As an example, let us extrude a 2D polygon obtained as a convex hull.\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 B = CONVEXHULL([0, 0], [2, 0], [1, 2], [-1, 2])
 H = 0.5
 out = PRISM(B, H)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CONVEXHULL}
 \index{PRISM}
+\vspace{6mm}
+
+\noindent
 The output is shown in Fig. \ref{fig:extrusion-3}.\\
 
 \begin{figure}[!ht]
@@ -995,7 +1246,7 @@ reference, let us also introduce the command {\tt EXTRUDE(N, B, H)} that yields 
 extruded geometry as the {\tt PRISM} command, but subdivides the extrusion height {\tt H}
 into {\tt N} equally long subintervals. 
 
-\subsection{Grids and Cartesian products}\label{subsec:grids}
+\subsection{Grid and Cartesian product}\label{subsec:grids}
 
 PLaSM provides useful commands {\tt GRID} and {\tt POWER} that 
 make it easy to work with grids and Cartesian product geometries. The command
@@ -1003,35 +1254,54 @@ make it easy to work with grids and Cartesian product geometries. The command
 positive ones stand for intervals (more precisely for their lengths) 
 and negative for the lengths of spaces between the intervals. The 
 intervals and spaces are placed on the right of the origin in the 
-real axis. For example, 
+real axis. For example, \\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 GRID([2])
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{GRID}
-renders a single interval (0, 2). The command
+\vspace{6mm}
 
-\begin{bluecode}
+\noindent
+renders a single interval (0, 2). The command\\
+
+\begin{bbox}
+\begin{verbatim}
 GRID([1, -3, 2])
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{GRID}
+\vspace{6mm}
+
+\noindent
 renders two intervals (0, 1) and (4, 6), leaving an empty 
 space of length 3 between them. There is no limit of the 
 length of the list.
-The command  
+The command\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 grid_2d = POWER(grid1, grid2)
-\end{bluecode}
-\index{POWER}
+\end{verbatim}
+\end{bbox}
+\vspace{6mm}
+
+\noindent\index{POWER}
 creates a 2D object in the $xy$-plane that is the Cartesian 
 product of the two grids. This 2D object can be multiplied 
 with a third grid in the $z$-direction:
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 grid_3d = POWER(grid_2d, grid2)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{POWER}
+\vspace{6mm}
+
+\noindent
 The result is a 3D solid object that is the Cartesian product 
 of the three one-dimensional grids. This object can be scaled, 
 translated, and rotated as any other solid object (to be discussed
@@ -1039,16 +1309,21 @@ in the next Section).
 
 For illustration, consider the following script:
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 g1 = GRID([3, -1, 3, -1, 3, -1, 3])
 g2 = GRID([2, -1, 2, -1, 2])
 g3 = GRID([1, -1, 1])
 
 planar_grid = POWER(g1, g2)
 out = POWER(planar_grid, g3)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{GRID}
 \index{POWER}
+\vspace{6mm}
+
+\noindent
 The resulting Cartesian product solid is shown in Fig. \ref{fig:grid1}.\\
 
 \begin{figure}[!ht]
@@ -1077,7 +1352,7 @@ The resulting Cartesian product solid is shown in Fig. \ref{fig:grid1}.\\
 \end{itemize}
 So far we have learned how to create a variety of simple 2D and 3D objects. 
 The next step is to learn how to transform them in a variety of ways. PLaSM
-provides simple commands for that. 
+provides simple commands for that. \\
 
 \begin{gbox}
 In this section and in the rest of the textbook we will not mention the command
@@ -1103,15 +1378,21 @@ the object {\tt obj} in the i-th spatial direction.
 \index{SCALE}
 \index{SIZE}
 We can illustrate the {\tt SCALE} command on a cylinder {\tt cyl} of radius 1.0 
-and height 0.3:
+and height 0.3:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 cyl = CYLINDER(1.0, 0.3)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CYLINDER}
+\vspace{6mm}
+
+\noindent
 As we know, the axis of this cylinder coincides with the $z$-axis 
 and that the center of its bottom face is at (0, 0, 0). This cylinder is shown 
 in Fig. \ref{fig:scale-0}.
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1126,12 +1407,17 @@ in Fig. \ref{fig:scale-0}.
 \noindent
 \underline{\em Scaling in $x$-direction}\\
 
-First let us scale the cylinder in the $x$-direction by the factor of 2.0: 
+First let us scale the cylinder in the $x$-direction by the factor of 2.0: \\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 out = SCALE(cyl, 2.0, 1.0, 1.0)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{SCALE}
+\vspace{6mm}
+
+\noindent
 \newpage
 \noindent
 The output is shown in Fig. \ref{fig:scale-1}.
@@ -1150,12 +1436,17 @@ The output is shown in Fig. \ref{fig:scale-1}.
 \underline{\em Scaling in $y$-direction}\\
 
 The following command will 
-scale the cylinder in the $y$-direction by the factor of 2.0: 
+scale the cylinder in the $y$-direction by the factor of 2.0: \\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 out = SCALE(cyl, 1.0, 2.0, 1.0)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{SCALE}
+\vspace{6mm}
+
+\noindent
 The output is shown in Fig. \ref{fig:scale-2}.
 
 
@@ -1174,12 +1465,17 @@ The output is shown in Fig. \ref{fig:scale-2}.
 \underline{\em Scaling in $z$-direction}\\
 
 The following command will 
-scale the cylinder in the $z$-direction by the factor of 2.0: 
+scale the cylinder in the $z$-direction by the factor of 2.0: \\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 out = SCALE(cyl, 1.0, 1.0, 2.0)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{SCALE}
+\vspace{6mm}
+
+\noindent
 The output is shown in Fig. \ref{fig:scale-3}.
 %\newpage
 
@@ -1198,12 +1494,17 @@ The output is shown in Fig. \ref{fig:scale-3}.
 
 Of course we can also scale the cylinder in two or three spatial directions 
 simultaneously. For example, let us do it in the $x$-direction 
-by 2.0 and in the $z$-direction by 4.0:
+by 2.0 and in the $z$-direction by 4.0:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 out = SCALE(cyl, 2.0, 1.0, 4.0)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{SCALE}
+\vspace{6mm}
+
+\noindent
 The output is shown in Fig. \ref{fig:scale-4}.
 
 
@@ -1223,32 +1524,47 @@ The output is shown in Fig. \ref{fig:scale-4}.
 The command {\tt TRANSLATE(obj, tx, ty, tz)} that can be abbreviated as 
 {\tt T(obj, tx, ty, tz)} moves a 2D or 3D geometrical object {\tt obj} by {\tt tx}, {\tt ty},
 {\tt tz} in the $x$, $y$ and $z$ directions, respectively. To practice
-a little, let us create a unit cube and move it by 1.5 in the $x$-direction:
+a little, let us create a unit cube and move it by 1.5 in the $x$-direction:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 c = CUBE(1.0)
 c2 = T(c, 1.5, 0.0, 0.0)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBE}
 \index{TRANSLATE}
-Next, let us create a sphere and move it simultaneously 
-in the $x$-direction by 1.0 and in the $y$-direction by 2.0:
+\vspace{6mm}
 
-\begin{bluecode}
+\noindent
+Next, let us create a sphere and move it simultaneously 
+in the $x$-direction by 1.0 and in the $y$-direction by 2.0:\\
+
+\begin{bbox}
+\begin{verbatim}
 s = SPHERE(1.0)
 s2 = T(s, 1.0, 2.0, 0.0)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{SPHERE}
 \index{TRANSLATE}
-And last, we move the sphere {\tt s} simultaneously by -1.0 in the $x$-direction, 
-by 1.0 in the $y$-direction and by 4.0 in the $z$-direction:
+\vspace{6mm}
 
-\begin{bluecode}
+\noindent
+And last, we move the sphere {\tt s} simultaneously by -1.0 in the $x$-direction, 
+by 1.0 in the $y$-direction and by 4.0 in the $z$-direction:\\
+
+\begin{bbox}
+\begin{verbatim}
 s = SPHERE(1.0)
 s3 = T(s, -1.0, 1.0, 4.0)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{SPHERE}
 \index{TRANSLATE}
+\vspace{6mm}
+
+\noindent
 
 \subsection{Displaying multiple objects at once} \label{subsec:mo}
 
@@ -1256,17 +1572,22 @@ Often we need to view multiple objects at once, without
 the necessity to create their union as a new object. For 
 this we can use the command {\tt STRUCT}. This command 
 expects a list of geometrical objects. The following 
-code creates three cubes and displays them all together:
+code creates three cubes and displays them all together:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 c = CUBE(2.0)
 c2 = T(c, 1.0, 1.0, 2.0)
 c3 = T(c2, 1.0, 1.0, 2.0)
 out = STRUCT(c, c2, c3)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBE}
 \index{STRUCT}
 \index{TRANSLATE}
+\vspace{6mm}
+
+\noindent
 The output is shown in Fig. \ref{fig:comp-1}
 \newpage
 \begin{figure}[!ht]
@@ -1284,16 +1605,21 @@ The output is shown in Fig. \ref{fig:comp-1}
 
 The command {\tt TOP(obj1, obj2)} is a higher-level command that 
 moves object {\tt obj2} above object {\tt obj1}. 
-For illustration, let us move a sphere above a cube:
+For illustration, let us move a sphere above a cube:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 c = CUBE(2.0)
 s = SPHERE(1.0)
 out = TOP(c, s)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBE}
 \index{SPHERE}
 \index{TOP}
+\vspace{6mm}
+
+\noindent
 The output is shown in Fig. \ref{fig:top-1}.
 \newpage
 
@@ -1307,16 +1633,21 @@ The output is shown in Fig. \ref{fig:top-1}.
 %\vspace{-1cm}
 \end{figure}
 \noindent
-Fig. \ref{fig:bottom-1} shows the output of the script
+Fig. \ref{fig:bottom-1} shows the output of the script\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 c = CUBE(2.0)
 s = SPHERE(1.0)
 out = BOTTOM(c, s)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBE}
 \index{SPHERE}
 \index{BOTTOM}
+\vspace{6mm}
+
+\noindent
 that uses the {\tt BOTTOM} command to move the sphere 
 under the cube.
 
@@ -1336,50 +1667,70 @@ under the cube.
 The {\tt TOP} and {\tt BOTTOM} commands that we met in the last subsection 
 were special cases of the more general {\tt ALIGN} command. To understand it, 
 let us rewrite the last two scripts without the {\tt TOP} and {\tt BOTTOM}
-commands. The script 
+commands. The script \\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 c = CUBE(2.0)
 s = SPHERE(1.0)
 out = TOP(c, s)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBE}
 \index{SPHERE}
 \index{TOP}
-can be written equivalently as
+\vspace{6mm}
 
-\begin{bluecode}
+\noindent
+can be written equivalently as\\
+
+\begin{bbox}
+\begin{verbatim}
 c = CUBE(2.0)
 s = SPHERE(1.0)
 out = ALIGN(c, s, [1, MID, MID], [2, MID, MID], [3, MAX, MIN])
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBE}
 \index{SPHERE}
 \index{ALIGN}
+\vspace{6mm}
+
+\noindent
 This means that in the first axial direction ($x$-direction), the MIDpoint of {\tt c} is matched 
 with the MIDpoint of {\tt s}. Same in the second axial direction ($y$-direction), In the 
 third axial direction ($z$-direction), the MAXimum of {\tt c} is matched with the MINimum of {\tt s}.
 This means that {\tt s} is centered on top of {\tt c}! Now it is easy to see that the 
-script 
+script \\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 c = CUBE(2.0)
 s = SPHERE(1.0)
 out = BOTTOM(c, s)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBE}
 \index{SPHERE}
 \index{BOTTOM}
-does the same as 
+\vspace{6mm}
 
-\begin{bluecode}
+\noindent
+does the same as \\
+
+\begin{bbox}
+\begin{verbatim}
 c = CUBE(2.0)
 s = SPHERE(1.0)
 out = ALIGN(c, s, [1, MID, MID], [2, MID, MID], [3, MIN, MAX])
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBE}
 \index{SPHERE}
 \index{ALIGN}
+\vspace{6mm}
+
+\noindent
 While centering in the $x$ and $y$ directions has not changed, in the $z$-direction 
 the MINimum of {\tt c} is matched with the MAXimum of {\tt s}. In other words,
 {\tt s} is centered right below {\tt c}. 
@@ -1390,30 +1741,50 @@ have to be used in the {\tt ALIGN} command. If the triplet corresponding to some
 is not used, the object is not moved in that direction. 
 
 Let us complete this subsection by mentioning that PLaSM has a couple of additional
-predefined alignment commands. The command {\tt LEFT(c, s)} is equivalent to
+predefined alignment commands. The command {\tt LEFT(c, s)} is equivalent to\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 LEFT(c, s) = ALIGN(c, s, [1, MIN, MAX], [3, MIN, MIN])
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{LEFT}
-Command {\tt RIGHT(c, s)} is the same as
+\vspace{6mm}
 
-\begin{bluecode}
+\noindent
+Command {\tt RIGHT(c, s)} is the same as\\
+
+\begin{bbox}
+\begin{verbatim}
 RIGHT(c, s) = ALIGN(c, s, [1, MAX, MIN], [3, MIN, MIN])
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{RIGHT}
-There is also the command {\tt UP(c, s)} defined as
+\vspace{6mm}
 
-\begin{bluecode}
+\noindent
+There is also the command {\tt UP(c, s)} defined as\\
+
+\begin{bbox}
+\begin{verbatim}
 UP(c, s) = ALIGN(c, s, [2, MAX, MIN], [3, MIN, MIN])
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{UP}
-And last, the command {\tt DOWN(c, s)} is equivalent to
+\vspace{6mm}
 
-\begin{bluecode}
+\noindent
+And last, the command {\tt DOWN(c, s)} is equivalent to\\
+
+\begin{bbox}
+\begin{verbatim}
 DOWN(c, s) = ALIGN(c, s, [2, MIN, MAX], [3, MIN, MIN])
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{DOWN}
+\vspace{6mm}
+
+\noindent
 
 \subsection{Rotations}
 
@@ -1435,19 +1806,24 @@ to know exactly where your object is located.
 For example, when a CUBE is created, its center does not lie
 at the origin of the coordinate system (0, 0, 0) -- the cube will 
 rotate about one of its edges. The following script will rotate 
-a cube {\tt c} by angle $\pi$ radians about the $z$-axis: 
+a cube {\tt c} by angle $\pi$ radians about the $z$-axis: \\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 c = CUBE(1.0)
 c2 = R(c, 3, PI)
 out = STRUCT(c, c2)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBE}
 \index{ROTATE}
 \index{RRAD}
 \index{RDEG}
 \index{R}
 \index{STRUCT}
+\vspace{6mm}
+
+\noindent
 The output is shown in Fig. \ref{fig:rot-1}. Clearly the axis of 
 rotation is where the two cubes meet.
 \newpage
@@ -1468,19 +1844,24 @@ we would have to first translate the cube in such a way that its center
 lies at the origin. Let's do this. After moving the cube so that 
 its center is at (0, 0, 0), we will rotate it in two different directions,
 then move it by 2.0 in the $x$-direction and display along with 
-the original cube for comparison:
+the original cube for comparison:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 c = CUBE(1.0)
 c2 = R(c, 3, PI/4)
 c2 = R(c2, 1, PI/4)
 c2 = T(c2, 1, 1, 1)
 out = STRUCT(c, c2)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBE}
 \index{ROTATE}
 \index{TRANSLATE}
 \index{STRUCT}
+\vspace{6mm}
+
+\noindent
 The output is shown in Fig. \ref{fig:rot-2}.
 \newpage
 
@@ -1500,22 +1881,28 @@ When multiple objects are shown at the same time, it may be useful
 to use different colors for them.
 This is very simple. Let us return to the example with three cubes 
 from Subsection \ref{subsec:mo}. This is the original script,
-showing three green cubes:
+showing three green cubes:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 c = CUBE(2.0)
 c2 = T(c, 1.0, 1.0, 2.0)
 c3 = T(c2, 1.0, 1.0, 2.0)
 out = STRUCT(c, c2, c3)
 lab.view(out)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBE}
 \index{STRUCT}
 \index{TRANSLATE}
-Let us define three colors {\tt red = [200, 0, 0]}, {\tt green = [0, 200, 0]}
-and {\tt blue = [0, 0, 200]}, and color each cube with one of them:
+\vspace{6mm}
 
-\begin{bluecode}
+\noindent
+Let us define three colors {\tt red = [200, 0, 0]}, {\tt green = [0, 200, 0]}
+and {\tt blue = [0, 0, 200]}, and color each cube with one of them:\\
+
+\begin{bbox}
+\begin{verbatim}
 c = CUBE(2.0)
 red = [200, 0, 0]
 c2 = T(c, 1.0, 1.0, 2.0)
@@ -1523,10 +1910,14 @@ green = [0, 200, 0]
 c3 = T(c2, 1.0, 1.0, 2.0)
 blue = [0, 0, 200]
 lab.view([c, red], [c2, green], [c3, blue])
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBE}
 \index{STRUCT}
 \index{TRANSLATE}
+\noindent
+\vspace{6mm}
+
 \noindent
 In other words, the {\tt lab.view()} function can accept pairs {\tt [object, color]} separated
 by commas. The output of the last script is shown in Fig. \ref{fig:comp-1k}.
@@ -1728,14 +2119,19 @@ circle is the origin. Before perfoming any Boolean operations, it is a good
 practice to display the objects together using the {\tt STRUCT} command. The 
 output of the script
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 c = CUBE(2.0)
 s = CYLINDER(1.0, 3.0)
 out = STRUCT(c, s) 
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBE}
 \index{CYLINDER}
 \index{STRUCT}
+\vspace{6mm}
+
+\noindent
 is shown in Fig. \ref{fig:diff-0}.
 \newpage
 
@@ -1750,12 +2146,17 @@ is shown in Fig. \ref{fig:diff-0}.
 \end{figure}
 \noindent
 Now let's subtract the cylinder from the cube -- just replace 
-{\tt STRUCT} with {\tt DIFF}:
+{\tt STRUCT} with {\tt DIFF}:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 out = DIFF(c, s) 
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{DIFF}
+\vspace{6mm}
+
+\noindent
 The output is shown in Fig. \ref{fig:diff-1}.
 %\newpage
 
@@ -1770,12 +2171,17 @@ The output is shown in Fig. \ref{fig:diff-1}.
 \end{figure}
 \noindent
 We can also subtract the cube from the cylinder by switching 
-the order of the arguments in the {\tt DIFF} command:
+the order of the arguments in the {\tt DIFF} command:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 out = DIFF(s, c) 
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{DIFF}
+\vspace{6mm}
+
+\noindent
 The output is shown in Fig. \ref{fig:diff-2}.
 
 
@@ -1794,19 +2200,24 @@ PLaSM makes it possible to subtract multiple objects from an
 object, by using  the {\tt DIFF} command with more then two arguments.
 Then the second, third, fourth, etc. objects are subtracted
 from the first one. For illustration, let is create a cube and
-three cylinders:
+three cylinders:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 c = CUBE(2.0)
 s = CYLINDER(1.0, 3.0)
 s2 = R(s, 1, -PI/2)
 s3 = R(s, 2, -PI/2)
 out = STRUCT(c, s, s2, s3) 
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBE}
 \index{CYLINDER}
 \index{ROTATE}
 \index{STRUCT}
+\vspace{6mm}
+
+\noindent
 The output is shown in Fig. \ref{fig:diff-3}.
 
 \begin{figure}[!ht]
@@ -1821,12 +2232,17 @@ The output is shown in Fig. \ref{fig:diff-3}.
 \noindent
 \newpage
 \noindent
-Changing {\tt STRUCT} to {\tt DIFF} in the above script
+Changing {\tt STRUCT} to {\tt DIFF} in the above script\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 out = DIFF(c, s, s2, s3) 
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{DIFF}
+\vspace{6mm}
+
+\noindent
 subtracts the cylinders from the cube, as shown in Fig. \ref{fig:diff-4}.
 
 \begin{figure}[!ht]
@@ -1851,19 +2267,24 @@ groups existing objects for visualization (or other)  purposes.
 The {\tt UNION} command creates a new 
 object that can be used for further manipulation. Let us 
 illustrate this by using the four objects from the last 
-example. 
+example. \\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 c = CUBE(2.0)
 s = CYLINDER(1.0, 3.0)
 s2 = R(s, 1, -PI/2)
 s3 = R(s, 2, -PI/2)
 out = U(c, s, s2, s3) 
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBE}
 \index{CYLINDER}
 \index{ROTATE}
 \index{UNION}
+\vspace{6mm}
+
+\noindent
 The output is shown in Fig. \ref{fig:union}.\\
 
 %\newpage
@@ -1883,22 +2304,25 @@ The output is shown in Fig. \ref{fig:union}.\\
 
 PLaSM performs intersections using the {\tt INTERSECTION} command (that can be 
 abbreviated as {\tt I}). We will show two examples. First we will create the 
-intersection of the cube and the three cylinders from the last example:
+intersection of the cube and the three cylinders from the last example:\\
  
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 c = CUBE(2.0)
 s = CYLINDER(1.0, 3.0)
 s2 = R(s, 1, -PI/2)
 s3 = R(s, 2, -PI/2)
 out = I(c, s, s2, s3) 
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBE}
 \index{CYLINDER}
 \index{ROTATE}
 \index{INTERSECTION}
+\vspace{6mm}
+
 \noindent
 The output is shown in Fig. \ref{fig:int-2}.
-
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1914,9 +2338,10 @@ The output is shown in Fig. \ref{fig:int-2}.
 Next let us create 
 a strange object that looks like a square from one side,
 circle from another side, and triangle the third direction. 
-Here is the script,
+Here is the script,\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 c = CUBE(2.0)
 c = T(c, -1, -1, -1)
 cyl = CYLINDER(1, 2)
@@ -1924,12 +2349,16 @@ cyl = T(cyl, 0, 0, -1)
 p = CONVEXHULL([1, -1, -1], [1, 0, 1], [1, 1, -1], \
                 [-1, -1, -1], [-1, 0, 1], [-1, 1, -1])
 out = I(c, cyl, p)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBE}
 \index{TRANSLATE}
 \index{CYLINDER}
 \index{CONVEXHULL}
 \index{INTERSECTION}
+\vspace{6mm}
+
+\noindent
 and its output is shown in Fig. \ref{fig:int-1}.\\
 
 \begin{figure}[!ht]
@@ -1950,18 +2379,23 @@ and its output is shown in Fig. \ref{fig:int-1}.\\
 The operation XOR a.k.a. "union minus intersection" can be illustrated  
 on an example where a cube is moved so that it's center lies on the $z$-axis. Then 
 a second cube is created by rotating the original one by 45 degrees about the 
-$x$-axis. Last, the two cubes are XORred:
+$x$-axis. Last, the two cubes are XORred:\\
  
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 c = CUBE(2.0)
 c = T(c, -1, -1, 0)
 c2 = R(c, 3, PI/4)
 out = XOR(c, c2) 
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBE}
 \index{TRANSLATE}
 \index{ROTATE}
 \index{XOR}
+\vspace{6mm}
+
+\noindent
 The output is shown in Fig. \ref{fig:xor-1}.
 \newpage
 
@@ -1993,10 +2427,11 @@ vault is extremely time consuming, drilling just into just the one relevant part
 of the geometry is done quickly.
 
 The model is available as Displayed Project "PLaSM - Examples - Vault". First, let us 
-define the vault:
+define the vault:\\
 
 {\small
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Define main vault body:
 body = BRICK(1, 1, 1.2)
 interior = BRICK(0.86, 0.95, 1.06)
@@ -2082,7 +2517,8 @@ rest = STRUCT(top, shelf1, shelf2, door, door_frame, tcone, cyl, stcone,
               h1, h2, h3, b1, b2, bc1, bc2, sbc1, sbc2, sbc3, sbc4, vh, vh0, vh1)
 vault = STRUCT(body, rest)
 lab.view(vault)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 }
 \index{BRICK}
 \index{TRANSLATE}
@@ -2094,6 +2530,8 @@ lab.view(vault)
 \index{UNION}
 \index{SPHERE}
 \index{STRUCT}
+\vspace{6mm}
+
 \noindent
 The output is shown in Fig.\ref{fig:vault}.
 
@@ -2108,11 +2546,11 @@ The output is shown in Fig.\ref{fig:vault}.
 \end{figure}
 \noindent
 Now let's define the drill: 
-\begin{bluecode}
+\begin{bbox}
 drill = CYLINDER(0.1, 0.5)
 drill = R(drill, 2, PI/2)
 drill = T(drill, 0.1, 0.5, 0.55)
-\end{bluecode}
+\end{bbox}
 \index{CYLINDER}
 \index{ROTATE}
 \index{TRANSLATE}
@@ -2120,12 +2558,17 @@ drill = T(drill, 0.1, 0.5, 0.55)
 the wrong way -- drilling into the {\tt vault} object
 that consists of many parts. 
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 drilled_vault = DIFF(vault, drill)
 lab.view(STRUCT(drilled_vault))
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{DIFF}
 \index{STRUCT}
+\vspace{6mm}
+
+\noindent
 You can run this script but it will take a long time.
 
 The correct way is to perform the Boolean 
@@ -2133,12 +2576,17 @@ operation between the {\tt drill} and the {\tt body}
 because the {\tt body} object that is much simpler 
 than the complete {\tt vault}: 
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 drilled_body = DIFF(body, drill)
 lab.view(STRUCT(drilled_body, rest))
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{DIFF}
 \index{STRUCT}
+\vspace{6mm}
+
+\noindent
 Now the computation takes just a few milliseconds!
 The output is shown in Fig.\ref{fig:vault2}.
 %\newpage
@@ -2186,22 +2634,32 @@ In a standard way, curves in PLaSM are parameterized from an interval,
 and surfaces from a rectangle. These domains are called
 {\em reference domains}. 
 Reference interval $(0, L)$ that is subdivided into $N$ equally-long pieces is 
-created using the command {\tt INTERVALS}:
+created using the command {\tt INTERVALS}:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 ref_domain = INTERVALS(L, N)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{INTERVALS}
+\vspace{6mm}
+
+\noindent
 Reference rectangle $(0, L_1) \times (0, L_2)$, where the first and second 
 directions are subdivided into $N_1$ and $N_2$ pieces, respectively, can be 
-created using the {\tt POWER} command:
+created using the {\tt POWER} command:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 dom1 = INTERVALS(L1, N1)
 dom2 = INTERVALS(L2, N2)
 ref_domain = POWER(dom1, dom2)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{INTERVALS}
+\vspace{6mm}
+
+\noindent
 
 \subsection{Mapping curves}
 
@@ -2217,9 +2675,9 @@ P(t) = [1+t, 1+t, 1+t]
 $
 which in Python is written as
 
-\begin{bluecode}
+\begin{bbox}
 def P(t): return [1 + t, 1 + t, 1 + t]
-\end{bluecode}
+\end{bbox}
 renders for $t$ in $(0, 1)$ a curve that is a straight line connecting the 
 points (1, 1, 1) and (2, 2, 2), as shown in Fig. \ref{fig:paramcu1}.
 
@@ -2247,9 +2705,9 @@ P(t) = [\cos(t), \sin(t), 0]
 $
 whose Python form is
 
-\begin{bluecode}
+\begin{bbox}
 def P(t): return [cos(t), sin(t), 0]
-\end{bluecode}
+\end{bbox}
 maps the reference interval $(0, 2\pi)$ to a circle in the 
 $xy$-plane, as shown in Fig. \ref{fig:paramcu2}.
 
@@ -2270,9 +2728,9 @@ P(t) = [0, \cos(t), \sin(t)]
 $
 a.k.a.
 
-\begin{bluecode}
+\begin{bbox}
 def P(t): return [0, cos(t), sin(t)]
-\end{bluecode}
+\end{bbox}
 maps the reference interval $(0, 2\pi)$ to a circle in the 
 $yz$-plane, as shown in Fig. \ref{fig:paramcu3}.
 
@@ -2293,10 +2751,10 @@ P(t) = [\cos(t), \sin(t), t]
 $$
 or
 
-\begin{bluecode}
+\begin{bbox}
 def map(t):
     return [cos(t), sin(t), t]
-\end{bluecode}
+\end{bbox}
 maps the reference interval $(0, 2\pi)$ to a spiral whose 
 $xy$-plane projection is the unit circle and in the $z$-direction 
 spans the interval $(0, 2\pi)$, as shown in Fig. \ref{fig:paramcu4}.
@@ -2328,10 +2786,10 @@ $$
 \noindent
 whose code is
 
-\begin{bluecode}
+\begin{bbox}
 def P(t1, t2):
     return [t1, t2, t1 + t2]
-\end{bluecode}
+\end{bbox}
 maps the reference square $(0, 1)\times(0, 1)$ to a planar surface that spans
 four points (0, 0, 0), (1, 0, 1), (0, 1, 1) and (1, 1, 2). No subdivision in
 any direction was applied to the reference square to generate the wireframe plot 
@@ -2360,10 +2818,10 @@ P(t_1, t_2) = [t_1, t_2, t_1 t_2]
 $$
 or
 
-\begin{bluecode}
+\begin{bbox}
 def P(t1, t2):
     return [t1, t2, t1*t2]
-\end{bluecode}
+\end{bbox}
 The reference square was subdivided into $10$ intervals in each direction, i.e., into 
 100 square cells. This means that $11^2$ points were transformed via the map $P(t_1, t_2)$.
 The corresponding wireframe plot with 100 linearly interpolated cells is shown in Fig. \ref{fig:paramsu1c}. 
@@ -2388,10 +2846,10 @@ P(a, z) = [\cos(a), \sin(a), z]
 $$
 or
 
-\begin{bluecode}
+\begin{bbox}
 def P(a, z):
     return [cos(a), sin(a), z]
-\end{bluecode}
+\end{bbox}
 The reference domain was subdivided into 32 equally-long subintervals in the angular direction,
 and it was not subdivided in the $z$-direction. Hence the wireframe plot shown in 
 Fig. \ref{fig:paramsu20} consists of 32 linear surfaces. 
@@ -2426,10 +2884,10 @@ P(a, r) = \left[r\cos(a), r\sin(a), \sqrt{1 - r^2}\right]
 $$
 or
 
-\begin{bluecode}
+\begin{bbox}
 def P(a, r):
     return [r*cos(a), r*sin(a), sqrt(1 - r**2)]
-\end{bluecode}
+\end{bbox}
 We subdivide the reference rectangle into 32 pieces in the angular direction
 and into 10 pieces in the radial one. This means that the piecewise linear 
 wireframe plot shown in Fig. \ref{fig:paramsu5} has 320 cells. 
@@ -2457,10 +2915,10 @@ P(a, z) = \left[\sqrt{1 - z^2}\cos(a), \sqrt{1 - z^2}\sin(a), z\right]
 $$
 or
 
-\begin{bluecode}
+\begin{bbox}
 def P(a, z): 
     return [sqrt(1 - z**2)*cos(a), sqrt(1 - z**2)*sin(a), z]
-\end{bluecode}
+\end{bbox}
 The wireframe plot shown in Fig. \ref{fig:paramsu3} is based on precisely the 
 same subdivision of the reference rectangle as in the previous case. 
 \newpage
@@ -2487,9 +2945,9 @@ P(a, b) = \left[\cos(a)\cos(b), \sin(a)\cos(b), \sin(b)\right]
 $
 or
 
-\begin{bluecode}
+\begin{bbox}
 def P(a, z): return [cos(a)*cos(b), sin(a)*cos(b), sin(b)]
-\end{bluecode}
+\end{bbox}
 The wireframe plot shown in Fig. \ref{fig:paramsu8} is also based on a
 $32 \times 10$ subdivision of the reference rectangle which results into the 
 same number of 320 linear cells that we had in the previous two examples.
@@ -2511,9 +2969,9 @@ render spherical surfaces. In fact PLaSM uses a reference rectangle $(0, 2\pi)\t
 to cover the entire sphere. The default subdivision for the spherical surface in PLaSM
 is $48 \times 24$ which corresponds to
 
-\begin{bluecode}
+\begin{bbox}
 s = SPHERE(R, [24, 48])
-\end{bluecode}
+\end{bbox}
 \index{SPHERE}
 (the order of the two subdivisions is switched).
 \subsection{Primer on B\'ezier curves}
@@ -2548,32 +3006,41 @@ B\'ezier curves are created using the commands {\tt BEZIER\_1} and {\tt BEZIER\_
 (that can be abbreviated as {\tt BE\_1} and {\tt BE\_2}). The difference between
 them is in how they are mapped on the reference domain. The former use the 
 first coordinate of domain points, the latter use the second coordinate. Let
-us create two curves, one linear and one cubic:
+us create two curves, one linear and one cubic:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Linear Bezier curve:
 c1 = BEZIER_1([0, 0, 0], [0, 4, 0])
 
 # Cubic Bezier curve:
 c2 = BEZIER_1([2, 0, 0], [4, 1, 0], [0, 2, 0], [1, 3, 0])
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{BEZIER\_1}
+\vspace{6mm}
+
 \noindent
 The surface between these two curves needs to be treated as any other curved 
 surface and thus it needs to be mapped on a reference rectangle. For simplicity 
 (applies generally), we may use the unit square. 
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Reference domain with 30 times 30 subdivision:
 ref_domain = UNIT_SQUARE(30, 30)
 
 # The 2D surface:
 surf = BEZIER_2(c1, c2)
 out = MAP(ref_domain, surf)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{UNIT\_SQUARE}
 \index{BEZIER\_2}
 \index{MAP}
+\vspace{6mm}
+
+\noindent
 The output is displayed in Fig. \ref{fig:curves-1}.\\
 
 \begin{figure}[!ht]
@@ -2602,9 +3069,10 @@ to lie in the $xy$-plane as they are in this example.
 This example is very similar to the last one, and we are showing it 
 only to illustrate that both the B\'ezier edges can be curves. 
 Concretely, the curve {\tt c1} is made parabolic by adding one 
-more control point to it. 
+more control point to it. \\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Quadratic Bezier curve:
 c1 = BEZIER_1([0, 0, 0], [-1, 1.5, 0], [0, 4, 0])
 
@@ -2617,12 +3085,15 @@ ref_domain = UNIT_SQUARE(30, 30)
 # The 2D surface:
 surf = BEZIER_2(c1, c2)
 out = MAP(ref_domain, surf)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{BEZIER\_1}
 \index{BEZIER\_2}
 \index{UNIT\_SQUARE}
 \index{MAP}
+\vspace{6mm}
 
+\noindent
 The output is displayed in Fig. \ref{fig:curves-2}.
 
 \begin{figure}[!ht]
@@ -2638,9 +3109,10 @@ The output is displayed in Fig. \ref{fig:curves-2}.
 \subsection{Surface with four curved B\'ezier edges}
 
 Next let us construct a B\'ezier surface spanning four 
-B\'ezier edges. 
+B\'ezier edges. \\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Bezier curves:
 c1 = BEZIER_1([0,0,0], [5, -2, -5], [10,0,0])
 c2 = BEZIER_1([0,2,0], [8,3,0], [9,2,0])
@@ -2653,11 +3125,15 @@ ref_domain = UNIT_SQUARE(30, 30)
 # The surface:
 surf = BEZIER_2(c1, c2, c3, c4)
 out = MAP(ref_domain, surf)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{BEZIER\_1}
 \index{UNIT\_SQUARE}
 \index{BEZIER\_2}
 \index{MAP}
+\vspace{6mm}
+
+\noindent
 The output is displayed in Fig. \ref{fig:bezi}.
 
 \begin{figure}[!ht]
@@ -2674,9 +3150,10 @@ The output is displayed in Fig. \ref{fig:bezi}.
 
 {\em Coons patch} is a technique that forms a B\'ezier patch from four B\'ezier edges connected 
 by their end points. The center control 
-points are calculated by a blend of two linear interpolations and one bilinear interpolation.
+points are calculated by a blend of two linear interpolations and one bilinear interpolation.\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 u1 = BEZIER_1([0, 4, 0], [2.5, 3, 6], [5, 0, -6], [7.5, 0, 6], 
 [10, 0, 0])
 u2 = BEZIER_1([0, 6, 0], [2.5, 7, 6], [5, 10, -6], [7.5, 10, 6], 
@@ -2690,12 +3167,16 @@ ref_domain = UNIT_SQUARE(50, 50)
 # The cons patch:
 surf = COONSPATCH(u1, u2, v1, v2)
 out = MAP(ref_domain, surf)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{BEZIER\_1}
 \index{BEZIER\_2}
 \index{UNIT\_SQUARE}
 \index{COONSPATCH}
 \index{MAP}
+\vspace{6mm}
+
+\noindent
 The output is displayed in Fig. \ref{fig:curves-3}.
 
 \begin{figure}[!ht]
@@ -2714,9 +3195,10 @@ Rotational surfaces can be created using the {\tt ROTATIONAL\_SURFACE} command
 (possibly abbreviated as {\tt ROSURFACE} or {\tt ROS}).
 The rotation is done about the $z$-axis. To achieve best results, the curve
 should therefore be defined in a plane that contains the $z$-axis, and moreover 
-it should entirely lie on one side of the $z$-axis without intersecting it.
+it should entirely lie on one side of the $z$-axis without intersecting it.\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Sample Bezier profile in the xz-plane: 
 parabola = BEZIER_1([0, 0, 0], [2, 0, 0], [3, 0, 4])
   
@@ -2726,11 +3208,15 @@ ref_domain = REF_DOMAIN(1, 2*PI, 32, 64)
 # Rotate about the z-axis:
 surf = ROTATIONAL_SURFACE(parabola)
 out = MAP(ref_domain, surf)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{BEZIER\_1}
 \index{REF\_DOMAIN}
 \index{ROTATIONAL\_SURFACE}
 \index{MAP}
+\vspace{6mm}
+
+\noindent
 The output is displayed in Fig. \ref{fig:curves-4}.\\
 
 \begin{figure}[!ht]
@@ -2748,13 +3234,18 @@ The output is displayed in Fig. \ref{fig:curves-4}.\\
 
 Surfaces can be solidified using the command {\tt JOIN}. The 
 result of this operation will always be a convex hull. 
-Adding to the last script:
+Adding to the last script:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Solidify the surface:
 out = JOIN(out)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{JOIN}
+\vspace{6mm}
+
+\noindent
 This operation may take a while since PLaSM creates a new 
 set of volume maps from the existing set of surface maps. 
 The output is displayed in Fig. \ref{fig:curves-5}.
@@ -2792,44 +3283,64 @@ $$
 p(x, y) = (x, 0, 0)
 $$
 and thus the curve lying on $S$ is a straight line connecting the points 
-(0, 0, 0) and (1, 0, 0). 
+(0, 0, 0) and (1, 0, 0). \\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 def p(point):
     x = point[0]
     return [x, 0, 0]
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
+\vspace{6mm}
+
+\noindent
 The map $q(x, y) = q(x)$ is given by
 
 $$
 q(x, y) = (0, 1, x).
 $$
 and it defines a direction vector that changes gradually from 
-(0, 1, 0) to (0, 1, 1) as $x$ goes from 0 to 1.
+(0, 1, 0) to (0, 1, 1) as $x$ goes from 0 to 1.\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 def q(point):
     x = point[0]
     return [0, 1, x]
-\end{bluecode}
-Reference domain is the unit square covered with a $32 \times 32$
-division:
+\end{verbatim}
+\end{bbox}
+\vspace{6mm}
 
-\begin{bluecode}
+\noindent
+Reference domain is the unit square covered with a $32 \times 32$
+division:\\
+
+\begin{bbox}
+\begin{verbatim}
 # Unit square covered with a 32x32 Cartesian grid:  
 ref_domain = UNIT_SQUARE(32, 32)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{UNIT\_SQUARE}
-The {\tt RULED\_SURFACE} command takes the two maps {\tt p, q}
-as arguments. It can be abbreviated as {\tt RUSURFACE}: 
+\vspace{6mm}
 
-\begin{bluecode}
+\noindent
+The {\tt RULED\_SURFACE} command takes the two maps {\tt p, q}
+as arguments. It can be abbreviated as {\tt RUSURFACE}: \\
+
+\begin{bbox}
+\begin{verbatim}
 # Creating the ruled surface:
 surf = RULED_SURFACE(p, q)
 out = MAP(ref_domain, surf)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{RULED\_SURFACE}
 \index{MAP}
+\vspace{6mm}
+
+\noindent
 The output is displayed in Fig. \ref{fig:curves-6}.
 
 \begin{figure}[!ht]
@@ -2846,9 +3357,10 @@ The output is displayed in Fig. \ref{fig:curves-6}.
 
 In this example the map $p(x, y) = p(x)$ moves the 3D point 
 along the $z$-axis and the direction vector $q(x, y) = q(x)$ 
-is horizontal and rotates. The resulting surface $S$ is a spiral.
+is horizontal and rotates. The resulting surface $S$ is a spiral.\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Import sine and cosine from Numpy:
 from numpy import sin, cos
 
@@ -2866,10 +3378,14 @@ ref_domain = REF_DOMAIN(8*PI, 5, 128, 16)
 # Creating the ruled surface:
 surf = RULED_SURFACE(p, q)
 out = MAP(ref_domain, surf)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{REF\_DOMAIN}
 \index{RULED\_SURFACE}
 \index{MAP}
+\vspace{6mm}
+
+\noindent
 The output is displayed in Fig. \ref{fig:curves-7}.\\
 
 \begin{figure}[!ht]
@@ -2886,9 +3402,10 @@ The output is displayed in Fig. \ref{fig:curves-7}.\\
 
 In this example the map $p(x, y) = p(x)$ moves the 3D point on a circle 
 that lies in the $xy$-plane, and the vector $q(x, y) = q(x)$ it a unit vector 
-in the vertical direction. Hence the resulting ruled surface is a cylinder. 
+in the vertical direction. Hence the resulting ruled surface is a cylinder. \\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Import sine and cosine from Numpy:
 from numpy import sin, cos
 
@@ -2912,10 +3429,14 @@ ref_domain = REF_DOMAIN(2*PI, h, 64, 1)
 # Creating the ruled surface:
 surf = RULED_SURFACE(p, q)
 out = MAP(ref_domain, surf)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{REF\_DOMAIN}
 \index{RULED\_SURFACE}
 \index{MAP}
+\vspace{6mm}
+
+\noindent
 The output is displayed in Fig. \ref{fig:curves-8}.\\
 
 \begin{figure}[!ht]
@@ -2935,9 +3456,10 @@ vector $q(x, y) = q(x)$ is not vertical. Instead, it points
 to a point on the upper circle of the cylinder that has an 
 angular shift $\alpha$. The script below uses a shift of $0.7\pi$. 
 When increased towards $\pi$, the curved surface becomes thinner 
-in the middle portion. 
+in the middle portion. \\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Import since and cosine from Numpy:
 from numpy import sin, cos
 
@@ -2965,10 +3487,14 @@ ref_domain = REF_DOMAIN(2*PI, h, 64, 32)
 # Creating the ruled surface:
 surf = RULED_SURFACE(p, q)
 out = MAP(ref_domain, surf)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{REF\_DOMAIN}
 \index{RULED\_SURFACE}
 \index{MAP}
+\vspace{6mm}
+
+\noindent
 The output is displayed in Fig. \ref{fig:curves-9}.
 \newpage
 
@@ -2988,9 +3514,10 @@ This is one of the most useful application of ruled surfaces.
 We will show two examples. In the first one we consider 
 a $2\pi \times 2\pi$ square, define a sine function and 
 a parabola on the opposite edges, and connect them via 
-a ruled surface:
+a ruled surface:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Import sine from Numpy:
 from numpy import sin
 
@@ -3017,10 +3544,14 @@ ref_domain = REF_DOMAIN(2*PI, 1, 64, 1)
 # Creating the ruled surface:
 surf = RULED_SURFACE(p, q)
 out = MAP(ref_domain, surf)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{REF\_DOMAIN}
 \index{RULED\_SURFACE}
 \index{MAP}
+\vspace{6mm}
+
+\noindent
 The output is displayed in Fig. \ref{fig:curves-10}.\\
 
 \begin{figure}[!ht]
@@ -3035,9 +3566,10 @@ The output is displayed in Fig. \ref{fig:curves-10}.\\
 \noindent
 In the next example we define 
 two curves that start at (1, 0, $\pi$) and (-1, 0, $\pi$), respectively,
-and descend to the $xy$-plane describing a spiral trajectory:
+and descend to the $xy$-plane describing a spiral trajectory:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Import sine and cosine from Numpy:
 from numpy import sin, cos
 
@@ -3064,10 +3596,14 @@ ref_domain = REF_DOMAIN(PI, 1, 64, 30)
 # Creating the ruled surface:
 surf = RULED_SURFACE(p, q)
 out = MAP(ref_domain, surf)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{REF\_DOMAIN}
 \index{RULED\_SURFACE}
 \index{MAP}
+\vspace{6mm}
+
+\noindent
 The output is displayed in Fig. \ref{fig:curves-10b}.\\
 
 \begin{figure}[!ht]
@@ -3091,9 +3627,10 @@ direction. This can be done using the command {\tt CYLINDRICAL\_SURFACE}
 which is a simple application of {\tt RULED\_SURFACE}. If we use 
 a circle as the underlying curve, and the directional vector is vertical,
 we obtain the traditional cylinder. 
-Here is an example with a cubic B\'ezier curve:
+Here is an example with a cubic B\'ezier curve:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Cubic Bezier curve in the xy-plane:
 c = BEZIER_1([1,1,0], [-1,1,0], [1,-1,0], [-1,-1,0])
 
@@ -3109,11 +3646,15 @@ vec = [0, 0, H]
 # Product geometry:
 surf = CYLINDRICAL_SURFACE(c, vec)
 out = MAP(ref_domain, surf)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{BEZIER\_1}
 \index{UNIT\_SQUARE}
 \index{CYLINDRICAL\_SURFACE}
 \index{MAP}
+\vspace{6mm}
+
+\noindent
 The output is displayed in Fig. \ref{fig:curves-11}.\\
 
 \begin{figure}[!ht]
@@ -3135,9 +3676,10 @@ one, except that the "rays" from the curve all go to just one
 point that lies above the midpoint of the curve (tip of the generalized cone). 
 If we use a circle as the underlying curve, and the tip is above the center of the curve, 
 we obtain the traditional cone. Let us use again a cubic B\'ezier curve
-as an example:
+as an example:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Bezier curve in the xy-plane:
 c = BEZIER_1([1, 1, 0], [-1, 1, 0], [1, -1, 0], [-1, -1, 0])
 
@@ -3150,11 +3692,15 @@ tip = [0, 0, 2.0]
 # Conical surface:
 surf = CONICAL_SURFACE(tip, c)
 out = MAP(ref_domain, surf)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{BEZIER\_1}
 \index{UNIT\_SQUARE}
 \index{CONICAL\_SURFACE}
 \index{MAP}
+\vspace{6mm}
+
+\noindent
 The output is displayed in Fig. \ref{fig:curves-12}.
 
 \begin{figure}[!ht]
@@ -3179,9 +3725,10 @@ vertical coordinate $z_0$, then we obtain a curve similar in shape to $c_2$. The
 size difference between the cutline and the original curve $c_2$ is given by 
 $c_1(z_0)$. 
 Let us show two examples. In the first one, $c_1$ will be a straight 
-line and $c_2$ a quadratic B\'ezier curve:
+line and $c_2$ a quadratic B\'ezier curve:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Vertical shape:
 c1 = BEZIER_1([0, 0, 0], [2, 0, 5])
 
@@ -3194,12 +3741,16 @@ ref_domain = UNIT_SQUARE(64, 64)
 # Profile product surface: 
 surf = PPSURFACE(c1, c2)
 out = MAP(ref_domain, surf)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{BEZIER\_1}
 \index{BEZIER\_2}
 \index{UNIT\_SQUARE}
 \index{PPSURFACE}
 \index{MAP}
+\vspace{6mm}
+
+\noindent
 The output is displayed in Fig. \ref{fig:curves-13b}.\\
 
 \begin{figure}[!ht]
@@ -3214,9 +3765,10 @@ The output is displayed in Fig. \ref{fig:curves-13b}.\\
 \end{figure}
 \noindent
 In the next example we will construct the product of two cubic 
-B\'ezier curves.
+B\'ezier curves.\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Vertical shape:
 c1 = BEZIER_1([0, 0, 0], [2, 0, 0], [0, 0, 4], [1, 0, 5])
 
@@ -3229,12 +3781,16 @@ ref_domain = UNIT_SQUARE(64, 64)
 # Profile product surface: 
 surf = PPSURFACE(c1, c2)
 out = MAP(ref_domain, surf)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{BEZIER\_1}
 \index{BEZIER\_2}
 \index{UNIT\_SQUARE}
 \index{PPSURFACE}
 \index{MAP}
+\vspace{6mm}
+
+\noindent
 TThe output is displayed in Fig. \ref{fig:curves-13}.\\
 
 \begin{figure}[!ht]
@@ -3259,40 +3815,55 @@ A cubic Hermite curve is given by its
 endpoints and tangential vectors at the 
 endpoints - four parameters total. These four parameters 
 define a unique Hermite cubic spline (i.e., cubic polynomial). 
-For example, in the definition
+For example, in the definition\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 point1 = [0, 0, 0]
 point2 = [5, 0, 0]
 vector1 = [1, 0, 0]
 vector2 = [1, 0, 0]
 c = CUBIC_HERMITE_1(point1, point2, vector1, vector2)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBIC\_HERMITE\_1}
+\vspace{6mm}
+
+\noindent
 both vectors are parallel to the line connecting the endpoints,
 and therefore the result is a straight line. The same happens 
-with  
+with  \\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 point1 = [0, 0, 0]
 point2 = [5, 5, 5]
 vector1 = [1, 1, 1]
 vector2 = [1, 1, 1]
 c = CUBIC_HERMITE_1(point1, point2, vector1, vector2)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBIC\_HERMITE\_1}
+\vspace{6mm}
+
+\noindent
 If one or both vectors are not parallel to the line connecting 
 the endpoints, the result is not a straight line anymore. 
-For example, with 
+For example, with \\
  
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 point1 = [0, 0, 0]
 point2 = [5, 5, 5]
 vector1 = [0, 0, 1]
 vector2 = [1, 1, 0]
 c = CUBIC_HERMITE_1(point1, point2, vector1, vector2)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBIC\_HERMITE\_1}
+\vspace{6mm}
+
+\noindent
 we obtain a cubic curve that ascends verticaly at (0, 0, 0) with
 a tangential vector (0, 0, 1) and ends up flat at (5, 5, 5) with 
 tangential vector (1, 1, 0).
@@ -3304,20 +3875,26 @@ spanning two curves differs from a ruled or B\'ezier surface in that
 it allows the user to prescribe slope vectors along the 
 two curves. We show two examples. First, for simplicity,
 the two curves are the opposite edges of the unit square. 
-Both of them are straight lines:
+Both of them are straight lines:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # First curve:
 c1 = CUBIC_HERMITE_1([0, 0, 0], [0, 1, 0], [0, 1, 0], [0, 1, 0])
 
 # Second curve:
 c2 = CUBIC_HERMITE_1([1, 0, 0], [1, 1, 0], [0, 1, 0], [0, 1, 0])
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBIC\_HERMITE\_1}
-Both slope vectors lie in the $xz$-plane and their angle to the $xy$-plane
-is $\pi/4$. This results into a wave-like cubic surface.
+\vspace{6mm}
 
-\begin{bluecode}
+\noindent
+Both slope vectors lie in the $xz$-plane and their angle to the $xy$-plane
+is $\pi/4$. This results into a wave-like cubic surface.\\
+
+\begin{bbox}
+\begin{verbatim}
 # Slope vector for the first curve:
 s1 = [1, 0, 1]
 
@@ -3330,10 +3907,14 @@ ref_domain = UNIT_SQUARE(32, 32)
 # Cubic Hermite surface:
 surf = CUBIC_HERMITE_2(c1, c2, s1, s2)
 out = MAP(ref_domain, surf)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{UNIT\_SQUARE}
 \index{CUBIC\_HERMITE\_2}
 \index{MAP}
+\vspace{6mm}
+
+\noindent
 The output is displayed in Fig. \ref{fig:curves-14b}.
 %\newpage
 
@@ -3348,13 +3929,18 @@ The output is displayed in Fig. \ref{fig:curves-14b}.
 \end{figure}
 \noindent
 Next let us deform the left edge by changing the tangential 
-vectors at endpoints to (1, 1, 0) and (-1, 1, 0):
+vectors at endpoints to (1, 1, 0) and (-1, 1, 0):\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # First curve:
 c1 = CUBIC_HERMITE_1([0, 0, 0], [0, 1, 0], [1, 1, 0], [-1, 1, 0])
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBIC\_HERMITE\_1}
+\vspace{6mm}
+
+\noindent
 The rest of the script stays the same. The output is displayed in Fig. \ref{fig:curves-14c}.
 \newpage
 
@@ -3369,13 +3955,18 @@ The rest of the script stays the same. The output is displayed in Fig. \ref{fig:
 \end{figure}
 \noindent
 We can also change the right edge to a cubic wave by adjusting 
-the tangential vectors at endpoints to (0, 1, 1) and (0, 1, 1):
+the tangential vectors at endpoints to (0, 1, 1) and (0, 1, 1):\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Second curve:
 c2 = CUBIC_HERMITE_1([1, 0, 0], [1, 1, 0], [0, 1, 1], [0, 1, 1])
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBIC\_HERMITE\_1}
+\vspace{6mm}
+
+\noindent
 The rest of the script remains the same. The output is displayed in Fig. \ref{fig:curves-14d}.
 
 \begin{figure}[!ht]
@@ -3390,9 +3981,10 @@ The rest of the script remains the same. The output is displayed in Fig. \ref{fi
 \noindent
 %\newpage
 \noindent
-Last we create a cubic Hermite surface between two arcs:
+Last we create a cubic Hermite surface between two arcs:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # First (outer) curve:
 c1 = CUBIC_HERMITE_1([1, 0, 0], [0, 1, 0], [0, 3, 0], [-3, 0, 0])
 
@@ -3411,11 +4003,15 @@ ref_domain = UNIT_SQUARE(32, 32)
 # The 3D object:
 surf = CUBIC_HERMITE_2(c1, c2, s1, s2)
 out = MAP(ref_domain, surf)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CUBIC\_HERMITE\_1}
 \index{UNIT\_SQUARE}
 \index{CUBIC\_HERMITE\_2}
 \index{MAP}
+\vspace{6mm}
+
+\noindent
 The output is displayed in Fig. \ref{fig:curves-14}.\\
 
 \begin{figure}[!ht]
@@ -3445,9 +4041,10 @@ The output is displayed in Fig. \ref{fig:curves-14}.\\
 The differences between scripting and working with an interactive GUI 
 were discussed in Subsection \ref{subsec:scripting}. Let us follow-up
 by demonstrating the automation and parameter-dependent design that are 
-possible with scripting. We will create a field of 400 cylindrical columns:
+possible with scripting. We will create a field of 400 cylindrical columns:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Define master cylinder and N:
 c = CYLINDER(0.1, 1, 16)
 N = 20
@@ -3459,10 +4056,14 @@ for i in range(N):
     columns.append(d)
 # View the result:
 lab.view(STRUCT(*columns)) 
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CYLINDER}
 \index{TRANSLATE}
 \index{STRUCT}
+\vspace{6mm}
+
+\noindent
 The result for $N = 20$, which means 400 columns, is shown 
 in Fig. \ref{fig:400}.\\
 
@@ -3511,25 +4112,40 @@ Whenever we need to tune a parameter in the design, we can create
 a variable for it. Imagine that we have to create a brick whose base
 is (0, 3)$\times$(0, 2) but whose exact height will be determined 
 later. Hence  we create a new variable {\tt h} for the height and initialize 
-it with some reasonable value, such as for example with {\tt 1.0}:
+it with some reasonable value, such as for example with {\tt 1.0}:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 h = 1.0
-\end{bluecode} 
-The rest we already know:
+\end{verbatim}
+\end{bbox} 
+\vspace{6mm}
 
-\begin{bluecode}
+\noindent
+The rest we already know:\\
+
+\begin{bbox}
+\begin{verbatim}
 b = BRICK(3, 2, h)
-\end{bluecode} 
+\end{verbatim}
+\end{bbox} 
 \index{BRICK}
+\vspace{6mm}
+
+\noindent
 This renders a brick of dimensions 3$\times$2$\times$1. Now it is easy to 
 change the height of the brick without changing the script that defines it --
 the script will remain the same, only the value of the variable {\tt h} needs
-to be changed:
+to be changed:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 a = 5.0
-\end{bluecode} 
+\end{verbatim}
+\end{bbox} 
+\vspace{6mm}
+
+\noindent
 After the script is run again, we have a new brick of dimensions 3$\times$2$\times$5.\\
 
 \noindent
@@ -3542,100 +4158,157 @@ in particular Numpy. Numpy contains vast functionality related to
 mathematical functions and numerical computations. Whenever we want 
 to use some constant such as $\pi$ or $e$, or when we want to use some 
 mathematical function such as log$(x)$, sin$(x)$ or $\sqrt{x}$, we
-import it from Numpy:
+import it from Numpy:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 from numpy import pi, e, log, sin, sqrt
-\end{bluecode} 
-We can also simply import everything:
+\end{verbatim}
+\end{bbox} 
+\vspace{6mm}
 
-\begin{bluecode}
+\noindent
+We can also simply import everything:\\
+
+\begin{bbox}
+\begin{verbatim}
 from numpy import *
-\end{bluecode} 
-\vspace{4mm}
+\end{verbatim}
+\end{bbox} 
+\vspace{6mm}
+
+\noindent
 \underline{Python lists}\\
 
 \noindent
 Whenever we need to create a set of objects, such as a set of points, we can use 
-a Python list for that. Empty Python list is created using a pair of square brackets:
+a Python list for that. Empty Python list is created using a pair of square brackets:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 L = []
-\end{bluecode} 
+\end{verbatim}
+\end{bbox} 
+\vspace{6mm}
+
+\noindent
 Here, {\tt L} is the name of the list, and any other name would be fine as well, 
 as long as it does not clash with some Python or PLaSM command. We can also create 
 a nonempty list. Say that we need a list that contains the points (0, 0), (1, 0),
-(1, 0). This is done via:
+(1, 0). This is done via:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 L = [[0, 0], [1, 0], [0, 1]]
-\end{bluecode} 
+\end{verbatim}
+\end{bbox} 
+\vspace{6mm}
+
+\noindent
 Yes you are right, each point is a list in fact! Sometimes we need to fill 
 a list using some procedure because not all its items are known at the
 beginning. For this, we can use the command {\tt append()}. For example,
-one more point (2, 4) is added to the existing list {\tt L} via
+one more point (2, 4) is added to the existing list {\tt L} via\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 L.append([2, 4])
-\end{bluecode} 
-\vspace{4mm}
+\end{verbatim}
+\end{bbox} 
+\vspace{6mm}
+
+\noindent
 \underline{Printing}\\
 
 \noindent
 Control prints are a practical way to check that all numbers are as they should be.
-Printing is done via the {\tt print} command. For example, the script
+Printing is done via the {\tt print} command. For example, the script\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 L = [[0, 0], [1, 0], [0, 1]]
 print L
-\end{bluecode} 
-has the following output:
+\end{verbatim}
+\end{bbox} 
+\vspace{6mm}
 
-\begin{bluecode}
+\noindent
+has the following output:\\
+
+\begin{bbox}
+\begin{verbatim}
 [[0, 0], [1, 0], [0, 1]]
-\end{bluecode} 
+\end{verbatim}
+\end{bbox} 
+\vspace{6mm}
+
+\noindent
 Printing the value of a single variable is done in the same way, and we can 
 make the output more informative by actually describing what is printed.
-The script
+The script\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 h = 5.0
 print "h =", h
-\end{bluecode} 
-yields the following output:
+\end{verbatim}
+\end{bbox} 
+\vspace{6mm}
 
-\begin{bluecode}
+\noindent
+yields the following output:\\
+
+\begin{bbox}
+\begin{verbatim}
 h = 5.0
-\end{bluecode} 
-\vspace{4mm}
+\end{verbatim}
+\end{bbox} 
+\vspace{6mm}
+
+\noindent
 \underline{Repeating}\\
 
 \noindent
 Let us mention one last scripting technique for now, which is to repeat 
 some command or sequence of commands several times. To repeat something 
-{\tt N} times, we use the following construct: 
+{\tt N} times, we use the following construct: \\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 for i in range(0, N):
     do_something
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
+\vspace{6mm}
+
+\noindent
 The indentation matters as it indicates the body of the loop.
 The following script will print a sequence of integers between 
-0 and 5 (not including 5):
+0 and 5 (not including 5):\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 for i in range(0, 5):
     print i
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
+\vspace{6mm}
+
+\noindent
 Output:
 
-\begin{bluecode}
+\begin{ybox}
+\begin{verbatim}
 0
 1
 2
 3
 4
-\end{bluecode}
+\end{verbatim}
+\end{ybox}
+\vspace{6mm}
+
+\noindent
 Once more -- notice that the printed sequence ends with {\tt 4}, not with {\tt 5}.
 This is a common source of beginner's mistakes.
 Also, again, notice that the command(s) to be repeated need to be indented. The indent is mandatory and 
@@ -3644,25 +4317,40 @@ code readability.
 
 Let us show one more example of how repetition can be used: We will create a list of 
 points (0, 0), (1, 0), (2, 0), ..., (N, 0) where {\tt N} is some positive integer. Let us
-write the script initially for {\tt N = 5}, and at the end we will print it:
+write the script initially for {\tt N = 5}, and at the end we will print it:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 N = 5
 L = []
 for i in range(0, N+1):
     L.append([i, 0])
 print "L =", L
-\end{bluecode}
-Output:
-\begin{bluecode}
-L = [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0]]
-\end{bluecode}
-If we needed to create another list for {\tt N = 100}, the script would remain the same,
-just the line where {\tt N} is defined would be changed to 
+\end{verbatim}
+\end{bbox}
+\vspace{6mm}
 
-\begin{bluecode}
+\noindent
+Output:\\
+\begin{ybox}
+\begin{verbatim}
+L = [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0]]
+\end{verbatim}
+\end{ybox}
+\vspace{6mm}
+
+\noindent
+If we needed to create another list for {\tt N = 100}, the script would remain the same,
+just the line where {\tt N} is defined would be changed to \\
+
+\begin{bbox}
+\begin{verbatim}
 N = 100
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
+\vspace{6mm}
+
+\noindent
 Scripting can save lots of work. Knowing Python is very useful for many other
 reasons beyond Solid Modeling in NCLab. It is a high-level dynamical programming 
 language that is used in many business, engineering and science applications 
@@ -3678,9 +4366,10 @@ edges that is inscribed in
 a circle of radius $R$. Notice that the points
 $(R  \cos(a), R  \sin(a))$ where $a$ is an angle between 
 $0$ and $2\pi$, lie on the circle with center (0, 0) and 
-radius $R$:
+radius $R$:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 from numpy import sin, cos, pi
 N = 15
 R = 5
@@ -3689,8 +4378,9 @@ for i in range(N):
     a = i * 2. * pi / N
     points.append([R * cos(a), R * sin(a)])
 out = CONVEXHULL(*points)
+\end{verbatim}
+\end{bbox}
 \index{CONVEXHULL}
-\end{bluecode}
 
 \subsection{Cone via scripting}\label{par:cocon}
 
@@ -3698,9 +4388,10 @@ Next let us tweak the script
 from Subsection \ref{subsec:polygon} to construct a cone of radius
 $R$ and height $H$. All we need to do is to add a zero third coordinate 
 to the points generated in that script, and add one more point -- the 
-tip of the cone. The CONVEXHULL command will take care of the rest:
+tip of the cone. The CONVEXHULL command will take care of the rest:\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 from numpy import sin, cos, pi
 R = 5
 H = 10
@@ -3711,7 +4402,8 @@ for i in range(N):
     points.append([R * cos(angle), R * sin(angle), 0])
 points.append([0, 0, H])
 c = CONVEXHULL(*points)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{CONVEXHULL}
 \noindent
 
@@ -3732,9 +4424,10 @@ Project $\rightarrow$ Clone in the File Manager's menu.
 \subsection{Wireframe globe}
 
 Let us start with something simple - we will create a wireframe model 
-of a globe by translating anf rotating several thin toruses.
+of a globe by translating anf rotating several thin toruses.\\
 
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # From Numpy import sin, cos:
 from numpy import sin, cos
 
@@ -3761,10 +4454,14 @@ t11 = R(t10, 3, PI/6)
 
 # Put them together:
 out = STRUCT(t1, t2, t3, t6, t7, t8, t9, t10, t11)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 \index{TORUS}
 \index{TRANSLATE}
 \index{ROTATE}
+\vspace{6mm}
+
+\noindent
 The outpur is shown in Fig. \ref{fig:globe}.\\
 
 \begin{figure}[!ht]
@@ -3783,9 +4480,11 @@ The outpur is shown in Fig. \ref{fig:globe}.\\
 
 In this section we build a 3D gear. In the first step we define 
 a color along with parameters and measures of one tooth, and
-create one tooth as a convex hull.
+create one tooth as a convex hull.\\
+
 {\small
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Brass color:
 color = [222, 218, 72]
 
@@ -3824,8 +4523,12 @@ pts = pts_base + pts_mid + pts_top
 
 # Toothe is a convexhull of the points:
 t = CONVEXHULL(*pts)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 }
+\vspace{6mm}
+
+\noindent
 \index{CONVEXHULL}
 \noindent
 Recall that an asterisk '*' needs to be inserted in front of a list 
@@ -3843,10 +4546,11 @@ The result is displayed in Fig. \ref{fig:gear-1}.
 \end{figure}
 %\newpage
 \noindent
-Next we create all teeth by translating and replicating the first one:
+Next we create all teeth by translating and replicating the first one:\\
 
 {\small
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Rotate and translate the tooth:
 t = R(t, 1, PI/2)
 t = R(t, 3, PI/2)
@@ -3859,12 +4563,15 @@ angle = 2*PI/N
 gear = []
 for i in range(N):
     gear.append(R(t, 3, i * angle))
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 }
 \index{ROTATE}
 \index{TRANSLATE}
+\vspace{6mm}
+
 \noindent
-The result is displayed in Fig. \ref{fig:gear-2}.
+The result is displayed in Fig. \ref{fig:gear-2}.\\
 
 \begin{figure}[!ht]
 \begin{center}
@@ -3876,22 +4583,24 @@ The result is displayed in Fig. \ref{fig:gear-2}.
 %\vspace{-1cm}
 \end{figure}
 \noindent
-In the next step we create the base of the gear:
-
+In the next step we create the base of the gear:\\
 
 {\small
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Base:
 base = TUBE(base_rin, base_rout, base_h, 128)
 dz = (base_h - y0)/2.
 base = T(base, 0, 0, -dz)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 }
 \index{TUBE}
 \index{TRANSLATE}
-\newpage
+\vspace{6mm}
+
 \noindent
-The result is displayed in Fig. \ref{fig:gear-3}.
+The result is displayed in Fig. \ref{fig:gear-3}.\\
 
 \begin{figure}[!ht]
 \begin{center}
@@ -3904,10 +4613,11 @@ The result is displayed in Fig. \ref{fig:gear-3}.
 \end{figure}
 %\newpage
 \noindent
-In order to construct the top ring, we use a regular and a truncated cone.
+In order to construct the top ring, we use a regular and a truncated cone.\\
 
 {\small
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Truncated cone:
 tc1 = TRUNCONE(base_rout, base_rout - 1, 1)
 tc1 = T(tc1, 0, 0, base_h)
@@ -3920,15 +4630,17 @@ cone = T(cone, 0, 0, 40)
 # Display the objects together:
 red = [255, 0, 0]
 lab.view([tc1, color], [cone, red])
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 }
 \index{TRUNCONE}
 \index{CONE}
 \index{TRANSLATE}
 \index{ROTATE}
-\noindent
-The result is displayed in Fig. \ref{fig:gear-4}.
+\vspace{6mm}
 
+\noindent
+The result is displayed in Fig. \ref{fig:gear-4}.\\
 
 \begin{figure}[!ht]
 \begin{center}
@@ -3941,18 +4653,21 @@ The result is displayed in Fig. \ref{fig:gear-4}.
 \end{figure}
 \noindent
 \noindent
-The hole is drilled by subtracting the regular one from the truncated one.
+The hole is drilled by subtracting the regular one from the truncated one.\\
 
 {\small
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Difference of the cones:
 tc = DIFF(tc1, cone)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 }
 \index{DIFF}
+\vspace{6mm}
+
 \noindent
 The result is displayed in Fig. \ref{fig:gear-5}.
-
 
 \begin{figure}[!ht]
 \begin{center}
@@ -3965,18 +4680,22 @@ The result is displayed in Fig. \ref{fig:gear-5}.
 \end{figure}
 
 \noindent
-Next the ring and the teeth are attached to the base.
+Next the ring and the teeth are attached to the base.\\
 
 {\small
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Put the ring above the base:
 base = TOP(base, tc)
 
 # Attach teeth:
 gear.append(base) 
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 }
 \index{TOP}
+\vspace{6mm}
+
 \noindent
 The result is displayed in Fig. \ref{fig:gear-7}.
 
@@ -3991,10 +4710,11 @@ The result is displayed in Fig. \ref{fig:gear-7}.
 \end{figure}
 \noindent
 Last we need to build the inner part of the gear. 
-First, create a tube and three bricks:
+First, create a tube and three bricks:\\
 
 {\small
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Inner layer thickness:
 inner_dr  = 3
 
@@ -4011,12 +4731,15 @@ b3 = R(b2, 3, PI/3)
 # Display the objects together:
 red = [255, 0, 0]
 lab.view([inner, color], [STRUCT(b1, b2, b3), red])
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 }
 \index{TUBE}
 \index{TRANSLATE}
 \index{BRICK}
 \index{ROTATE}
+\vspace{6mm}
+
 \noindent
 The result is displayed in Fig. \ref{fig:gear-8}.
 
@@ -4031,17 +4754,21 @@ The result is displayed in Fig. \ref{fig:gear-8}.
 \end{figure}
 %\newpage
 \noindent
-Next we subtract the three bricks from the tube. 
+Next we subtract the three bricks from the tube. \\
 
 {\small
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Subtract all three bricks from the tube:
 inner = DIFF(inner, b1)
 inner = DIFF(inner, b2)
 inner = DIFF(inner, b3)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 }
 \index{DIFF}
+\vspace{6mm}
+
 \noindent
 The result is displayed in Fig. \ref{fig:gear-9}.\\
 
@@ -4056,9 +4783,11 @@ The result is displayed in Fig. \ref{fig:gear-9}.\\
 \end{figure}
 
 \noindent
-Then we subtract the original cone from the inner part. 
+Then we subtract the original cone from the inner part. \\
+
 {\small
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Subtract cone from inner part:
 inner = DIFF(inner, cone)
 
@@ -4068,10 +4797,13 @@ inner = T(inner, 0, 0, -dz)
 # Display the objects together:
 red = [255, 0, 0]
 lab.view([inner, color], [cone, red])
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 }
 \index{DIFF}
 \index{TRANSLATE}
+\vspace{6mm}
+
 \noindent
 The result is displayed in Figs. \ref{fig:gear-10} and \ref{fig:gear-12}.\\
 
@@ -4100,17 +4832,21 @@ The result is displayed in Figs. \ref{fig:gear-10} and \ref{fig:gear-12}.\\
 Finally we attach the inner part to the gear:
 
 {\small
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Append inner part to gear:
 gear.append(inner)
 
 # Display the gear:
 out = STRUCT(gear)
 lab.view(out, color)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 }
 \index{STRUCT}
 \index{lab.view}
+\vspace{6mm}
+
 \noindent
 The final geometry is shown in Fig. \ref{fig:gear-last}.
 
@@ -4129,10 +4865,11 @@ The final geometry is shown in Fig. \ref{fig:gear-last}.
 \subsection{Temple}
 
 This script contains several interesting steps and tricks that will 
-be discussed afterwards.
+be discussed afterwards.\\
 
 {\small
-\begin{bluecode}
+\begin{bbox}
+\begin{verbatim}
 # Column radius and height:
 r = 1.0
 h = 12.0
@@ -4183,7 +4920,8 @@ secondary_beams = POWER(POWER(x_intervals, y_intervals), z_interval)
 
 # Put all parts together:
 out = STRUCT(temple_base, secondary_beams, ground)
-\end{bluecode}
+\end{verbatim}
+\end{bbox}
 }
 \index{BRICK}
 \index{RIGHT}
@@ -4198,6 +4936,8 @@ out = STRUCT(temple_base, secondary_beams, ground)
 \index{RIGHT}
 \index{PRISM}
 \index{TRIANGLE}
+\vspace{6mm}
+
 \noindent
 Here we encountered a new command {\tt RIGHT}
 that works similarly to the command {\tt TOP}, but it places
