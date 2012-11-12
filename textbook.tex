@@ -197,14 +197,18 @@ replace the material from these three Sections.
 \noindent
 After you send the script to the server, allow few seconds 
 for processing and data transfer. Then you should see the geometry 
-shown in Fig. \ref{fig:demo-111}.
+shown in Fig. \ref{fig:demo-111}. Note the colors of the axes in
+the grid: $x$-axis (red), $y$-axis (green), $z$-axis (blue). The 
+grid can be turned off in Settings of the WebGL widget.
+
+
 \newpage
  
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{img/demo-111.png}
 \end{center}
-\vspace{-2mm}
+\vspace{-4mm}
 \caption{Output of the demo script.}
 %\vspace{-1cm}
 \label{fig:demo-111}
@@ -212,68 +216,95 @@ shown in Fig. \ref{fig:demo-111}.
 %\newpage
 \noindent
 If you see no image or even an error message, do not panic. The WebGL 
-technology is still experimental and it may be disabled in your web 
+technology is still experimental and it is probably disabled in your web 
 browser by default. All modern web browsers with the exception of
 Internet Explorer (if it can be called a modern web browser) support 
-WebGL. To check whether WebGL works in your web browser, NCLab provides 
-a Test WebGL button on the front page. \\
+WebGL.  \\
 
 \begin{gbox}
 \begin{center}
 Detailed WebGL troubleshooting 
 instructions are provided in a document "WebGL and Its Problems" 
 that is available in the Help section of the PLaSM worksheet.
+You can check your WebGL via the "Test WebGL" button on NCLab front page.
 \end{center}
 \end{gbox}
 \vspace{6mm}
 
 \noindent
-When you do not need to see the demo anymore, just turn it off in Settings -- it 
+If you do not need to see the demo script anymore, just turn it off in Settings -- it 
 will not be displayed the next time you launch PLaSM.
 
 \subsection{Mouse controls}
 
-We can use the mouse to rotate the object, move it on the screen, 
-make it bigger or smaller, and tilt it. This allows us to view 
-it from all possible angles and see even the smallest details. If you like to see the object 
-better, click on the "Detach" button in the top part of the WebGL widget.
-This will display the object in a separate window that can be further enlarged. \\
+To better understand how 3D visualization works, imagine that your computer 
+screen is a 2D plane that has a horizontal axis X, vertical axis Y (also lying in the 
+plane of the screen) and a third axis Z that points out of the screen.
+This is illustrated in Fig. \ref{fig:monitor}.
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{img/monitor.png}
+\end{center}
+\vspace{-4mm}
+\caption{Virtual grid associated with your computer screen.}
+%\vspace{-1cm}
+\label{fig:monitor}
+\end{figure}
+%\newpage
+\noindent
+The mouse can be used to rotate the object about all three axes X, Y and 
+Z, and also to move it in all three directions. So, although the 
+computer screen is a 2D object, we can achieve a truly 3D visual experience. 
+
+Before we explain how it works, you might want to click on the "Detach" button in 
+the top part of the WebGL widget to view the object better: This will 
+display the object in a separate window that can be further enlarged. \\
 
 \noindent
-{\em Rotating}\\
+\underline{\em 1. Turning}\\
 
 \noindent
 Move your mouse pointer over the 3D object and press the left button. 
-While holding it down, move the mouse to the left and to the right. 
-The object on the screen will rotate about the vertical axis. Moving the 
-mouse in other directions while holding down the left button will result 
-in various other rotations.\\
+While holding it down, move the mouse to the left and to the right on the desk. 
+The object on the screen will rotate about the Y axis. Moving the mouse up and down 
+on the desk while holding down the left button will result in rotation 
+about the X axis.\\
 
 \noindent
-{\em Moving}\\
+\underline{\em 2. Panning}\\
+
+\noindent
+The missing rotation about the Z axis cannot be made up by combining 
+the X and Y rotations. Therefore we use {\em panning}: Move the mouse 
+pointer over the object and press the left button again. While holding 
+it down, start describing with the mouse small circles on the desk 
+in the counter clockwise direction. The object on the screen will start 
+tilting to the right (Z rotation). Similarly, circular motion in the 
+clockwise direction will tilt the object to the left. Combined with the 
+X and Y rotations described in point 1, now we have a complete set of all
+3D rotations.\\
+
+\noindent
+\underline{\em 3. Moving}\\
 
 \noindent
 Holding down the middle button (or the mouse wheel) instead of the 
-left one, and moving the mouse as before, will move the object 
-in various directions on the screen.\\
+left one, and moving the mouse left to right will move the object on the 
+screen in the X direction. Moving the mouse up and down on the desk will 
+move the object in the Y direction. Missing the Z direction? That's why 
+we have zooming!\\
 
 \noindent
-{\em Zooming}\\
+\underline{\em 4. Zooming}\\
 
 \noindent
 Zooming is done via the mouse wheel or by holding down the right
-mouse button and moving the mouse. The latter option allows for 
-finer zooming.
-
-\noindent
-{\em Panning}\\
-
-\noindent
-Last, move the mouse pointer over the object and press the left 
-button again. While holding it down, move the mouse on a small circle 
-in the counter clockwise direction. The object on the screen will 
-start tilting to the right. Similarly, circular motions 
-in the clockwise direction will tilt the object to the left. \\
+mouse button and moving the mouse up and down on the desk. The object 
+on the screen moves in the Z direction. The latter option is smoother.
+Hence, with zooming we have a complete set of 3D motions on the 
+computer screen.\\
 
 \begin{gbox}
 \begin{center}
