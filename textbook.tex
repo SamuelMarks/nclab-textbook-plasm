@@ -268,31 +268,124 @@ one scene can be displayed using different colors.
 
 \subsection{Objectives}
 \begin{itemize}
-\item Learn to create simple objects such as cubes, bricks, squares, rectangles, spheres, circles, 
-      tetrahedra, triangles, prisms, cones, truncated cones, 
-      cylinders, tubes, and toruses. 
+\item Learn to create simple 3D objects including cubes, bricks, spheres,  
+      tetrahedra, prisms, cones, truncated cones, cylinders, tubes, and toruses. 
+\item Learn to create simple planar objects: squares, rectangles, triangles, and circles. 
+\item Learn to create 2D objects in the 3D space. 
 \item Learn to always remember where objects are positioned in the coordinate system.
-\item Understand the representation of curved surfaces.
-\item Learn to create convex hulls.
-\item Learn to extrude 2D objects to 3D.
-\item Understand the benefits of scripting.
+\item Learn that PLaSM approximates curved surfaces with linear triangles.
+\item Learn to create convex hulls and to extrude 2D objects to 3D.
 \end{itemize}
-We will {\bf skip the command
-{\tt lab.view()} in the following} since its presence is obvious.
-The resulting object to be displayed will usually be called "out".
+\vspace{4mm}
 
-\subsection{Bricks, rectangles, and squares}
+
+\subsection{Cube}
 
 We already know that the command {\tt CUBE(a)} renders a 3D cube of
-dimension {\tt a}. Analogously, command {\tt BRICK(a, b, c)} \index{BRICK}
+dimensions $a \times a \times a$. Let us review this command briefly again:
+
+\begin{bluecode}
+c = CUBE(1)
+col = [102, 230, 153]
+lab.view(c, col)
+\end{bluecode}
+\index{CUBE}
+\newpage
+\noindent
+The object is displayed in Fig. \ref{fig:cube-111}. Make sure to 
+notice that the cube is located in the first quadrant, with its 
+edges aligned with the axes $x$, $y$ and $z$, and one of its vertices
+lying at the origin $(0, 0, 0)$.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/cube-111.png}
+\end{center}
+\vspace{-4mm}
+\caption{Cube of dimensions $a \times a \times a$ with $a = 1$.}
+\label{fig:cube-111}
+\end{figure}
+\noindent
+
+\begin{gbox}
+To avoid mistakes when working with 
+multiple objects, it is important to always remember where
+each object is located in the global coordinate system.
+\end{gbox}
+
+\subsection{Planar square}
+
+PLaSM makes it possible to work in a two-dimensional setting of the 
+axes $x$ and $y$ as well. Here, the $z$ axis is not present. The first 
+2D command that we will explore is {\tt SQUARE(a)} which renders 
+a square of edge length $a$. Its usage is illustrated by the 
+following script:
+
+\begin{bluecode}
+s = SQUARE(3)
+col = [102, 230, 153]
+lab.view(s, col)
+\end{bluecode}
+\index{SQUARE}
+The square is shown in Fig. \ref{fig:square-111}. Again notice that 
+it is located in the first quadrant, with one vertex lying at 
+the origin $(0, 0, 0)$ and its edges aligned with the axes $x$ and $y$.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{img/square-111.png}
+\end{center}
+\vspace{-4mm}
+\caption{Square of dimensions $a \times a$ with $a = 3$.}
+\label{fig:square-111}
+\end{figure}
+\noindent
+
+\subsection{Square in 3D space}
+
+The planar square introduced in the previous paragraph is a purely 
+2D object that cannot be combined with 3D objects. However, sometimes
+we need to do this -- such as when constructing conical or cylindrical 
+sections. For this purpose, PLaSM has a command {\tt SQUARE3D(a)} that 
+creates a square of edge length $a$ in the 3D space. Otherwise the 
+square is located in the same way as the one created via the 
+{\tt SQUARE(a)} command. Sample script creating a square in the 3D space 
+is 
+
+\begin{bluecode}
+s = SQUARE3D(3)
+col = [102, 230, 153]
+lab.view(s, col)
+\end{bluecode}
+\index{SQUARE3D}
+In reality, this object is a 3D cube whose third dimension was reduced
+to $0.001$. Later we will learn how to rotate, move, and scale such a square, and how to 
+intersect it with an arbitrary 3D object. The output of the above acript 
+is shown in Fig. \ref{fig:square-112}.
+\newpage
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.65\textwidth]{img/square-112.png}
+\end{center}
+\vspace{-4mm}
+\caption{Square of dimensions $a \times a$ with $a = 3$, rendered in 3D space.}
+\label{fig:square-112}
+\end{figure}
+\noindent
+
+\subsection{Brick}
+
+The command {\tt BRICK(a, b, c)} \index{BRICK}
 renders a 3D brick of dimensions {\tt a}, {\tt b} and {\tt c}. 
 Let us change the code in the input cell to  
 
 \begin{bluecode}
-out = BRICK(3.0, 2.0, 1.0)
+b = BRICK(3.0, 2.0, 1.0)
+col = [102, 230, 153]
+lab.view(b, col)
 \end{bluecode}
 \index{BRICK}
-and press the green arrow button. The result is displayed in Fig. \ref{fig:cuboid-1}.\\
+and press the green arrow button.The result is displayed in Fig. \ref{fig:cuboid-1}.
 
 \begin{figure}[!ht]
 \begin{center}
@@ -301,21 +394,25 @@ and press the green arrow button. The result is displayed in Fig. \ref{fig:cuboi
 \vspace{-4mm}
 \caption{Brick of dimensions 3, 2 and 1.}
 \label{fig:cuboid-1}
+\vspace{-1cm}
 \end{figure}
 \newpage
+\noindent
+
+\subsection{Planar rectangle}
 
 \noindent
-{\bf Positioning of objects}.
-Fig. \ref{fig:cuboid-1} also shows coordinate axes which are not
-displayed in the WebGL widget. As you can see, the brick is positioned 
-in the first quadrant, its edges are aligned with coordinate axes, and one 
-vertex lies at the origin (0, 0, 0). To avoid mistakes when working with 
-multiple objects, it is important to always remember where
-each object is located in the global coordinate system. \\
+Planar rectangle of dimensions $a$ and $b$ can be rendered using the 
+command {\tt RECTANGLE(a, b)}. For illustration, the output of a sample script
 
+\begin{bluecode}
+r = RECTANGLE(2.0, 1.0)
+col = [102, 230, 153]
+lab.view(r, col)
+\end{bluecode}
+\index{RECTANGLE}
 \noindent
-{\bf Rectangle} of dimensions {\tt a} and {\tt b} can be rendered typing 
-{\tt RECTANGLE(a, b)}, as shown in Fig. \ref{fig:cuboid-2}.
+is shown in Fig. \ref{fig:cuboid-2}.
 
 \begin{figure}[!ht]
 \begin{center}
@@ -329,12 +426,44 @@ each object is located in the global coordinate system. \\
 \noindent
 Notice again that the rectangle is located in the first quadrant with its edges 
 aligned with coordinate axes, and that its bottom-left vertex lies at the 
-origin (0, 0). \\
+origin (0, 0).
 
+\subsection{Rectangle in 3D space}
+
+To operate with rectangles in the 3D space, we have the command {\tt RECTANGLE3D(a, b)}
+which works analogously to the command {\tt SQUARE3D(a)} for squares. Its usage
+can be illustrated using the script 
+
+\begin{bluecode}
+r = RECTANGLE3D(2.0, 1.0)
+col = [102, 230, 153]
+lab.view(r, col)
+\end{bluecode}
+\index{RECTANGLE3D}
 \noindent
-{\bf Square} of dimension {\tt a} can be constructed using the command {\tt SQUARE(a)}.  
+that creates the same rectangle as above but renders it in 3D space.
+The rectangle is again located in the first quadrant, with one vertex 
+at the origin $(0, 0, 0)$, and its edges are aligned with the coordinate
+axes $x$ and $y$. In reality, this is a brick whose third dimension was
+reduced to $0.001$. The output is shown in Fig. \ref{fig:rect-111}.
 
-\subsection{Tetrahedra and triangles}
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.85\textwidth]{img/rect-111.png}
+\end{center}
+\vspace{-4mm}
+\caption{Rectangle of dimensions $a \times b$ with $a = 2$ and $b = 1$, rendered in 3D space.}
+\label{fig:rect-111}
+\end{figure}
+\noindent
+
+
+
+
+\subsection{Tetrahedron}
+
+Tetrahedron in PLaSM is defined using four points that do not lie in the same 
+plane. 
 
 The command {\tt TETRAHEDRON([a1, a2, a3], [b1, b2, b3], [c1, c2, c3], [d1, d2, d3])} renders 
 a tetrahedron with the vertices {\tt [a1, a2, a3]}, {\tt [b1, b2, b3]}, {\tt [c1, c2, c3]}
@@ -356,10 +485,16 @@ is shown in Fig. \ref{fig:chull}.
 %\vspace{-1cm}
 \end{figure}
 \noindent
+
+\subsection{Planar triangle}
+
 Analogously, the command {\tt TRIANGLE([a1, a2], [b1, b2], [c1, c2])} renders 
 a triangle with the vertices {\tt [a1, a2]}, {\tt [b1, b2]} and {\tt [c1, c2]}. 
 
-\subsection{Prisms}\label{subsec:prism}
+\subsection{Triangle in 3D space}
+
+
+\subsection{Prism}\label{subsec:prism}
 
 Given a triangle {\tt B} and a positive number {\tt H}, the command 
 {\tt PRISM(B, H)} renders a prism with the base {\tt B} and height {\tt H}. 
@@ -943,6 +1078,14 @@ The resulting Cartesian product solid is shown in Fig. \ref{fig:grid1}.\\
 So far we have learned how to create a variety of simple 2D and 3D objects. 
 The next step is to learn how to transform them in a variety of ways. PLaSM
 provides simple commands for that. 
+
+\begin{gbox}
+In this section and in the rest of the textbook we will not mention the command
+{\tt lab.view()} anymore. The reader knows by now that this command is always needed 
+to display an object. The resulting objects to be displayed will 
+typically be called {\tt out} -- this is just a name, not a command.
+\end{gbox}
+
 
 \subsection{Scaling}
 
