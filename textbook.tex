@@ -308,75 +308,80 @@ computer screen.\\
 
 \begin{gbox}
 \begin{center}
-Note: The mouse controls only adjust the view of the object, they do not 
-make any changes in its position in the 3D coordinate system of the model.
+The mouse controls only adjust the view of the model in the X, Y and Z coordinates 
+associated with your screen. They do not 
+make any changes to the model itself.
 \end{center}
 \end{gbox}
 
 
 \subsection{RGB colors}
 
-Before we move on to other 3D objects, adjust the code in the input cell to \\
+According to the {\em additive color model} which is based on the human perception of colors,
+every color can be obtained by mixing the shades of Red, Green and Blue. These are 
+called {\em additive primary colors} or just {\em primary colors}. The resulting color depends on the proportions of the 
+primary colors in the mix. It is customary to define these proportions by an integer 
+between 0 and 255 for each primary color. So, the resulting color is a triplet of 
+real numbers between 0 and 255. For the primary colors we have\\
 
-\begin{bbox}
-\begin{verbatim}
-c = CUBE(1)
-lab.view(c, [102, 230, 153])
-\end{verbatim}
-\end{bbox}
-\index{CUBE}
-\index{lab.view}
-\vspace{6mm}
-
-\noindent
-The same could be done by creating a separate variable (called, say, {\tt col})
-for the color and passing it into the {\tt lab.view()} function:\\
-
-\begin{bbox}
-\begin{verbatim}
-c = CUBE(1)
-col = [102, 230, 153]
-lab.view(c, col)
-\end{verbatim}
-\end{bbox}
-\vspace{6mm}
-
-\noindent
-Run the script again.
-This will render the cube {\tt c} in a greenish color, as shown in 
-Fig. \ref{fig:cube2}.
+\begin{center}
+\begin{tabular}{|c||c|c|c|}
+\hline
+\ Color & \ R \ & \ G \ & \ B \ \\
+\hline
+\hline
+Red & \ 255 \ & 0 & 0\\
+\hline
+\ Green \ & 0 & \ 255 \ & 0\\
+\hline
+Blue & 0 & 0 & \ 255\ \\
+\hline
+\end{tabular}
+\end{center}
+\vspace{4mm}
+These colors are shown in the following Fig. \ref{fig:rgb}.
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{img/cube2.png}
+\includegraphics[width=0.7\textwidth]{img/rgb.png}
 \end{center}
+\vspace{-4mm}
+\caption{Pure red [255, 0, 0], pure green [0, 255, 0], pure blue [0, 0, 255].}
 \vspace{-2mm}
-\caption{Changing the cube's color.}
-\vspace{2mm}
-\label{fig:cube2}
+\label{fig:rgb}
 \end{figure}
 \noindent
-The color can be further changed by redefining the triplet {\tt [102, 230, 153]}. 
-If the triplet is omitted, the object is rendered using grey color. Each value can 
-be an arbitrary integer between 0 and 255. Experiment for a while with various colors, keeping a few 
-simple rules in mind:
+When the proportions of all three primary colors are the same, the result is a shade of grey.
+With [0, 0, 0] one obtains black, with [255, 255, 255] white. This is illustrated in Fig. \ref{fig:rgb2}.
 
-\begin{itemize}
-\item With just the first value being non-zero, such as in {\tt [150, 0, 0]},
-      you get {\bf pure red}. The closer the value to 255, the lighter the color.
-      This holds for all three components.
-\item With just the second value being non-zero, such as in {\tt [0, 55, 0]},
-      you obtain {\bf pure green}.
-\item With just the third value being non-zero, such as in {\tt [0, 0, 222]},
-      you will have {\bf pure blue}. 
-\item Using three identical values will result into some shade of grey. For 
-      example, {\tt [0, 0, 0]}
-      means black and {\tt [255, 255, 255]} means white.
-\item Varying all three numbers, you can get any color that you want. It is not 
-      easy to translate a color, such as "purple", "cyan" or "orange" into the RGB
-      values. But there are many web pages that will do it for you, such as for
-      example http://kb.iu.edu/ data/aetf.html. Just google for "rgb tables".
-\end{itemize}
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{img/rgb2.png}
+\end{center}
+\vspace{-4mm}
+\caption{Black [0, 0, 0], dark grey [128, 128, 128], light grey [229, 220, 220].}
+%\vspace{-1cm}
+\vspace{-2mm}
+\label{fig:rgb2}
+\end{figure}
+\noindent
+\noindent
+Guessing RGB codes is not easy. If you need to find the numbers representing your favorite color, 
+the best way is to Google for "rgb color palette". You will find many pages that translate
+colors into RGB codes. Fig. \ref{fig:rgb3} shows three "easy" colors
+cyan, pink and yellow along with their RGB codes.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{img/rgb3.png}
+\end{center}
+\vspace{-4mm}
+\caption{Cyan [0, 255, 255], pink [255, 0, 255], yellow color [255, 255, 0].}
+\vspace{-4mm}
+\label{fig:rgb3}
+\end{figure}
+\noindent
 In Subsection \ref{subsec:multicolor} we will show how various objects in
 one scene can be displayed using different colors.
 
