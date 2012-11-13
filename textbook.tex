@@ -348,12 +348,12 @@ These colors are shown in the following Fig. \ref{fig:rgb}.
 \end{center}
 \vspace{-4mm}
 \caption{Pure red [255, 0, 0], pure green [0, 255, 0], pure blue [0, 0, 255].}
-\vspace{-2mm}
+\vspace{-4mm}
 \label{fig:rgb}
 \end{figure}
 \noindent
 When the proportions of all three primary colors are the same, the result is a shade of grey.
-With [0, 0, 0] one obtains black, with [255, 255, 255] white. This is illustrated in Fig. \ref{fig:rgb2}.
+With [0, 0, 0] one obtains black, with [255, 255, 255] white. This is illustrated in Fig. \ref{fig:rgb2}.\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
@@ -362,7 +362,7 @@ With [0, 0, 0] one obtains black, with [255, 255, 255] white. This is illustrate
 \vspace{-4mm}
 \caption{Black [0, 0, 0], dark grey [128, 128, 128], light grey [229, 220, 220].}
 %\vspace{-1cm}
-\vspace{-2mm}
+\vspace{-4mm}
 \label{fig:rgb2}
 \end{figure}
 \noindent
@@ -370,7 +370,7 @@ With [0, 0, 0] one obtains black, with [255, 255, 255] white. This is illustrate
 Guessing RGB codes is not easy. If you need to find the numbers representing your favorite color, 
 the best way is to Google for "rgb color palette". You will find many pages that translate
 colors into RGB codes. Fig. \ref{fig:rgb3} shows three "easy" colors
-cyan, pink and yellow along with their RGB codes.
+cyan, pink and yellow along with their RGB codes.\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
@@ -382,8 +382,10 @@ cyan, pink and yellow along with their RGB codes.
 \label{fig:rgb3}
 \end{figure}
 \noindent
-In Subsection \ref{subsec:multicolor} we will show how various objects in
-one scene can be displayed using different colors.
+In Subsection \ref{subsec:cube} we will learn how colors are applied to 
+objects in PLaSM. 
+In Subsection \ref{subsec:multicolor} we will see how various objects in
+one scene can be colored differently.
 
 \section{Creating Simple Objects}
 
@@ -400,36 +402,38 @@ one scene can be displayed using different colors.
 \vspace{4mm}
 
 
-\subsection{Cube}
+\subsection{Cube}\label{subsec:cube}
 
-We already know that the command {\tt CUBE(a)} renders a 3D cube of
-dimensions $a \times a \times a$. Let us review this command briefly again:\\
+The command {\tt CUBE(a)} creates a cube of dimensions $a \times a \times a$:\\
 
 \begin{bbox}
 \begin{verbatim}
 c = CUBE(1)
-col = [102, 230, 153]
-lab.view(c, col)
+brass = [181, 166, 66]
+lab.view(c, brass)
 \end{verbatim}
 \end{bbox}
 \index{CUBE}
 \vspace{6mm}
 
 \noindent
-The object is displayed in Fig. \ref{fig:cube-111}. Make sure to 
-notice that the cube is located in the first quadrant, with its 
-edges aligned with the axes $x$, $y$ and $z$, and one of its vertices
-lying at the origin $(0, 0, 0)$.
+The object is displayed in Fig. \ref{fig:cube-111}. 
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{img/cube-111.png}
+\includegraphics[width=0.4\textwidth]{img/cube-111.png}
 \end{center}
 \vspace{-4mm}
-\caption{Cube of dimensions $a \times a \times a$ with $a = 1$.}
+\caption{Brass cube of dimensions $a \times a \times a$ with $a = 1$.}
 \label{fig:cube-111}
+\vspace{-1cm}
 \end{figure}
+\newpage
 \noindent
+Notice that the cube is located in the first quadrant, with its 
+edges aligned with the coordinate axes $x$ (red), $y$ (green) and $z$ (blue). 
+One of its vertices lies at the origin $(0, 0, 0)$. Every cube created via 
+the {\tt CUBE} command will be positioned like this.\\
 
 \begin{gbox}
 To avoid mistakes when working with 
@@ -448,8 +452,8 @@ following script:\\
 \begin{bbox}
 \begin{verbatim}
 s = SQUARE(3)
-col = [102, 230, 153]
-lab.view(s, col)
+brass = [181, 166, 66]
+lab.view(s, brass)
 \end{verbatim}
 \end{bbox}
 \index{SQUARE}
@@ -462,10 +466,10 @@ the origin $(0, 0, 0)$ and its edges aligned with the axes $x$ and $y$.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.45\textwidth]{img/square-111.png}
+\includegraphics[width=0.4\textwidth]{img/square-111.png}
 \end{center}
 \vspace{-4mm}
-\caption{Square of dimensions $a \times a$ with $a = 3$.}
+\caption{Brass square of dimensions $a \times a$ with $a = 3$.}
 \label{fig:square-111}
 \end{figure}
 \noindent
@@ -484,25 +488,25 @@ is \\
 \begin{bbox}
 \begin{verbatim}
 s = SQUARE3D(3)
-col = [102, 230, 153]
-lab.view(s, col)
+brass = [181, 166, 66]
+lab.view(s, brass)
 \end{verbatim}
 \end{bbox}
 \index{SQUARE3D}
 \vspace{6mm}
 
 \noindent
-In reality, this object is a 3D cube whose third dimension was reduced
-to $0.001$. Later we will learn how to rotate, move, and scale such a square, and how to 
-intersect it with an arbitrary 3D object. The output of the above acript 
-is shown in Fig. \ref{fig:square-112}.
-\newpage
+In reality, this object is a cube whose third dimension was reduced
+to $0.001$. Later we will learn how to rotate, move, and scale such 
+objects, and how to intersect it with other 3D objects. The output 
+of the above acript is shown in Fig. \ref{fig:square-112}.
+
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.65\textwidth]{img/square-112.png}
 \end{center}
 \vspace{-4mm}
-\caption{Square of dimensions $a \times a$ with $a = 3$, rendered in 3D space.}
+\caption{Brass square of dimensions $a \times a$ with $a = 3$, rendered in 3D space.}
 \label{fig:square-112}
 \end{figure}
 \noindent
@@ -510,66 +514,67 @@ is shown in Fig. \ref{fig:square-112}.
 \subsection{Brick}
 
 The command {\tt BRICK(a, b, c)} \index{BRICK}
-renders a 3D brick of dimensions {\tt a}, {\tt b} and {\tt c}. 
+creates a brick of dimensions {\tt a}, {\tt b} and {\tt c}. 
 Let us change the code in the input cell to  \\
 
 \begin{bbox}
 \begin{verbatim}
 b = BRICK(3.0, 2.0, 1.0)
-col = [102, 230, 153]
-lab.view(b, col)
+copper = [184, 115, 51]
+lab.view(b, copper)
 \end{verbatim}
 \end{bbox}
 \index{BRICK}
 \vspace{6mm}
 
 \noindent
-and press the green arrow button.The result is displayed in Fig. \ref{fig:cuboid-1}.
+and press the green arrow button. The result is displayed in Fig. \ref{fig:cuboid-1}.
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.62\textwidth]{img/cuboid-1.png}
 \end{center}
 \vspace{-4mm}
-\caption{Brick of dimensions 3, 2 and 1.}
+\caption{Copper brick of dimensions 3, 2 and 1.}
 \label{fig:cuboid-1}
-\vspace{-1cm}
+%\vspace{-1cm}
 \end{figure}
-\newpage
 \noindent
 
 \subsection{Planar rectangle}
 
 \noindent
-Planar rectangle of dimensions $a$ and $b$ can be rendered using the 
+Planar rectangle of dimensions $a$, $b$ can be created with the 
 command {\tt RECTANGLE(a, b)}. For illustration, the output of a sample script\\
 
 \begin{bbox}
 \begin{verbatim}
-r = RECTANGLE(2.0, 1.0)
-col = [102, 230, 153]
-lab.view(r, col)
+r = RECTANGLE(3.0, 1.0)
+copper = [184, 115, 51]
+lab.view(r, copper)
 \end{verbatim}
 \end{bbox}
 \index{RECTANGLE}
 \vspace{6mm}
 
 \noindent
-is shown in Fig. \ref{fig:cuboid-2}.
+is shown in Fig. \ref{fig:cuboid-2}. Notice that the rectangle 
+is located in the first quadrant with its edges 
+aligned with coordinate axes, and that its bottom-left vertex lies at the 
+origin (0, 0).
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.6\textwidth]{img/cuboid-2.png}
 \end{center}
 \vspace{-4mm}
-\caption{Rectangle of dimensions 2 and 1.}
+\caption{Copper rectangle of dimensions 3 and 1.}
 \label{fig:cuboid-2}
 %\vspace{-1cm}
 \end{figure}
 \noindent
-Notice again that the rectangle is located in the first quadrant with its edges 
-aligned with coordinate axes, and that its bottom-left vertex lies at the 
-origin (0, 0).
 
 \subsection{Rectangle in 3D space}
 
@@ -579,9 +584,9 @@ can be illustrated using the script \\
 
 \begin{bbox}
 \begin{verbatim}
-r = RECTANGLE3D(2.0, 1.0)
-col = [102, 230, 153]
-lab.view(r, col)
+r = RECTANGLE3D(3.0, 1.0)
+copper = [184, 115, 51]
+lab.view(r, copper)
 \end{verbatim}
 \end{bbox}
 \index{RECTANGLE3D}
@@ -596,10 +601,10 @@ reduced to $0.001$. The output is shown in Fig. \ref{fig:rect-111}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.85\textwidth]{img/rect-111.png}
+\includegraphics[width=0.9\textwidth]{img/rect-111.png}
 \end{center}
 \vspace{-4mm}
-\caption{Rectangle of dimensions $a \times b$ with $a = 2$ and $b = 1$, rendered in 3D space.}
+\caption{Copper rectangle of dimensions $a \times b$ with $a = 3$, $b = 1$, rendered in 3D space.}
 \label{fig:rect-111}
 \end{figure}
 \noindent
@@ -610,15 +615,22 @@ reduced to $0.001$. The output is shown in Fig. \ref{fig:rect-111}.
 \subsection{Tetrahedron}
 
 Tetrahedron in PLaSM is defined using four 3D points that do not lie in the same 
-plane. A point is a 
-
-The command {\tt TETRAHEDRON([a1, a2, a3], [b1, b2, b3], [c1, c2, c3], [d1, d2, d3])} renders 
-a tetrahedron with the vertices {\tt [a1, a2, a3]}, {\tt [b1, b2, b3]}, {\tt [c1, c2, c3]}
-and {\tt [d1, d2, d3]}. The output of the sample code\\
+plane. Every 3D point in PLaSM is a triplet of real numbers enclosed in square brackets, such as $[0, 0, 0]$ (the 
+origin). To keep our script readable, it is a good idea to introduce new variables
+for points. Such as, the points $[-2, 0, 0]$, $[1, 0, 0]$, $[0, 4, 1]$, $[0, 1, 2]$
+can be called $A$, $B$, $C$ and $D$. 
+Then the command {\tt TETRAHEDRON(A, B, C, D)} creates a tetrahedron with the vertices 
+$A$, $B$, $C$ and $D$. The output of the code\\
 
 \begin{bbox}
 \begin{verbatim}
-out = TETRAHEDRON([-2, 0, 0], [1, 0, 0], [0, 4, 1], [0, 1, 2])
+A = [-2, 0, 0] 
+B = [1, 0, 0] 
+C = [0, 4, 1] 
+D = [0, 1, 2]
+tet = TETRAHEDRON(A, B, C, D)
+bronze = [140, 120, 83]
+lab.view(tet, bronze)
 \end{verbatim}
 \end{bbox}
 \index{TETRAHEDRON}
@@ -629,10 +641,10 @@ is shown in Fig. \ref{fig:chull}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.35\textwidth]{img/chull.png}
+\includegraphics[width=0.65\textwidth]{img/chull1.png}
 \end{center}
-\vspace{-4mm}
-\caption{Tetrahedron with vertices [-2, 0, 0], [1, 0, 0], [0, 4, 1] and [0, 1, 2].}
+\vspace{-2mm}
+\caption{Bronze tetrahedron with the vertices $[-2, 0, 0]$, $[1, 0, 0]$, $[0, 4, 1]$ and $[0, 1, 2]$.}
 \label{fig:chull}
 %\vspace{-1cm}
 \end{figure}
@@ -640,91 +652,171 @@ is shown in Fig. \ref{fig:chull}.
 
 \subsection{Planar triangle}
 
-Analogously, the command {\tt TRIANGLE([a1, a2], [b1, b2], [c1, c2])} renders 
-a triangle with the vertices {\tt [a1, a2]}, {\tt [b1, b2]} and {\tt [c1, c2]}. 
-
-\subsection{Triangle in 3D space}
-
-
-\subsection{Prism}\label{subsec:prism}
-
-Given a triangle {\tt B} and a positive number {\tt H}, the command 
-{\tt PRISM(B, H)} renders a prism with the base {\tt B} and height {\tt H}. 
-The output of the sample code\\
+Planar triangles are created using the command {\tt TRIANGLE(A, B, C)} where 
+$A$, $B$, $C$ are 2D points (pairs of real numbers enclosed in square brackets).
+For example, the triangle with vertices $[-1, 0]$, $[1, 0]$, $[0, 2]$ is 
+created using the following code:\\
 
 \begin{bbox}
 \begin{verbatim}
-B = TRIANGLE([-1, 0], [1, 0], [0, -2])
-H = 2.0
-out = PRISM(B, H)
+A = [-1, 0] 
+B = [1, 0] 
+C = [0, 2] 
+tria = TRIANGLE(A, B, C)
+bronze = [140, 120, 83]
+lab.view(tria, bronze)
 \end{verbatim}
 \end{bbox}
-\index{TRIANGLE}
-\index{PRISM}
+\index{TETRAHEDRON}
 \vspace{6mm}
 
 \noindent
-is shown in Fig. \ref{fig:prism}. The base {\tt B} can be any 2D polygon,
-as we will see in Subsection \ref{subsec:extrusion}.\\
+The output is shown in Fig. \ref{fig:tria-111}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.27\textwidth]{img/prism-0.png}
+\includegraphics[width=0.45\textwidth]{img/tria-111.png}
 \end{center}
 \vspace{-4mm}
-\caption{Prism with base {\tt B} and height {\tt H}.}
-\label{fig:prism}
-\vspace{-1cm}
+\caption{Bronze triangle with the vertices $[-1, 0]$, $[1, 0]$ and $[0, 2]$.}
+\label{fig:tria-111}
+%\vspace{-1cm}
 \end{figure}
+\noindent
 
+\subsection{Triangle in 3D space}
 
-\subsection{Sphere}
-
-Sphere of radius $R$ and center at (0, 0, 0) can be rendered using the command 
-{\tt SPHERE(R)}. The output of the sample code\\
+Knowing how squares and rectangles work in the 3D setting, you will
+not be surprized by learning that the command {\tt TRIANGLE3D(A, B, C)}
+creates a 3D triangle. The points $A$, $B$, $C$ are 2D points though, 
+and the triangle will lie in the $xy$-plane. Let us create the 
+same triangle as in the previous paragraph for illustration:\\
 
 \begin{bbox}
 \begin{verbatim}
-out = SPHERE(3.0)
+A = [-1, 0] 
+B = [1, 0] 
+C = [0, 2] 
+tria = TRIANGLE3D(A, B, C)
+bronze = [140, 120, 83]
+lab.view(tria, bronze)
+\end{verbatim}
+\end{bbox}
+\index{TETRAHEDRON}
+\vspace{6mm}
+
+\noindent
+The output is shown in Fig. \ref{fig:tria-112}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.65\textwidth]{img/tria-112.png}
+\end{center}
+\vspace{-4mm}
+\caption{Bronze triangle with the vertices $[-1, 0]$, $[1, 0]$ and $[0, 2]$, rendered in 3D space.}
+\label{fig:tria-112}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+
+\subsection{Sphere}
+
+Sphere with radius $r$ and center at $(0, 0, 0)$ is created using the command 
+{\tt SPHERE(r)}:\\
+
+\begin{bbox}
+\begin{verbatim}
+s = SPHERE(3.0)
+gold = [226, 178, 39]
+lab.view(s, gold)
 \end{verbatim}
 \end{bbox}
 \index{SPHERE}
 \vspace{6mm}
 
 \noindent
-is shown in Fig. \ref{fig:sphere-1}.
+The output is shown in Fig. \ref{fig:sphere-1}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.35\textwidth]{img/sphere-1.png}
+\includegraphics[width=0.55\textwidth]{img/sphere-1.png}
 \end{center}
 \vspace{-4mm}
-\caption{Sphere of radius $R$ and center at (0, 0, 0).}
+\caption{Gold sphere with radius $r = 3$ and center at $(0, 0, 0)$.}
 \label{fig:sphere-1}
-\vspace{-1cm}
+%\vspace{-1cm}
 \end{figure}
+\noindent
+Notice that the surface is approximated using small flat triangles. 
+We will discuss this in more detail in Subsection \ref{subsec:curved}
+where we will also show how the surface can be made smoother-looking.
+
 
 \subsection{Planar circle}
 
-
-Circle with radius $R$ and center at (0, 0), lying in the $xy$-plane 
-can be defined using the command {\tt CIRCLE(R)}:\\
+Planar circle with radius $r$ and center at $(0, 0)$ can be defined 
+using the command {\tt CIRCLE(r)}:\\
 
 \begin{bbox}
 \begin{verbatim}
-R = 5.0
-out = CIRCLE(R)
+c = CIRCLE(3.0)
+gold = [226, 178, 39]
+lab.view(c, gold)
 \end{verbatim}
 \end{bbox}
 \index{CIRCLE}
 \vspace{6mm}
 
 \noindent
+\noindent
+The output is shown in Fig. \ref{fig:circle-1}.
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{img/circle-1.png}
+\end{center}
+\vspace{-4mm}
+\caption{Gold planar circle with radius $r = 3$ and center at $(0, 0)$.}
+\label{fig:circle-1}
+%\vspace{-1cm}
+\end{figure}
+\noindent
 
 \subsection{Circle in 3D space}
 
+The command {\tt CIRCLE3D(r)}
+creates a 3D circle with center at the origin $(0, 0)$ that lies 
+in the $xy$-plane:\\
 
-\subsection{Approximation of curved surfaces} 
+\begin{bbox}
+\begin{verbatim}
+c = CIRCLE3D(3.0)
+gold = [226, 178, 39]
+lab.view(c, gold)
+\end{verbatim}
+\end{bbox}
+\index{CIRCLE3D}
+\vspace{6mm}
+
+\noindent
+The output is shown in Fig. \ref{fig:circle-2}.
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.65\textwidth]{img/circle-2.png}
+\end{center}
+\vspace{-4mm}
+\caption{Gold circle with radius $r = 3$ and center at $(0, 0)$, rendered in 3D space.}
+\label{fig:circle-2}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+
+\subsection{Approximation of curved surfaces} \label{subsec:curved}
+
+ELABORATE MORE - SHOW MORE EXAMPLES
 
 In PLaSM, curved surfaces such as the spherical one shown in Fig. \ref{fig:sphere-1}
 are always approximated using linear segments. Each curved object comes
@@ -794,12 +886,49 @@ c = CIRCLE(R, 32)
 \end{bbox}
 \index{CIRCLE}
 \vspace{6mm}
+\noindent
+
+\subsection{Prism}\label{subsec:prism}
+
+Given a polygon {\tt b} and a positive number {\tt h}, the command 
+{\tt PRISM(b, h)} creates a prism with the base {\tt b} and height {\tt h}. 
+The base {\tt b} can be a triangle:\\
+
+SHOW VARIOUS POLYGONS HERE (DERIVED FROM CIRCLE)\\
+
+\begin{bbox}
+\begin{verbatim}
+A = [-1, 0] 
+B = [1, 0] 
+C = [0, 2] 
+b = TRIANGLE(A, B, C)
+h = 2.0
+P = PRISM(b, h)
+bronze = [140, 120, 83]
+lab.view(P, bronze)
+\end{verbatim}
+\end{bbox}
+\index{TRIANGLE}
+\index{PRISM}
+\vspace{6mm}
 
 \noindent
+is shown in Fig. \ref{fig:prism}. The base {\tt B} can be any 2D polygon,
+as we will see in Subsection \ref{subsec:extrusion}.\\
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{img/prism-0.png}
+\end{center}
+\vspace{-4mm}
+\caption{Bronze prism with base {\tt tria} and height {\tt h}.}
+\label{fig:prism}
+%\vspace{-1cm}
+\end{figure}
 
 \subsection{Cylinder}
 
-A cylinder of radius $R$ and height $H$ can be defined using 
+Cylinder with radius $R$ and height $H$ can be defined using 
 the command {\tt CYLINDER(R, H)}. The cylinder's axis is in 
 the $z$-direction, and the midpoint of its base circle is the 
 origin (0, 0, 0). The output of the sample code\\
@@ -822,7 +951,7 @@ is shown in Fig. \ref{fig:cyl-1}.
 \includegraphics[width=0.3\textwidth]{img/cyl-1.png}
 \end{center}
 \vspace{-4mm}
-\caption{Cylinder of radius $R$ and height $H$.}
+\caption{Cylinder with radius $R$ and height $H$.}
 \label{fig:cyl-1}
 %\vspace{-1cm}
 \end{figure}
@@ -888,7 +1017,7 @@ t = TUBE(r, R, H, M)
 
 \subsection{Cone}\label{par:coco}
 
-Cone of radius $R$ and height $H$ is defined using the command 
+Cone with radius $R$ and height $H$ is defined using the command 
 {\tt CONE(R, H)}. The cone's axis coincides with the $z$-axis and 
 the center of the base circle lies at the origin (0, 0, 0).
 The output of the sample code\\
@@ -905,14 +1034,13 @@ out = CONE(R, H)
 
 \noindent
 is shown in Fig. \ref{fig:convexhull-2a}.
-\newpage
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.27\textwidth]{img/convexhull-2.png}
 \end{center}
 \vspace{-4mm}
-\caption{Cone of radius $R$ and height $H$.}
+\caption{Cone with radius $R$ and height $H$.}
 \label{fig:convexhull-2a}
 %\vspace{-1cm}
 \end{figure}
@@ -950,9 +1078,8 @@ will render a pyramid shown in Fig. \ref{fig:cone-4}.
 \vspace{-4mm}
 \caption{Pyramid rendered using the {\tt CONE} command.}
 \label{fig:cone-4}
-\vspace{-1cm}
+%\vspace{-1cm}
 \end{figure}
-\newpage
 \noindent
 The same trick, of course, can be used with SPHERE, CYLINDER, TUBE and any 
 other object that has curved boundary.
@@ -1413,7 +1540,7 @@ Let us also mention the command {\tt SIZE(obj, i)} that returns the length of
 the object {\tt obj} in the i-th spatial direction.
 \index{SCALE}
 \index{SIZE}
-We can illustrate the {\tt SCALE} command on a cylinder {\tt cyl} of radius 1.0 
+We can illustrate the {\tt SCALE} command on a cylinder {\tt cyl} with radius 1.0 
 and height 0.3:\\
 
 \begin{bbox}
@@ -1435,7 +1562,7 @@ in Fig. \ref{fig:scale-0}.
 \includegraphics[width=0.35\textwidth]{img/scale-0.png}
 \end{center}
 \vspace{-4mm}
-\caption{Cylinder of radius 1.0 and height 0.3.}
+\caption{Cylinder with radius 1.0 and height 0.3.}
 \label{fig:scale-0}
 %\vspace{-1cm}
 \end{figure}
@@ -2147,7 +2274,7 @@ Subtracting objects from each other makes it possible
 to drill holes, cut and slice objects, round edges, make 
 imprints, and much more. 
 For illustration, let us create a $2 \times 2 \times 2$ cube and subtract 
-a cylinder of radius 1.0 and height 3.0 from it. As usual it is important to remember where 
+a cylinder with radius 1.0 and height 3.0 from it. As usual it is important to remember where 
 in the coordinate system all objects are positioned -- the cube lies in the 
 first quadrant, with three of its edges meeting at the origin (0, 0, 0).
 The cylinder's axis coincides with the $z$-axis and the center of its base
@@ -2873,7 +3000,7 @@ The corresponding wireframe plot with 100 linearly interpolated cells is shown i
 \noindent
 \noindent
 \underline{\em Example 3}: Now let us render a cylindrical surface 
-of radius 1 and height 1 using the reference rectangle $(0, 2\pi)\times(0, 1)$. 
+with radius 1 and height 1 using the reference rectangle $(0, 2\pi)\times(0, 1)$. 
 The interval $(0, 2\pi)$ represents angular direction and $(0, 1)$ the $z$-direction. 
 The map is defined as
 
@@ -4399,7 +4526,7 @@ section of the Python programming worksheet.
 Now let us practice scripting on a few examples.
 First we will generate a polygon with $N$ equally-long 
 edges that is inscribed in 
-a circle of radius $R$. Notice that the points
+a circle with radius $R$. Notice that the points
 $(R  \cos(a), R  \sin(a))$ where $a$ is an angle between 
 $0$ and $2\pi$, lie on the circle with center (0, 0) and 
 radius $R$:\\
@@ -4421,7 +4548,7 @@ out = CONVEXHULL(*points)
 \subsection{Cone via scripting}\label{par:cocon}
 
 Next let us tweak the script
-from Subsection \ref{subsec:polygon} to construct a cone of radius
+from Subsection \ref{subsec:polygon} to construct a cone with radius
 $R$ and height $H$. All we need to do is to add a zero third coordinate 
 to the points generated in that script, and add one more point -- the 
 tip of the cone. The CONVEXHULL command will take care of the rest:\\
