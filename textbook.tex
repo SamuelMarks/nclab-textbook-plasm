@@ -50,25 +50,25 @@ defines a unit sphere {\tt s},\\
 
 \begin{bbox}
 \begin{verbatim}
-out = DIFF(c, s)
+o = DIFF(c, s)
 \end{verbatim}
 \end{bbox}
 \index{DIFF}
 \vspace{6mm}
 
 \noindent
-calculates their difference {\tt out}, and\\
+calculates their difference {\tt o}, and\\
 
 \begin{bbox}
 \begin{verbatim}
-lab.view(out)
+lab.view(o)
 \end{verbatim}
 \end{bbox}
 \index{lab.view}
 \vspace{6mm}
 
 \noindent
-displays the output {\tt out} using a default grey color,
+displays the object {\tt o} using a default grey color,
 as shown in Fig. \ref{fig:diffcube}.
 \newpage
 
@@ -77,7 +77,7 @@ as shown in Fig. \ref{fig:diffcube}.
 \includegraphics[width=6cm]{img/sph-cube-111.png}
 \end{center}
 \vspace{-6mm}
-\caption{Sphere {\tt s} was subtracted from the cube {\tt c}.}
+\caption{Object {\tt o} obtained by subtracting the sphere {\tt s} from the cube {\tt c}.}
 %\vspace{-1cm}
 \label{fig:diffcube}
 \end{figure}
@@ -462,18 +462,18 @@ lab.view(s, brass)
 \noindent
 The square is shown in Fig. \ref{fig:square-111}. Again notice that 
 it is located in the first quadrant, with one vertex lying at 
-the origin $(0, 0, 0)$ and its edges aligned with the axes $x$ and $y$.
+the origin $(0, 0)$ and its edges aligned with the axes $x$ and $y$.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.4\textwidth]{img/square-111.png}
+\includegraphics[width=0.5\textwidth]{img/square-111.png}
 \end{center}
 \vspace{-4mm}
 \caption{Brass square of dimensions $a \times a$ with $a = 3$.}
 \label{fig:square-111}
+\vspace{-1cm}
 \end{figure}
-\noindent
-
+\newpage
 \subsection{Square in 3D space}
 
 The planar square introduced in the previous paragraph is a purely 
@@ -562,17 +562,17 @@ lab.view(r, copper)
 is shown in Fig. \ref{fig:cuboid-2}. Notice that the rectangle 
 is located in the first quadrant with its edges 
 aligned with coordinate axes, and that its bottom-left vertex lies at the 
-origin (0, 0).
+origin $(0, 0)$.
 \newpage
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.6\textwidth]{img/cuboid-2.png}
+\includegraphics[width=0.8\textwidth]{img/cuboid-2.png}
 \end{center}
-\vspace{-4mm}
+\vspace{-6mm}
 \caption{Copper rectangle of dimensions 3 and 1.}
 \label{fig:cuboid-2}
-%\vspace{-1cm}
+\vspace{-1cm}
 \end{figure}
 \noindent
 
@@ -606,9 +606,10 @@ reduced to $0.001$. The output is shown in Fig. \ref{fig:rect-111}.
 \vspace{-4mm}
 \caption{Copper rectangle of dimensions $a \times b$ with $a = 3$, $b = 1$, rendered in 3D space.}
 \label{fig:rect-111}
+\vspace{-1cm}
 \end{figure}
 \noindent
-
+\newpage
 
 
 
@@ -675,7 +676,7 @@ The output is shown in Fig. \ref{fig:tria-111}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.45\textwidth]{img/tria-111.png}
+\includegraphics[width=0.55\textwidth]{img/tria-111.png}
 \end{center}
 \vspace{-4mm}
 \caption{Bronze triangle with the vertices $[-1, 0]$, $[1, 0]$ and $[0, 2]$.}
@@ -710,7 +711,7 @@ The output is shown in Fig. \ref{fig:tria-112}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.65\textwidth]{img/tria-112.png}
+\includegraphics[width=0.6\textwidth]{img/tria-112.png}
 \end{center}
 \vspace{-4mm}
 \caption{Bronze triangle with the vertices $[-1, 0]$, $[1, 0]$ and $[0, 2]$, rendered in 3D space.}
@@ -747,9 +748,10 @@ The output is shown in Fig. \ref{fig:sphere-1}.
 %\vspace{-1cm}
 \end{figure}
 \noindent
-Notice that the surface is approximated using small flat triangles. 
+Notice that the surface is approximated using small flat sections. 
 We will discuss this in more detail in Subsection \ref{subsec:curved}
-where we will also show how the surface can be made smoother-looking.
+where we will also show how the spherical surface can be made 
+smoother or coarser.
 
 
 \subsection{Planar circle}
@@ -774,7 +776,7 @@ The output is shown in Fig. \ref{fig:circle-1}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.45\textwidth]{img/circle-1.png}
+\includegraphics[width=0.6\textwidth]{img/circle-1.png}
 \end{center}
 \vspace{-4mm}
 \caption{Gold planar circle with radius $r = 3$ and center at $(0, 0)$.}
@@ -782,12 +784,16 @@ The output is shown in Fig. \ref{fig:circle-1}.
 %\vspace{-1cm}
 \end{figure}
 \noindent
+In fact this is a polygon with many edges. In Subsection \ref{subsec:curved} we will show how to 
+reduce the number of edges in order to obtain various equilateral polygons.
 
 \subsection{Circle in 3D space}
 
-The command {\tt CIRCLE3D(r)}
+Finally, the command {\tt CIRCLE3D(r)}
 creates a 3D circle with center at the origin $(0, 0)$ that lies 
-in the $xy$-plane:\\
+in the $xy$-plane. This is the last in the series of 2D objects 
+created in 3D space, and it is constructed via the following 
+script:\\
 
 \begin{bbox}
 \begin{verbatim}
@@ -813,15 +819,17 @@ The output is shown in Fig. \ref{fig:circle-2}.
 %\vspace{-1cm}
 \end{figure}
 \noindent
+As all the square, rectangle, and triangle in the 3D space also the circle is 
+in reality a cylinder of height 0.001. The knowledge of this technical detail 
+will be useful for performing operations such as intersection, union, difference
+and xor of these 2D objects.
 
 \subsection{Approximation of curved surfaces} \label{subsec:curved}
-
-ELABORATE MORE - SHOW MORE EXAMPLES
 
 In PLaSM, curved surfaces such as the spherical one shown in Fig. \ref{fig:sphere-1}
 are always approximated using linear segments. Each curved object comes
 with a default division that the user can adjust if needed. For the 
-{\tt SPHERE} command, the default divisions are 32 in the angular direction 
+{\tt SPHERE} command, the default divisions are 64 in the angular direction 
 and 32 in the $z$-direction. The division can be used as an optional argument.
 If there are two divisions, they are always enclosed in square brackets. Hence, 
 the command\\
@@ -839,105 +847,134 @@ is equivalent to \\
 
 \begin{bbox}
 \begin{verbatim}
-s = SPHERE(3.0, [32, 32])
+s = SPHERE(3.0, [32, 64])
 \end{verbatim}
 \end{bbox}
 \index{SPHERE}
 \vspace{6mm}
 
 \noindent
-The default sphere is approximated using $32^2 = 1024$ linear
+Therefore the default sphere is approximated using $32\cdot 64 = 2048$ linear
 segments. If you decide to make it look better by using 
 twice finer division in both directions,\\
 
 \begin{bbox}
 \begin{verbatim}
-s = SPHERE(3.0, [64, 64])
+s = SPHERE(3.0, [64, 128])
 \end{verbatim}
 \end{bbox}
 \index{SPHERE}
 \vspace{6mm}
 
 \noindent
-then the number of linear segments jumps to $64^2 = 4096$. Making 
-both divisions twice finer once more would yield $128^2 = 16384$ linear
-segments. 
+then the number of linear segments jumps to $64\cdot 128 = 8192$. Making 
+both divisions twice finer once more would yield $128 \cdot 256 = 32768$ linear
+segments. This is a lot.\\
 
-If you decide to make the surface representation finer, then you may experience 
-slower rendering in your web browser as there simply is more data 
-to transfer from the server. Once the object is in your web browser,
-then real-time rendering (rotating, scaling, moving) is done by your 
-graphic card, and thus it depends entirely on its power how smooth
-it will be. One last aspect to consider is that for Boolean operations 
-such as intersection of objects, that will be discussed later, the 
-computational algorithm works with all linear segments of all objects. 
-In this case, fine representation of curved surfaces put more workload 
-on the server, which results in higher memory consumption and longer 
-computing times. 
-
-What we said above applies to circles as well. By default, every circle 
-is approximated using an equilateral polygon 
-with 64 edges. To change the number of edges for example to 32, type\\
-
-\begin{bbox}
-\begin{verbatim}
-c = CIRCLE(R, 32)
-\end{verbatim}
-\end{bbox}
-\index{CIRCLE}
-\vspace{6mm}
-\noindent
-
-\subsection{Prism}\label{subsec:prism}
-
-Given a polygon {\tt b} and a positive number {\tt h}, the command 
-{\tt PRISM(b, h)} creates a prism with the base {\tt b} and height {\tt h}. 
-The base {\tt b} can be a triangle:\\
-
-SHOW VARIOUS POLYGONS HERE (DERIVED FROM CIRCLE)\\
-
-\begin{bbox}
-\begin{verbatim}
-A = [-1, 0] 
-B = [1, 0] 
-C = [0, 2] 
-b = TRIANGLE(A, B, C)
-h = 2.0
-P = PRISM(b, h)
-bronze = [140, 120, 83]
-lab.view(P, bronze)
-\end{verbatim}
-\end{bbox}
-\index{TRIANGLE}
-\index{PRISM}
+\begin{gbox}
+\begin{center}
+Making the number of linear segments large means nicer image but also 
+more work for the server and much more data transfer. Also Boolean 
+operations (intersections, unions, etc.) take much more
+time if the boundary of the objects has many segments.
+\end{center}
+\end{gbox}
 \vspace{6mm}
 
 \noindent
-is shown in Fig. \ref{fig:prism}. The base {\tt B} can be any 2D polygon,
-as we will see in Subsection \ref{subsec:extrusion}.\\
+The knowledge of the subdivisions can be used to create 
+various interesting objects such as a diamond:\\
+
+\begin{bbox}
+\begin{verbatim}
+s = SPHERE(3.0, [2, 8])
+gold = [226, 178, 39]
+lab.view(s, gold)
+\end{verbatim}
+\end{bbox}
+\index{SPHERE}
+\vspace{6mm}
+
+\noindent
+The output is shown in Fig. \ref{fig:diam-111}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.45\textwidth]{img/prism-0.png}
+\includegraphics[width=0.5\textwidth]{img/diam-111.png}
 \end{center}
 \vspace{-4mm}
-\caption{Bronze prism with base {\tt tria} and height {\tt h}.}
-\label{fig:prism}
+\caption{Using {\tt SPHERE} with subdivisions {\tt [2, 8]} yields a diamond.}
+\label{fig:diam-111}
 %\vspace{-1cm}
 \end{figure}
+\noindent
+Another object that can be created using the {\tt SPHERE} command 
+with subdivisions {\tt [64, 8]} is shown in Fig. \ref{fig:diam-112}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/diam-112.png}
+\end{center}
+\vspace{-4mm}
+\caption{{\tt SPHERE} with subdivisions {\tt [64, 8]}.}
+\label{fig:diam-112}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+Analogously, the {\tt CIRCLE(r)} command is equivalent to {\tt CIRCLE(r, 64)} 
+and it approximates the circular boundary using an equilateral polygon with 
+64 edges. Various equilateral polygons that can be created using the 
+{\tt CIRCLE} command are shown in Fig. \ref{fig:ccc-111}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/ccc-111.png}
+\end{center}
+\vspace{-4mm}
+\caption{{\tt CIRCLE} with subdivisions {\tt 3}, {\tt 4}, {\tt 5} and {\tt 6}.}
+\label{fig:ccc-111}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+
+
+\subsection{Prism}\label{subsec:prism}
+
+Given any polygon {\tt b} and a positive number {\tt h}, the command 
+{\tt PRISM(b, h)} creates a prism with the base {\tt b} and height {\tt h}. 
+For illustration, prisms of height {\tt h = 3} corresponding to the 
+polygons shown in Fig. \ref{fig:ccc-111} are depicted below:
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{img/prism-111.png}
+\end{center}
+\vspace{-4mm}
+\caption{Prisms with {\tt h = 3} corresponding to polygons from Fig. \ref{fig:ccc-111}.}
+\label{fig:prism-111}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+The basis also can be a {\tt SQUARE}, {\tt RECTANGLE}, {\tt TRIANGLE}
+and even a {\tt CIRCLE}. In the last case, we obtain a cylinder. 
+To keep things simple, PLaSM provides a command {\tt CYLINDER} 
+that does it.
+
+
 
 \subsection{Cylinder}
 
-Cylinder with radius $R$ and height $H$ can be defined using 
-the command {\tt CYLINDER(R, H)}. The cylinder's axis is in 
+Cylinder with radius {\tt r} and height {\tt h} can be defined using 
+the command {\tt CYLINDER(r, h)}. The cylinder's axis is in 
 the $z$-direction, and the midpoint of its base circle is the 
-origin (0, 0, 0). The output of the sample code\\
+origin $(0, 0, 0)$. The output of the sample code\\
 
 \begin{bbox}
 \begin{verbatim}
-R = 0.25
-H = 1.0
-out = CYLINDER(R, H)
+r = 0.25
+h = 1.0
+c = CYLINDER(r, h)
+lab.view(c, gold)
 \end{verbatim}
 \end{bbox}
 \index{CYLINDER}
@@ -948,20 +985,20 @@ is shown in Fig. \ref{fig:cyl-1}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.3\textwidth]{img/cyl-1.png}
+\includegraphics[width=0.4\textwidth]{img/cyl-1.png}
 \end{center}
 \vspace{-4mm}
-\caption{Cylinder with radius $R$ and height $H$.}
+\caption{Cylinder with radius {\tt r} and height {\tt h}.}
 \label{fig:cyl-1}
 %\vspace{-1cm}
 \end{figure}
 \noindent
 By default, the curved surface is split into 64 vertical linear segments. To 
-change the division to another number {\tt M}, use\\
+change the division to another integer number {\tt m}, use\\
 
 \begin{bbox}
 \begin{verbatim}
-c = CYLINDER(R, H, M)
+c = CYLINDER(r, h, m)
 \end{verbatim}
 \end{bbox}
 \index{CYLINDER}
@@ -971,19 +1008,19 @@ c = CYLINDER(R, H, M)
 
 \subsection{Tube}
 
-Tube of inner radius $r$, outer radius $R$ and height
-$H$ is rendered using the command {\tt TUBE(r, R, H)}. 
+Tube of inner radius {\tt r}, outer radius {\tt R} and height
+{\tt h} is rendered using the command {\tt TUBE(r, R, h)}. 
 The tube is positioned in the global coordinate system 
-as the cylinder -- its axis coincides with the $z$-axis and 
-the center of its base is at (0, 0, 0). 
-The output of the sample code\\
+same as the cylinder -- its axis coincides with the $z$-axis and 
+the center of its base is at $(0, 0, 0)$. The output of the sample code\\
 
 \begin{bbox}
 \begin{verbatim}
-r = 0.9
-R = 1.0
-H = 3.0
-out = TUBE(r, R, H)
+r = 0.2
+R = 0.25
+h = 1.0
+t = TUBE(r, R, h)
+lab.view(t, gold)
 \end{verbatim}
 \end{bbox}
 \index{TUBE}
@@ -994,63 +1031,62 @@ is shown in Fig. \ref{fig:tube-1}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.3\textwidth]{img/tube-1.png}
+\includegraphics[width=0.4\textwidth]{img/tube-1.png}
 \end{center}
 \vspace{-4mm}
-\caption{Tube of inner radius $r$, outer radius $R$ and height $H$.}
+\caption{Tube of inner radius {\tt r}, outer radius {\tt R} and height {\tt h}.}
 \label{fig:tube-1}
 %\vspace{-1cm}
 \end{figure}
 \noindent
 By default, the inner and outer curved surfaces are split each into 64 vertical 
-linear segments. To change the division to another number {\tt M}, use\\
+linear segments. To change the division to another integer number {\tt m}, use\\
 
 \begin{bbox}
 \begin{verbatim}
-t = TUBE(r, R, H, M)
+t = TUBE(r, R, h, m)
 \end{verbatim}
 \end{bbox}
 \index{TUBE}
-\vspace{6mm}
-
-\noindent
 
 \subsection{Cone}\label{par:coco}
 
-Cone with radius $R$ and height $H$ is defined using the command 
-{\tt CONE(R, H)}. The cone's axis coincides with the $z$-axis and 
-the center of the base circle lies at the origin (0, 0, 0).
+Cone with radius {\tt r} and height {\tt h} is created using the command 
+{\tt CONE(r, h)}. The cone's axis coincides with the $z$-axis and 
+the center of the base circle lies at the origin $(0, 0, 0)$.
 The output of the sample code\\
 
 \begin{bbox}
 \begin{verbatim}
-R = 5
-H = 10
-out = CONE(R, H)
+r = 5
+h = 10
+c = CONE(r, h)
+lab.view(c, gold)
 \end{verbatim}
 \end{bbox}
 \index{CONE}
 \vspace{6mm}
 
 \noindent
-is shown in Fig. \ref{fig:convexhull-2a}.
+is shown in Fig. \ref{fig:convexhull-2a}.\\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.27\textwidth]{img/convexhull-2.png}
+\includegraphics[width=0.5\textwidth]{img/cone-1.png}
 \end{center}
 \vspace{-4mm}
-\caption{Cone with radius $R$ and height $H$.}
+\caption{Cone with radius {\tt r} and height {\tt h}.}
 \label{fig:convexhull-2a}
-%\vspace{-1cm}
+\vspace{-1cm}
 \end{figure}
+\newpage
 \noindent
 By default, the curved surface is split into 64 triangular linear segments. To 
-change the division to another number {\tt M}, use\\
+change the division to another integer number {\tt m}, use\\
 
 \begin{bbox}
 \begin{verbatim}
-c = CONE(R, H, M)
+c = CONE(r, h, m)
 \end{verbatim}
 \end{bbox}
 \index{CONE}
@@ -1058,78 +1094,60 @@ c = CONE(R, H, M)
 
 \noindent
 The linear surface representation can be used 
-to render various other objects. For example, the code \\
-
-\begin{bbox}
-\begin{verbatim}
-out = CONE(R, H, 4)
-\end{verbatim}
-\end{bbox}
-\index{CONE}
-\vspace{6mm}
-
-\noindent
-will render a pyramid shown in Fig. \ref{fig:cone-4}.
+to render pyramids, as shown in  Fig. \ref{fig:cone-4}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.27\textwidth]{img/cone-4.png}
+\includegraphics[width=0.8\textwidth]{img/pyrams-111.png}
 \end{center}
 \vspace{-4mm}
-\caption{Pyramid rendered using the {\tt CONE} command.}
+\caption{Pyramids created using the {\tt CONE} command with {\tt r = 5},
+\, {\tt h = 10} and {\tt m = 3}, {\tt 4}, {\tt 5}, {\tt 6}.}
 \label{fig:cone-4}
 %\vspace{-1cm}
 \end{figure}
 \noindent
-The same trick, of course, can be used with SPHERE, CYLINDER, TUBE and any 
-other object that has curved boundary.
 
 \subsection{Truncated cone}
 
-Truncated cone of base radius $R_1$, top radius $R_2$ and height $H$
-can be constructed as follows:\\
+Truncated cone with bottom radius {\tt r1}, top radius {\tt r2} 
+and height {\tt h} is created using the command 
+{\tt TRUNCONE(r1, r2, h)}. The cone's axis coincides with the $z$-axis and 
+the center of the base circle lies at the origin $(0, 0, 0)$.
+The output of the sample code\\
 
 \begin{bbox}
 \begin{verbatim}
-R1 = 5.0
-R2 = 2.5
-H = 5.0
-out = TRUNCONE(R1, R2, H)
+r1 = 5
+r2 = 2
+h = 5
+t = TRUNCONE(r1, r2, h)
+lab.view(t, gold)
 \end{verbatim}
 \end{bbox}
 \index{TRUNCONE}
 \vspace{6mm}
 
 \noindent
-Screenshot of the result is shown in Fig. \ref{fig:tcone}.
+The output is shown in Fig. \ref{fig:tcone}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.35\textwidth]{img/tcone-8.png}
+\includegraphics[width=0.5\textwidth]{img/truncone-1.png}
 \end{center}
 \vspace{-6mm}
-\caption{Truncated cone.}
+\caption{Truncated cone with bottom radius {\tt r1}, top radius {\tt r2}
+and height {\tt h}.}
 \label{fig:tcone}
 %\vspace{-1cm}
 \end{figure}
 \noindent
 By default, the curved surface is split into 64 trapezoidal linear segments. 
-To change the division to another number {\tt M}, use\\
+To change the division to another integer number {\tt m}, use\\
 
 \begin{bbox}
 \begin{verbatim}
-c = TRUNCONE(R1, R2, H, M)
-\end{verbatim}
-\end{bbox}
-\index{TRUNCONE}
-\vspace{6mm}
-
-\noindent
-As a simple trick, we can construct a truncated pyramid:\\
-
-\begin{bbox}
-\begin{verbatim}
-out = TRUNCONE(R1, R2, H, 4)
+t = TRUNCONE(r1, r2, h, m)
 \end{verbatim}
 \end{bbox}
 \index{TRUNCONE}
@@ -1140,54 +1158,55 @@ The output is shown in Fig. \ref{fig:tcone-9}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.35\textwidth]{img/tcone-9.png}
+\includegraphics[width=0.99\textwidth]{img/tpyrams-111.png}
 \end{center}
 \vspace{-6mm}
-\caption{Truncated pyramid.}
+\caption{Truncated pyramids with {\tt r1 = 5}, \, {\tt r2 = 2},\,
+{\tt h = 5} and {\tt m = 3}, {\tt 4}, {\tt 5} and {\tt 6}.}
 \label{fig:tcone-9}
-%\vspace{-1cm}
+\vspace{-1cm}
 \end{figure}
-%\newpage
+\newpage
 
 
 \subsection{Torus}
 
-Command {\tt TORUS(r, R)} renders a torus with inner radius $r$ and outer 
-radius $R$. It is used as follows:\\
+Command {\tt TORUS(r, R)} creates a torus with inner radius {\tt r} and outer 
+radius {\tt R}. It is used as follows:\\
 
 \begin{bbox}
 \begin{verbatim}
-r = 3.0
-R = 5.0
-out = TORUS(r, R)
+r = 3
+R = 5
+t = TORUS(r, R)
+lab.view(t, gold)
 \end{verbatim}
 \end{bbox}
 \index{TORUS}
 \vspace{6mm}
 
 \noindent
-The center of the torus is at the origin (0, 0, 0) and its axis
+The center of the torus is at the origin $(0, 0, 0)$ and its axis
 is the $z$-axis. This is illustrated in Fig. \ref{fig:torus-1}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.52\textwidth]{img/torus-1.png}
+\includegraphics[width=0.65\textwidth]{img/torus-1.png}
 \end{center}
 \vspace{-4mm}
-\caption{Torus with inner radius $r$, outer radius $R$ and center at the origin (0, 0, 0).}
+\caption{Torus with inner radius {\tt r}, outer radius {\tt R} and center at the origin $(0, 0, 0)$.}
 \label{fig:torus-1}
-\vspace{-1cm}
+%\vspace{-1cm}
 \end{figure}
-\newpage
 \noindent
 By default, the major (large) circle is split into 64 linear segments and
 the minor (small) one into 32. Thus the default command {\tt TORUS(r, R)} is
 equivalent to {\tt TORUS(r, R, [64, 32])}. To change the divisions to other 
-numbers {\tt [M, N]}, use\\
+integer numbers {\tt [m, n]}, use\\
 
 \begin{bbox}
 \begin{verbatim}
-c = TORUS(R, H, [M, N])
+t = TORUS(r, R, [m, n])
 \end{verbatim}
 \end{bbox}
 \index{TORUS}
@@ -1195,27 +1214,27 @@ c = TORUS(R, H, [M, N])
 
 \noindent
 Also here, the piecewise-linear surface representation can be used to
-create objects that would be much more difficult to construct by other means.  
-Fig. \ref{fig:torus-4} shows the output of the command {TORUS(3, 5, [64, 4])}.
+create interesting objects.   
+Fig. \ref{fig:torus-4} shows the output of the command {\tt TORUS(3, 5, [64, 4])}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{img/torus-4.png}
+\includegraphics[width=0.65\textwidth]{img/torus-4.png}
 \end{center}
 \vspace{-4mm}
-\caption{Output of the command {\tt TORUS(3, 5, [64, 4])}.}
+\caption{Object created with {\tt TORUS(3, 5, [64, 4])}.}
 \label{fig:torus-4}
 %\vspace{-1cm}
 \end{figure}
 \noindent
-Fig. \ref{fig:torus-5} shows the output of the command {TORUS(3, 5, [4, 64])}.\\
+Fig. \ref{fig:torus-5} shows the output of the command {\tt TORUS(3, 5, [4, 64])}.\\
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{img/torus-5.png}
+\includegraphics[width=0.75\textwidth]{img/torus-5.png}
 \end{center}
 \vspace{-4mm}
-\caption{Output of the command {\tt TORUS(3, 5, [4, 64])}.}
+\caption{Object created with {\tt TORUS(3, 5, [4, 64])}.}
 \label{fig:torus-5}
 %\vspace{-1cm}
 \end{figure}
@@ -1264,41 +1283,54 @@ takes a set of points and creates their convex hull:\\
 
 \begin{bbox}
 \begin{verbatim}
-out = CONVEXHULL([-1, 0], [1, 0], [0.5, 1], [-0.5, 1])
+o = CONVEXHULL([-1, 0], [1, 0], [0.5, 1], [-0.5, 1])
+lab.view(o, gold)
 \end{verbatim}
 \end{bbox}
 \index{CONVEXHULL}
 \vspace{6mm}
 
 \noindent
-This code renders a 2D trapezoid spanning the points (-1, 0), (1, 0), (0.5, 1) and 
-(-0.5, 1). The code\\
-
-\begin{bbox}
-\begin{verbatim}
-out = CONVEXHULL([-1, -1, 0], [1, -1, 0], [1, 1, 0], [-1, 1, 0], 
-[0, 0, 1])
-\end{verbatim}
-\end{bbox}
-\index{CONVEXHULL}
-\vspace{6mm}
-
-\noindent
-creates a 3D pyramid with base square (-1, 1)$\times$(-1, 1) and height 1,
-as shown in Fig. \ref{fig:pyra}. 
+This code renders a 2D trapezoid spanning the points $(-1, 0)$, $(1, 0)$, $(0.5, 1)$ and 
+$(-0.5, 1)$ as shown in Fig. \ref{fig:ch-111}.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.3\textwidth]{img/pyra.png}
+\includegraphics[width=0.6\textwidth]{img/ch-111.png}
 \end{center}
 \vspace{-4mm}
-\caption{3D pyramid constructed as a convex hull.}
+\caption{Convex hull of four 2D points.}
+\label{fig:ch-111}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+The code\\
+
+\begin{bbox}
+\begin{verbatim}
+o = CONVEXHULL([-1, -1, 0], [1, -1, 0], [1, 1, 0], 
+[-1, 1, 0], [0, 0, 1])
+lab.view(o, gold)
+\end{verbatim}
+\end{bbox}
+\index{CONVEXHULL}
+\vspace{6mm}
+
+\noindent
+creates a 3D object shown in Fig. \ref{fig:pyra}. 
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/ch-112.png}
+\end{center}
+\vspace{-4mm}
+\caption{3D object constructed via convex hull of 6 points.}
 \label{fig:pyra}
 %\vspace{-1cm}
 \end{figure}
 %\newpage
 \noindent
-If the user already has a list of points, defined for example as\\
+If you already have a list of points, defined for example as\\
 
 \begin{bbox}
 \begin{verbatim}
@@ -1320,53 +1352,61 @@ out = CONVEXHULL(*L)
 \vspace{6mm}
 
 \noindent
-
+This is Python syntax -- a primer in Python programming will be 
+given later.
 
 \subsection{Dodecahedron}
 
-A unit dodecahedron is created as follows:\\
+A (regular) dodecahedron is an object with 12 identical pentagonal 
+faces. It is one of the {\em Platonic solids} -- convex symmetric 3D objects 
+whose faces are regular polygons. There are only five of them
+-- the (regular) tetrahedron, cube, octahedron, dodecahedron and icosahedron. 
+For their extraordinary symmetry, these objects have been studied by 
+geometers for thousands of years. In PLaSM, a dodecahedron is created simply as:\\
 
 \begin{bbox}
 \begin{verbatim}
-out = DODECAHEDRON
+o = DODECAHEDRON
 \end{verbatim}
 \end{bbox}
 \index{DODECAHEDRON}
 \vspace{6mm}
 
 \noindent
-The output is shown in Fig. \ref{fig:dodeca}.
-\newpage
+Output:\\[-18mm]
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.35\textwidth]{img/dodeca-2.png}
+\includegraphics[width=0.6\textwidth]{img/dodeca-2.png}
 \end{center}
 \vspace{-4mm}
 \caption{Dodecahedron.}
 \label{fig:dodeca}
-%\vspace{-1cm}
+\vspace{-1cm}
 \end{figure}
+\newpage
 
 \subsection{Icosahedron}
 
-A unit icosahedron created via\\
+A (regular) icosahedron is an object with 20 triangular faces
+that also belongs to the five Platonic solids. In PLaSM it 
+is created via\\
 
 \begin{bbox}
 \begin{verbatim}
-out = ICOSAHEDRON
+o = ICOSAHEDRON
 \end{verbatim}
 \end{bbox}
 \index{ICOSAHEDRON}
 \vspace{6mm}
 
 \noindent
-is shown in Fig. \ref{fig:icosa}.
+The object is shown in Fig. \ref{fig:icosa}.
 
 %\newpage
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.35\textwidth]{img/icosa-2.png}
+\includegraphics[width=0.6\textwidth]{img/icosa-2.png}
 \end{center}
 \vspace{-4mm}
 \caption{Icosahedron.}
@@ -1376,15 +1416,15 @@ is shown in Fig. \ref{fig:icosa}.
 
 \subsection{Extrusion of 2D objects to 3D}\label{subsec:extrusion}
 
-2D objects that lie in the $xy$-plane can be extruded to 3D
-using the {\tt PRISM} command that we know from Subsection \ref{subsec:prism}. 
-As an example, let us extrude a 2D polygon obtained as a convex hull.\\
+An arbitrary 2D object that lies in the $xy$-plane can be extruded to 3D
+using the {\tt PRISM} command that we already know from Subsection \ref{subsec:prism}. 
+For illustration, let us extrude a sample 2D polygon obtained as convex hull:\\
 
 \begin{bbox}
 \begin{verbatim}
-B = CONVEXHULL([0, 0], [2, 0], [1, 2], [-1, 2])
-H = 0.5
-out = PRISM(B, H)
+b = CONVEXHULL([0, 0], [2, 0], [1, 2], [-1, 2])
+h = 0.5
+o = PRISM(b, h)
 \end{verbatim}
 \end{bbox}
 \index{CONVEXHULL}
@@ -1396,7 +1436,7 @@ The output is shown in Fig. \ref{fig:extrusion-3}.\\
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.4\textwidth]{img/extrude-3.png}
+\includegraphics[width=0.8\textwidth]{img/extrude-3.png}
 \end{center}
 \vspace{-4mm}
 \caption{Extrusion of a quadrilateral to 3D.}
@@ -1404,14 +1444,15 @@ The output is shown in Fig. \ref{fig:extrusion-3}.\\
 %\vspace{-1cm}
 \end{figure}
 \noindent
-The command {\tt PRISM(B, H)} uses a single interval in the $z$-direction. For future
-reference, let us also introduce the command {\tt EXTRUDE(N, B, H)} that yields the same
-extruded geometry as the {\tt PRISM} command, but subdivides the extrusion height {\tt H}
-into {\tt N} equally long subintervals. 
+The command {\tt PRISM(b, h)} uses a single interval in the $z$-direction. For future
+reference, let us also introduce the command {\tt EXTRUDE(n, b, h)} that yields the same
+extruded geometry as the {\tt PRISM} command, but it subdivides the extrusion height {\tt h}
+into {\tt n} equally long subintervals. This is practical when working with curved 
+shapes.
 
 \subsection{Grid and Cartesian product}\label{subsec:grids}
 
-PLaSM provides useful commands {\tt GRID} and {\tt POWER} that 
+PLaSM also provides useful commands {\tt GRID} and {\tt POWER} that 
 make it easy to work with grids and Cartesian product geometries. The command
 {\tt GRID} takes a list of positive and negative numbers where the 
 positive ones stand for intervals (more precisely for their lengths) 
@@ -1421,65 +1462,98 @@ real axis. For example, \\
 
 \begin{bbox}
 \begin{verbatim}
-GRID([2])
+g1 = GRID([5])
 \end{verbatim}
 \end{bbox}
 \index{GRID}
 \vspace{6mm}
 
 \noindent
-renders a single interval (0, 2). The command\\
+creates a single interval $(0, 5)$. The command\\
 
 \begin{bbox}
 \begin{verbatim}
-GRID([1, -3, 2])
+g2 = GRID([1, -0.5, 1, -0.5, 1])
 \end{verbatim}
 \end{bbox}
 \index{GRID}
 \vspace{6mm}
 
 \noindent
-renders two intervals (0, 1) and (4, 6), leaving an empty 
-space of length 3 between them. There is no limit of the 
-length of the list.
-The command\\
+creates three intervals $(0, 1)$, $(1.5, 2.5)$ and $(3, 4)$, 
+leaving empty spaces of length $0.5$ between them. There is 
+no limit on the number of intervals. Next, the command\\
 
 \begin{bbox}
 \begin{verbatim}
-grid_2d = POWER(grid1, grid2)
+G = POWER(g1, g2)
 \end{verbatim}
 \end{bbox}
+\index{POWER}
 \vspace{6mm}
 
 \noindent\index{POWER}
-creates a 2D object in the $xy$-plane that is the Cartesian 
-product of the two grids. This 2D object can be multiplied 
-with a third grid in the $z$-direction:
+creates a 2D object {\tt G} in the $xy$-plane which is the {\em Cartesian 
+product} of the two grids {\tt g1} and {\tt g2}. This object is shown in 
+Fig. \ref{fig:grid-111}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{img/grid-111.png}
+\end{center}
+\vspace{-4mm}
+\caption{Cartesian product of the grids {\tt g1} and {\tt g2}.}
+\label{fig:grid-111}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+This 2D object can be multiplied with a third grid in the $z$-direction.
+Let's say that the third grid is \\
 
 \begin{bbox}
 \begin{verbatim}
-grid_3d = POWER(grid_2d, grid2)
+g3 = GRID([0.5, -1, 0.5, -1, 0.5])
 \end{verbatim}
 \end{bbox}
 \index{POWER}
 \vspace{6mm}
 
 \noindent
-The result is a 3D solid object that is the Cartesian product 
-of the three one-dimensional grids. This object can be scaled, 
-translated, and rotated as any other solid object (to be discussed
-in the next Section).
+Then the result of the Cartesian product \\
 
-For illustration, consider the following script:
+\begin{bbox}
+\begin{verbatim}
+H = POWER(G, g3)
+\end{verbatim}
+\end{bbox}
+\index{POWER}
+\vspace{6mm}
+
+\noindent
+is a 3D geometry shown in Fig. \ref{fig:grid-112}.
+\newpage
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.4\textwidth]{img/grid-112.png}
+\end{center}
+\vspace{-4mm}
+\caption{Cartesian product of the grids {\tt G} and {\tt g3}.}
+\label{fig:grid-112}
+%\vspace{-1cm}
+\end{figure}
+\noindent
+\noindent
+Just to show one more application of {\tt GRID} and {\tt POWER},
+let's do:\\
 
 \begin{bbox}
 \begin{verbatim}
 g1 = GRID([3, -1, 3, -1, 3, -1, 3])
 g2 = GRID([2, -1, 2, -1, 2])
 g3 = GRID([1, -1, 1])
-
 planar_grid = POWER(g1, g2)
-out = POWER(planar_grid, g3)
+o = POWER(planar_grid, g3)
 \end{verbatim}
 \end{bbox}
 \index{GRID}
@@ -1487,18 +1561,18 @@ out = POWER(planar_grid, g3)
 \vspace{6mm}
 
 \noindent
-The resulting Cartesian product solid is shown in Fig. \ref{fig:grid1}.\\
+The object is shown in Fig. \ref{fig:grid1}.\\[-10mm]
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.6\textwidth]{img/grid1.png}
+\includegraphics[width=0.6\textwidth]{img/grid-113.png}
 \end{center}
 \vspace{-4mm}
-\caption{Cartesian product geometry.}
+\caption{Cartesian product of the grids {\tt g1}, {\tt g2} and {\tt g3}.}
 \label{fig:grid1}
-%\vspace{-1cm}
+\vspace{-1cm}
 \end{figure}
-%\newpage
+\newpage
 \noindent
  
 
@@ -1553,7 +1627,7 @@ cyl = CYLINDER(1.0, 0.3)
 
 \noindent
 As we know, the axis of this cylinder coincides with the $z$-axis 
-and that the center of its bottom face is at (0, 0, 0). This cylinder is shown 
+and that the center of its bottom face is at $(0, 0, 0)$. This cylinder is shown 
 in Fig. \ref{fig:scale-0}.
 \newpage
 
@@ -1581,7 +1655,7 @@ out = SCALE(cyl, 2.0, 1.0, 1.0)
 \vspace{6mm}
 
 \noindent
-\newpage
+%\newpage
 \noindent
 The output is shown in Fig. \ref{fig:scale-1}.
 
@@ -1680,7 +1754,7 @@ The output is shown in Fig. \ref{fig:scale-4}.
 \label{fig:scale-4}
 \vspace{-1cm}
 \end{figure}
-\newpage
+%\newpage
 
 \subsection{Translations} \label{sec:translate}
 
@@ -1752,13 +1826,13 @@ out = STRUCT(c, c2, c3)
 
 \noindent
 The output is shown in Fig. \ref{fig:comp-1}
-\newpage
+%\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.35\textwidth]{img/comp-1.png}
 \end{center}
 \vspace{-4mm}
-\caption{Multiple objects can be displayed at once using the STRUCT command.}
+\caption{Multiple objects can be displayed at once using the {\tt STRUCT} command.}
 \label{fig:comp-1}
 %\vspace{-1cm}
 \end{figure}
@@ -1784,7 +1858,7 @@ out = TOP(c, s)
 
 \noindent
 The output is shown in Fig. \ref{fig:top-1}.
-\newpage
+%\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1963,11 +2037,11 @@ The command {\tt RDEG(obj, axis, angle)} will accept
 angles in degrees.
 
 For 2D objects in the $xy$-plane, use {\tt axis = 3}. The axis of rotation 
-always passes through the origin (0, 0, 0), so it is important 
+always passes through the origin $(0, 0, 0)$, so it is important 
 to know exactly where your object is located. 
 
 For example, when a CUBE is created, its center does not lie
-at the origin of the coordinate system (0, 0, 0) -- the cube will 
+at the origin of the coordinate system $(0, 0, 0)$ -- the cube will 
 rotate about one of its edges. The following script will rotate 
 a cube {\tt c} by angle $\pi$ radians about the $z$-axis: \\
 
@@ -1989,7 +2063,7 @@ out = STRUCT(c, c2)
 \noindent
 The output is shown in Fig. \ref{fig:rot-1}. Clearly the axis of 
 rotation is where the two cubes meet.
-\newpage
+%\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -2005,7 +2079,7 @@ If we wanted to
 rotate the cube "in place", so that its center would not be moved,
 we would have to first translate the cube in such a way that its center
 lies at the origin. Let's do this. After moving the cube so that 
-its center is at (0, 0, 0), we will rotate it in two different directions,
+its center is at $(0, 0, 0)$, we will rotate it in two different directions,
 then move it by 2.0 in the $x$-direction and display along with 
 the original cube for comparison:\\
 
@@ -2276,11 +2350,11 @@ imprints, and much more.
 For illustration, let us create a $2 \times 2 \times 2$ cube and subtract 
 a cylinder with radius 1.0 and height 3.0 from it. As usual it is important to remember where 
 in the coordinate system all objects are positioned -- the cube lies in the 
-first quadrant, with three of its edges meeting at the origin (0, 0, 0).
+first quadrant, with three of its edges meeting at the origin $(0, 0, 0)$.
 The cylinder's axis coincides with the $z$-axis and the center of its base
 circle is the origin. Before perfoming any Boolean operations, it is a good 
 practice to display the objects together using the {\tt STRUCT} command. The 
-output of the script
+output of the script\\
 
 \begin{bbox}
 \begin{verbatim}
@@ -2531,7 +2605,7 @@ and its output is shown in Fig. \ref{fig:int-1}.\\
 \includegraphics[width=0.25\textwidth]{img/int-1c.png}
 \end{center}
 \vspace{-4mm}
-\caption{What a strange object!}
+\caption{What a strange object.}
 \label{fig:int-1}
 %\vspace{-1cm}
 \end{figure}
@@ -2602,8 +2676,9 @@ interior = T(interior, 0.07, 0, 0.07)
 body = DIFF(body, interior)
 
 # Top part:
-top = CONVEXHULL([0, 0, 1.2], [1, 0, 1.2], [1, 1, 1.2], [0, 1, 1.2], [0.01, 0.01, 1.21], \
-                 [0.99, 0.01, 1.21], [0.99, 0.99, 1.21], [0.01, 0.99, 1.12])
+top = CONVEXHULL([0, 0, 1.2], [1, 0, 1.2], [1, 1, 1.2], \
+                 [0, 1, 1.2], [0.01, 0.01, 1.21], [0.99, 0.01, 1.21], \
+                 [0.99, 0.99, 1.21], [0.01, 0.99, 1.12])
 
 # Shelves:
 shelf = BRICK(1, 0.85, 0.02)
@@ -2643,7 +2718,13 @@ h3 = R(h2, 2, -2*PI/3)
 h1 = T(h1, 0.5, -0.06, 0.6)
 h2 = T(h2, 0.5, -0.06, 0.6)
 h3 = T(h3, 0.5, -0.06, 0.6)
+\end{verbatim}
+\end{bbox}
+}
 
+{\small
+\begin{bbox}
+\begin{verbatim}
 # Bolts:
 b1 = CONVEXHULL([0.81, 0, 0.19], [0.83, 0, 0.17], [0.97, 0, 0.17], \ 
 [0.97, 0, 0.26], [0.83, 0, 0.26], [0.81, 0, 0.24], [0.815, -0.01, 0.195], \
@@ -2697,6 +2778,7 @@ lab.view(vault)
 
 \noindent
 The output is shown in Fig.\ref{fig:vault}.
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -2708,18 +2790,24 @@ The output is shown in Fig.\ref{fig:vault}.
 %\vspace{-1cm}
 \end{figure}
 \noindent
-Now let's define the drill: 
+Now let's define the drill: \\
+
 \begin{bbox}
+\begin{verbatim}
 drill = CYLINDER(0.1, 0.5)
 drill = R(drill, 2, PI/2)
 drill = T(drill, 0.1, 0.5, 0.55)
+\end{verbatim}
 \end{bbox}
 \index{CYLINDER}
 \index{ROTATE}
 \index{TRANSLATE}
-\index{}Now let's drill into the vault. First we will do it 
+\vspace{6mm}
+
+\noindent
+Next let's drill into the vault. First we will do it 
 the wrong way -- drilling into the {\tt vault} object
-that consists of many parts. 
+that consists of many parts. \\
 
 \begin{bbox}
 \begin{verbatim}
@@ -2734,10 +2822,10 @@ lab.view(STRUCT(drilled_vault))
 \noindent
 You can run this script but it will take a long time.
 
-The correct way is to perform the Boolean 
+The correct way to do this is to perform the Boolean 
 operation between the {\tt drill} and the {\tt body} 
 because the {\tt body} object that is much simpler 
-than the complete {\tt vault}: 
+than the complete {\tt vault}: \\
 
 \begin{bbox}
 \begin{verbatim}
@@ -2820,9 +2908,6 @@ ref_domain = POWER(dom1, dom2)
 \end{verbatim}
 \end{bbox}
 \index{INTERVALS}
-\vspace{6mm}
-
-\noindent
 
 \subsection{Mapping curves}
 
@@ -2836,13 +2921,18 @@ $P$ is called {\em reference map}. Let us show a few examples.\\
 $
 P(t) = [1+t, 1+t, 1+t]
 $
-which in Python is written as
+which in Python is written as\\
 
 \begin{bbox}
+\begin{verbatim}
 def P(t): return [1 + t, 1 + t, 1 + t]
+\end{verbatim}
 \end{bbox}
+\vspace{6mm}
+
+\noindent
 renders for $t$ in $(0, 1)$ a curve that is a straight line connecting the 
-points (1, 1, 1) and (2, 2, 2), as shown in Fig. \ref{fig:paramcu1}.
+points (1, 1, 1) and (2, 2, 2), as shown in Fig. \ref{fig:paramcu1}.\\[-9mm]
 
 \begin{figure}[!ht]
 \begin{center}
@@ -2866,11 +2956,16 @@ map $P$ in all three components. \\
 $
 P(t) = [\cos(t), \sin(t), 0]
 $
-whose Python form is
+whose Python form is\\
 
 \begin{bbox}
+\begin{verbatim}
 def P(t): return [cos(t), sin(t), 0]
+\end{verbatim}
 \end{bbox}
+\vspace{6mm}
+
+\noindent
 maps the reference interval $(0, 2\pi)$ to a circle in the 
 $xy$-plane, as shown in Fig. \ref{fig:paramcu2}.
 
@@ -2889,11 +2984,16 @@ $xy$-plane, as shown in Fig. \ref{fig:paramcu2}.
 $
 P(t) = [0, \cos(t), \sin(t)]
 $
-a.k.a.
+a.k.a.\\
 
 \begin{bbox}
+\begin{verbatim}
 def P(t): return [0, cos(t), sin(t)]
+\end{verbatim}
 \end{bbox}
+\vspace{6mm}
+
+\noindent
 maps the reference interval $(0, 2\pi)$ to a circle in the 
 $yz$-plane, as shown in Fig. \ref{fig:paramcu3}.
 
@@ -2912,12 +3012,17 @@ $yz$-plane, as shown in Fig. \ref{fig:paramcu3}.
 $$
 P(t) = [\cos(t), \sin(t), t]
 $$
-or
+or\\
 
 \begin{bbox}
+\begin{verbatim}
 def map(t):
     return [cos(t), sin(t), t]
+\end{verbatim}
 \end{bbox}
+\vspace{6mm}
+
+\noindent
 maps the reference interval $(0, 2\pi)$ to a spiral whose 
 $xy$-plane projection is the unit circle and in the $z$-direction 
 spans the interval $(0, 2\pi)$, as shown in Fig. \ref{fig:paramcu4}.
@@ -2947,14 +3052,19 @@ $$
 P(t_1, t_2) = [t_1, t_2, t_1 + t_2]
 $$
 \noindent
-whose code is
+whose code is\\
 
 \begin{bbox}
+\begin{verbatim}
 def P(t1, t2):
     return [t1, t2, t1 + t2]
+\end{verbatim}
 \end{bbox}
+\vspace{6mm}
+
+\noindent
 maps the reference square $(0, 1)\times(0, 1)$ to a planar surface that spans
-four points (0, 0, 0), (1, 0, 1), (0, 1, 1) and (1, 1, 2). No subdivision in
+four points $(0, 0, 0)$, $(1, 0, 1)$, $(0, 1, 1)$ and $(1, 1, 2)$. No subdivision in
 any direction was applied to the reference square to generate the wireframe plot 
 shown in Fig. \ref{fig:paramsu1}. In other words, only the four vertices of the reference domain 
 were transformed using the map, and the resulting 3D points were interpolated
@@ -2979,12 +3089,17 @@ The map is defined as
 $$
 P(t_1, t_2) = [t_1, t_2, t_1 t_2]
 $$
-or
+or\\
 
 \begin{bbox}
+\begin{verbatim}
 def P(t1, t2):
     return [t1, t2, t1*t2]
+\end{verbatim}
 \end{bbox}
+\vspace{6mm}
+
+\noindent
 The reference square was subdivided into $10$ intervals in each direction, i.e., into 
 100 square cells. This means that $11^2$ points were transformed via the map $P(t_1, t_2)$.
 The corresponding wireframe plot with 100 linearly interpolated cells is shown in Fig. \ref{fig:paramsu1c}. 
@@ -3007,12 +3122,17 @@ The map is defined as
 $$
 P(a, z) = [\cos(a), \sin(a), z]
 $$
-or
+or\\
 
 \begin{bbox}
+\begin{verbatim}
 def P(a, z):
     return [cos(a), sin(a), z]
+\end{verbatim}
 \end{bbox}
+\vspace{6mm}
+
+\noindent
 The reference domain was subdivided into 32 equally-long subintervals in the angular direction,
 and it was not subdivided in the $z$-direction. Hence the wireframe plot shown in 
 Fig. \ref{fig:paramsu20} consists of 32 linear surfaces. 
@@ -3045,12 +3165,17 @@ where $(0, 2\pi)$ represents the angle and $(0, 1)$ the radius. The map is given
 $$
 P(a, r) = \left[r\cos(a), r\sin(a), \sqrt{1 - r^2}\right]
 $$
-or
+or\\
 
 \begin{bbox}
+\begin{verbatim}
 def P(a, r):
     return [r*cos(a), r*sin(a), sqrt(1 - r**2)]
+\end{verbatim}
 \end{bbox}
+\vspace{6mm}
+
+\noindent
 We subdivide the reference rectangle into 32 pieces in the angular direction
 and into 10 pieces in the radial one. This means that the piecewise linear 
 wireframe plot shown in Fig. \ref{fig:paramsu5} has 320 cells. 
@@ -3076,12 +3201,17 @@ but the interval $(0, 1)$ has a different meaning. Also the map is different,
 $$
 P(a, z) = \left[\sqrt{1 - z^2}\cos(a), \sqrt{1 - z^2}\sin(a), z\right]
 $$
-or
+or\\
 
 \begin{bbox}
+\begin{verbatim}
 def P(a, z): 
     return [sqrt(1 - z**2)*cos(a), sqrt(1 - z**2)*sin(a), z]
+\end{verbatim}
 \end{bbox}
+\vspace{6mm}
+
+\noindent
 The wireframe plot shown in Fig. \ref{fig:paramsu3} is based on precisely the 
 same subdivision of the reference rectangle as in the previous case. 
 \newpage
@@ -3106,15 +3236,20 @@ defined as
 $
 P(a, b) = \left[\cos(a)\cos(b), \sin(a)\cos(b), \sin(b)\right]
 $
-or
+or\\
 
 \begin{bbox}
+\begin{verbatim}
 def P(a, z): return [cos(a)*cos(b), sin(a)*cos(b), sin(b)]
+\end{verbatim}
 \end{bbox}
+\vspace{6mm}
+
+\noindent
 The wireframe plot shown in Fig. \ref{fig:paramsu8} is also based on a
 $32 \times 10$ subdivision of the reference rectangle which results into the 
 same number of 320 linear cells that we had in the previous two examples.
-However, the reader can see that this map yields clearly the best approximation. 
+However, the reader can see that this map yields clearly the best approximation. \\[-7mm]
 
 \begin{figure}[!ht]
 \begin{center}
@@ -3130,11 +3265,16 @@ However, the reader can see that this map yields clearly the best approximation.
 Therefore PLaSM uses precisely this map to 
 render spherical surfaces. In fact PLaSM uses a reference rectangle $(0, 2\pi)\times(-\pi/2, \pi/2)$
 to cover the entire sphere. The default subdivision for the spherical surface in PLaSM
-is $48 \times 24$ which corresponds to
+is $48 \times 24$ which corresponds to\\
 
 \begin{bbox}
+\begin{verbatim}
 s = SPHERE(R, [24, 48])
+\end{verbatim}
 \end{bbox}
+\vspace{6mm}
+
+\noindent
 \index{SPHERE}
 (the order of the two subdivisions is switched).
 \subsection{Primer on B\'ezier curves}
@@ -3186,7 +3326,7 @@ c2 = BEZIER_1([2, 0, 0], [4, 1, 0], [0, 2, 0], [1, 3, 0])
 \noindent
 The surface between these two curves needs to be treated as any other curved 
 surface and thus it needs to be mapped on a reference rectangle. For simplicity 
-(applies generally), we may use the unit square. 
+(applies generally), we may use the unit square. \\
 
 \begin{bbox}
 \begin{verbatim}
@@ -3446,7 +3586,7 @@ $$
 p(x, y) = (x, 0, 0)
 $$
 and thus the curve lying on $S$ is a straight line connecting the points 
-(0, 0, 0) and (1, 0, 0). \\
+$(0, 0, 0)$ and $(1, 0, 0)$. \\
 
 \begin{bbox}
 \begin{verbatim}
@@ -3641,9 +3781,13 @@ def p(point):
   
 def q(point):
     x = point[0]
-    return [r/h * (cos(x + alpha) - cos(x)), r/h * (sin(x + alpha) 
-           - sin(x)), 1]
+    return [r/h * (cos(x + alpha) - cos(x)), 
+            r/h * (sin(x + alpha) - sin(x)), 1]
+\end{verbatim}
+\end{bbox}
 
+\begin{bbox}
+\begin{verbatim}
 # Reference domain::  
 ref_domain = REF_DOMAIN(2*PI, h, 64, 32)
 
@@ -3659,7 +3803,7 @@ out = MAP(ref_domain, surf)
 
 \noindent
 The output is displayed in Fig. \ref{fig:curves-9}.
-\newpage
+%\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -3715,7 +3859,8 @@ out = MAP(ref_domain, surf)
 \vspace{6mm}
 
 \noindent
-The output is displayed in Fig. \ref{fig:curves-10}.\\
+The output is displayed in Fig. \ref{fig:curves-10}.
+\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -3752,7 +3897,11 @@ def q(point):
     x = point[0]
     return [c2(x)[0] - c1(x)[0], c2(x)[1] - c1(x)[1], 
             c2(x)[2] - c1(x)[2]]
-  
+\end{verbatim}
+\end{bbox}  
+\newpage
+\begin{bbox}
+\begin{verbatim}
 # Reference domain:
 ref_domain = REF_DOMAIN(PI, 1, 64, 30)
 
@@ -4027,9 +4176,9 @@ c = CUBIC_HERMITE_1(point1, point2, vector1, vector2)
 \vspace{6mm}
 
 \noindent
-we obtain a cubic curve that ascends verticaly at (0, 0, 0) with
-a tangential vector (0, 0, 1) and ends up flat at (5, 5, 5) with 
-tangential vector (1, 1, 0).
+we obtain a cubic curve that ascends verticaly at $(0, 0, 0)$ with
+a tangential vector $(0, 0, 1)$ and ends up flat at $(5, 5, 5)$ with 
+tangential vector $(1, 1, 0)$.
 
 \subsection{Cubic Hermite surfaces}
 
@@ -4105,7 +4254,7 @@ c1 = CUBIC_HERMITE_1([0, 0, 0], [0, 1, 0], [1, 1, 0], [-1, 1, 0])
 
 \noindent
 The rest of the script stays the same. The output is displayed in Fig. \ref{fig:curves-14c}.
-\newpage
+%\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -4149,10 +4298,12 @@ Last we create a cubic Hermite surface between two arcs:\\
 \begin{bbox}
 \begin{verbatim}
 # First (outer) curve:
-c1 = CUBIC_HERMITE_1([1, 0, 0], [0, 1, 0], [0, 3, 0], [-3, 0, 0])
+c1 = CUBIC_HERMITE_1([1, 0, 0], [0, 1, 0], [0, 3, 0], 
+                     [-3, 0, 0])
 
 # Second (inner) curve:
-c2 = CUBIC_HERMITE_1([0.5, 0, 0], [0, 0.5, 0], [0, 1, 0], [-1, 0, 0])
+c2 = CUBIC_HERMITE_1([0.5, 0, 0], [0, 0.5, 0], [0, 1, 0], 
+                     [-1, 0, 0])
 
 # Slope vector for the outer curve:
 s1 = [0, 0, 1]
@@ -4242,7 +4393,7 @@ in Fig. \ref{fig:400}.\\
 \noindent
 Are more columns needed? By changing $N$ to $50$ and running the script
 once more, we create 2500 of them, as shown in Fig. \ref{fig:2500}.
-\newpage
+%\newpage
 
 \begin{figure}[!ht]
 \begin{center}
@@ -4357,8 +4508,8 @@ L = []
 \noindent
 Here, {\tt L} is the name of the list, and any other name would be fine as well, 
 as long as it does not clash with some Python or PLaSM command. We can also create 
-a nonempty list. Say that we need a list that contains the points (0, 0), (1, 0),
-(1, 0). This is done via:\\
+a nonempty list. Say that we need a list that contains the points $(0, 0)$, $(1, 0)$,
+$(1, 0)$. This is done via:\\
 
 \begin{bbox}
 \begin{verbatim}
@@ -4458,7 +4609,7 @@ for i in range(0, 5):
 \vspace{6mm}
 
 \noindent
-Output:
+Output:\\
 
 \begin{ybox}
 \begin{verbatim}
@@ -4479,7 +4630,7 @@ its size can be either two or four empty characters -- four is recommended for b
 code readability.
 
 Let us show one more example of how repetition can be used: We will create a list of 
-points (0, 0), (1, 0), (2, 0), ..., (N, 0) where {\tt N} is some positive integer. Let us
+points $(0, 0)$, $(1, 0)$, $(2, 0)$, ..., $(N, 0)$ where {\tt N} is some positive integer. Let us
 write the script initially for {\tt N = 5}, and at the end we will print it:\\
 
 \begin{bbox}
@@ -4528,7 +4679,7 @@ First we will generate a polygon with $N$ equally-long
 edges that is inscribed in 
 a circle with radius $R$. Notice that the points
 $(R  \cos(a), R  \sin(a))$ where $a$ is an angle between 
-$0$ and $2\pi$, lie on the circle with center (0, 0) and 
+$0$ and $2\pi$, lie on the circle with center $(0, 0)$ and 
 radius $R$:\\
 
 \begin{bbox}
@@ -5012,7 +5163,7 @@ lab.view(out, color)
 
 \noindent
 The final geometry is shown in Fig. \ref{fig:gear-last}.
-
+\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.43\textwidth]{img/gear-last.png}
@@ -5051,8 +5202,14 @@ n = 4
 triangle = TRIANGLE([0, 0], [n*3*2*r*1.2, 0], [n*3*r*1.2, h/2])
 prism = PRISM(triangle, r*1.2)
 gable = R(prism, 1, PI/2)
+\end{verbatim}
+\end{bbox}
+}
 
-# Column row:
+
+{\small
+\begin{bbox}
+\begin{verbatim}# Column row:
 colrow = column
 for i in range(n-1):
    colrow = RIGHT(colrow, column)
@@ -5117,7 +5274,7 @@ discussed in Subsection \ref{subsec:grids}.
 
 
 The corresponding output is shown in Fig. \ref{fig:temple}.
-
+\newpage
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=0.7\textwidth]{img/temple.png}
